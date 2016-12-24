@@ -17,15 +17,19 @@ public class Test {
         List l=new List();
         int []nums={1,2,3,4,5};
         l.createList(nums);
-        l.printList();
+
+
+        int []nums1={1,2,3,4,5};
+        List l1=new List();
+        l1.createList(nums1);
 
         System.out.println("--------------------");
         Solution s=new Solution();
-        PrintList(s.swapNodes(l.getHead(),3,4));
+        //ListNode newNode=new ListNode(110);
+        //PrintList(s.sortedInsert(l.getHead(),newNode));
+        System.out.println(s.areIdentical(l1.getHead(),l.getHead()));
+        s.swapPairs(l.getHead());
 
-        //PrintList(s.reverseList(l.getHead()));
-        //PrintList(s.reverseListRecursive(l.getHead()));
-        //s.printNthFromLast(l.getHead(),1);
 
     }
 }
