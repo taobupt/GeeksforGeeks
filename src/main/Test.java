@@ -15,20 +15,24 @@ public class Test {
     public static void main(String []strs)
     {
         List l=new List();
-        int []nums={1,2,3,4,5};
+        int []nums={12,6,29};
         l.createList(nums);
 
 
-        int []nums1={1,2,3,4,5};
+        int []nums1={23,5,8};
         List l1=new List();
         l1.createList(nums1);
+
+        int []nums2={90,20,59};
+        List l2=new List();
+        l2.createList(nums2);
 
         System.out.println("--------------------");
         Solution s=new Solution();
         //ListNode newNode=new ListNode(110);
         //PrintList(s.sortedInsert(l.getHead(),newNode));
-        System.out.println(s.areIdentical(l1.getHead(),l.getHead()));
-        s.swapPairs(l.getHead());
+        //s.AlternatingSplit(l.getHead());
+        s.isSumsorted(l.getHead(),l1.getHead(),l2.getHead(),101);
 
 
     }

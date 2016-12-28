@@ -1,6 +1,6 @@
 package LinkedList;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by Tao on 12/22/2016.
@@ -368,8 +368,305 @@ public class Solution {
     }
 
 
+    // practice questions for linked list and recursion
+    //print node recursively
+
+    public void fun1(ListNode head){
+        if(head==null)
+            return;
+        fun1(head.next);
+        System.out.println(head.val+" ");
+    }
+
+    //just print the odd node
+    //pay attention to the odd length and even length
+    public void fun2(ListNode head){
+        if(head==null)return;
+        System.out.println(head.val+" ");
+
+        if(head.next!=null){
+            fun2(head.next.next);
+        }
+        System.out.println(head.val+" ");
+    }
+
+    //move last element to front of a given linkedlist
+
+    public ListNode moveToFront(ListNode head){
+        if(head==null||head.next==null)return head;
+        ListNode p=head;
+        ListNode pparent=new ListNode(0);
+        pparent.next=p;
+        while(p.next!=null){
+            p=p.next;
+            pparent=pparent.next;
+        }
+        pparent.next=null;
+        p.next=head;
+        return p;
+    }
+
+    //intesection of two sorted linkedlist
+    //iterative way
+    public ListNode sortedIntersect(ListNode heada,ListNode headb){
+        ListNode dummy=new ListNode(0);
+        ListNode p=dummy;
+        ListNode nodea=heada;
+        ListNode nodeb=headb;
+        while(nodea!=null && nodeb!=null){
+            if(nodea.val<nodeb.val)
+                nodea=nodea.next;
+            else if(nodeb.val<nodea.val)
+                nodeb=nodeb.next;
+            else{
+                p.next=nodea;
+                p=p.next;
+                nodea=nodea.next;
+                nodeb=nodeb.next;
+            }
+        }
+        p.next=null;
+        return dummy.next;
+    }
+
+    //interesting
+    //recursive
+    public ListNode sortedIntersectRecursive(ListNode heada,ListNode headb){
+        if(heada==null||headb==null)return null;
+        if(heada.val<headb.val)
+            return sortedIntersectRecursive(heada.next,headb);
+        else if(heada.val>headb.val)
+            return sortedIntersectRecursive(heada,headb.next);
+        else{
+            ListNode node=new ListNode(heada.val);
+            node.next=sortedIntersectRecursive(heada.next,headb.next);
+            return node;
+        }
+    }
+
+    //delete alternate nodes of a linked list
+    //recursive
+
+    public ListNode deleteAlRecursive(ListNode head){
+        if(head==null||head.next==null)return head;
+        head.next=deleteAlRecursive(head.next.next);
+        return head;
+    }
+
+    //iterative way
+
+    public ListNode deleteAl(ListNode head){
+        if(head==null||head.next==null)return head;
+        ListNode node=head;
+        while(node!=null &&node.next!=null){
+            node.next=node.next.next;
+            node=node.next;
+        }
+        return head;
+    }
+
+    //alternating split of a given singly linked list
+    public void AlternatingSplit(ListNode head){
+        ListNode list1=new ListNode(0);
+        ListNode list2=new ListNode(0);
+        int count=0;
+        ListNode p1=list1;
+        ListNode p2=list2;
+        ListNode p=head;
+        while(p!=null){
+            if((count&0x1)==0){
+                p1.next=p;
+                p1=p1.next;
+                p=p.next;
+            }else{
+                p2.next=p;
+                p2=p2.next;
+                p=p.next;
+            }
+            count++;
+        }
+        //pay attention to this
+        if(p1!=null)p1.next=null;
+        if(p2!=null)p2.next=null;
+        while(list1!=null){
+            System.out.println(list1.val+" ");
+            list1=list1.next;
+        }
+
+        while(list2!=null){
+            System.out.println(list2.val+" ");
+            list2=list2.next;
+        }
+
+    }
+
+    //two sum
+    public int[] twoSum(int[] nums, int target) {
+        int[]result=new int[2];
+        Map<Integer,Integer>map=new HashMap<Integer, Integer>();
+        for(int i=0;i<nums.length;++i){
+            if(map.containsKey(target-nums[i])){
+                result[1]=i;
+                result[0]=map.get(target-nums[i]);
+                return result;
+            }
+            map.put(nums[i],i);
+        }
+        return result;
+    }
+
+    //rotate linkedlist
+    //3 steps
+    //or you can reverse once, find the point,and then connect two parts directly,
+   public ListNode rotate(ListNode head,int k){
+        if(head==null||k==0)return head;
+        int n=0;
+        ListNode node=head;
+        while(node!=null){
+            node=node.next;
+            n++;
+        }
+        k=k%n;
+        if(k==0)return head;
+        node=head;
+        while(k-->1){
+            node=node.next;
+        }
+        ListNode second=node.next;
+        node.next=null;
+        second=reverseList(second);
+        node=head;
+        node=reverseList(node);
+        head.next=second;
+        head=reverseList(node);
+        return head;
+    }
+
+    public ListNode removeDuplicates(ListNode head){
+        if(head==null||head.next==null)return head;
+        Set<Integer>set=new HashSet<Integer>();
+        ListNode front=head;
+        ListNode node=head;
+        set.add(front.val);
+        while(node!=null){
+            if(set.contains(node.val)){
+                front.next=node.next;
+            }else
+                front=front.next;
+            set.add(node.val);
+            node=node.next;
+
+        }
+        return head;
+    }
 
 
+    public ListNode addTwoLists(ListNode heada,ListNode headb){
+        if(heada==null||headb==null)return heada==null?headb:heada;
+        int carry=0;
+        ListNode first=new ListNode(0);
+        ListNode pp=first;
+        while(heada!=null||headb!=null||carry>0){
+            carry+=(heada!=null?heada.val:0)+(headb!=null?headb.val:0);
+            pp.next=new ListNode(carry%10);
+            pp=pp.next;
+            carry/=10;
+            heada=heada!=null?heada.next:null;
+            headb=headb!=null?headb.next:null;
+        }
+        return first.next;
+    }
+
+    public ListNode segregateEvenOdd(ListNode head){
+        ListNode even=new ListNode(0);
+        ListNode peven=even;
+        ListNode odd=new ListNode(0);
+        ListNode podd=odd;
+
+        ListNode node=head;
+        while(node!=null){
+            if((node.val&0x1)==0){
+                peven.next=node;
+                peven=peven.next;
+            }else{
+                podd.next=node;
+                podd=podd.next;
+            }
+            node=node.next;
+        }
+        peven.next=odd.next;
+        podd.next=null;
+        return even.next;
+    }
+    //Delete nodes which have a greater value on right side
+    //interesting
+    //Method 2 (Use Reverse)
+    //1. Reverse the list.
+    //2. Traverse the reversed list. Keep max till now. If next node < max, then delete the next node, otherwise max = next node.
+    //3. Reverse the list again to retain the original order. Time Complexity: O(n) Thanks to R.Srinivasan for providing below code.
+
+
+
+    //merge sort list
+
+    public enum sortType{desc,asc};
+    public ListNode merge(ListNode heada,ListNode headb,sortType type){
+        if(heada==null||headb==null)return heada!=null?heada:headb;
+        ListNode headc=new ListNode(0);
+        ListNode p=headc;
+        while(heada!=null && headb!=null){
+            if(type==sortType.desc &&heada.val>=headb.val||type==sortType.asc && heada.val<=headb.val){
+                p.next=heada;
+                heada=heada.next;
+            }else{
+                p.next=headb;
+                headb=headb.next;
+            }
+            p=p.next;
+        }
+        p.next=heada!=null?heada:headb;
+        return headc.next;
+    }
+    public ListNode mergeSort(ListNode head,sortType type){
+        if(head==null||head.next==null)return head;
+        ListNode slow=head;
+        ListNode fast=head.next;
+        while(fast!=null && fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        fast=slow.next;
+        slow.next=null;
+        return merge(mergeSort(head,type),mergeSort(fast,type),type);
+    }
+
+
+    //find a triplet from three linked lists with sum equal to a given number
+    //first brust force
+    //second sort b in ascend ,sort c in descend
+
+    public boolean isSumsorted(ListNode heada,ListNode headb,ListNode headc,int givenNumber){
+        ListNode nodea=heada;
+        headb=mergeSort(headb,sortType.asc);
+        headc=mergeSort(headc,sortType.desc);
+        while(nodea!=null){
+            ListNode b=headb;
+            ListNode c=headc;
+            while(b!=null && c!=null){
+                int sum=nodea.val+b.val+c.val;
+                if(sum==givenNumber){
+                    System.out.println("Triplet found "+nodea.val+" "+b.val+" "+c.val);
+                    return true;
+                }else if(sum<givenNumber)
+                    b=b.next;
+                else
+                    c=c.next;
+            }
+            nodea=nodea.next;
+        }
+        System.out.println("No Triplet found");
+        return false;
+    }
 
 
 
