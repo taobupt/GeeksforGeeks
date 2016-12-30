@@ -191,6 +191,14 @@ public class Solution {
         }
     }
 
+    //merge two sortedlist in reverseorder
+    public ListNode mergeTwoSortedListReverse(ListNode heada,ListNode headb){
+        ListNode dummy=mergeTwoLists(heada,headb);
+        return reverseList(dummy);
+    }
+
+
+
     public ListNode sortedInsert(ListNode head,ListNode newNode){
         ListNode dummy=new ListNode(Integer.MIN_VALUE);
         dummy.next=head;
@@ -289,6 +297,20 @@ public class Solution {
         //int tmp=node.val;
         node.val=node.next.val;
         node.next=node.next.next;
+    }
+    //delete a linkedlist node at given position
+
+    public ListNode deleteNode(ListNode head,int position){
+        if(head==null)return head;
+        ListNode dummy=new ListNode(0);
+        dummy.next=head;
+        ListNode p=dummy;
+        while(p!=null && position>0){
+            p=p.next;
+            position--;
+        }
+        if(p!=null &&p.next!=null)p.next=p.next.next;
+        return dummy.next;
     }
 
 
@@ -561,6 +583,8 @@ public class Solution {
     }
 
 
+
+    //5-6-3// 365
     public ListNode addTwoLists(ListNode heada,ListNode headb){
         if(heada==null||headb==null)return heada==null?headb:heada;
         int carry=0;
@@ -576,6 +600,38 @@ public class Solution {
         }
         return first.next;
     }
+
+    //add tow list
+    //can also use two stack
+    //5-6-3// 563
+    //itreative way
+    public ListNode addTwoLists2(ListNode heada,ListNode headb){
+        if(heada==null||headb==null)return heada==null?headb:heada;
+        heada=reverseList(heada);
+        headb=reverseList(headb);
+        return reverseList(addTwoLists(heada,headb));
+    }
+
+    //recursive way
+    public ListNode addTwoListRecursive(ListNode heada,ListNode headb){
+        return addTwoListRecursiveHelper(heada,headb,0);
+    }
+
+    public ListNode addTwoListRecursiveHelper(ListNode heada,ListNode headb,int carry){
+        if(heada==null && headb==null && carry==0)
+            return null;
+        else if(heada==null && headb==null && carry!=0)
+            return new ListNode(carry);
+        int firstData=heada==null?0:heada.val;
+        int secondData=headb==null?0:headb.val;
+        ListNode sum=new ListNode((firstData+secondData+carry)%10);
+        int newCarray=(firstData+secondData+carry)/10;
+        heada=heada==null?null:heada.next;
+        headb=headb==null?null:headb.next;
+        sum.next=addTwoListRecursiveHelper(heada,headb,newCarray);
+        return sum;
+    }
+
 
     public ListNode segregateEvenOdd(ListNode head){
         ListNode even=new ListNode(0);
@@ -668,6 +724,97 @@ public class Solution {
         return false;
     }
 
+    //delete last occurence of an item from linked list
+    public ListNode deleteLast(ListNode head,int key){
+        if(head==null)return head;
+        ListNode dummy=new ListNode(0);
+        ListNode p=dummy;
+        dummy.next=head;
+        ListNode node=null;
+        while(dummy.next!=null){
+            if(dummy.next.val==key){
+                node=dummy;
+            }
+            dummy=dummy.next;
+        }
+        if(node!=null)node.next=node.next.next;
+        return p.next;
+    }
 
+    //without reverselist
+    public ListNode plusOne(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode i = dummy;
+        ListNode j = dummy;
+
+        while (j.next != null) {
+            j = j.next;
+            if (j.val != 9) {
+                i = j;
+            }
+        }
+
+        if (j.val != 9) {
+            j.val++;
+        } else {
+            i.val++;
+            i = i.next;
+            while (i != null) {
+                i.val = 0;
+                i = i.next;
+            }
+        }
+
+        if (dummy.val == 0) {
+            return dummy.next;
+        }
+
+        return dummy;
+    }
+    //using reverselist
+    public ListNode plusOne1(ListNode head) {
+        if(head==null)return new ListNode(1);
+        head=reverseList(head);
+        ListNode p=head;
+        ListNode pre=new ListNode(0);
+        pre.next=p;
+        while(p!=null){
+            if(p.val!=9){
+                p.val++;
+                return reverseList(head);
+            }else p.val=0;
+            p=p.next;
+            pre=pre.next;
+        }
+        pre.next=new ListNode(1);
+        return reverseList(head);
+    }
+
+    //is palindrome of string of linkedlist
+
+    public boolean isPalindromeof(ListNode head){
+        StringBuffer sb=new StringBuffer("");
+        while(head!=null){
+            sb.append(String.valueOf(head.val));
+        }
+        int n=sb.length();
+        for(int i=0;i<n;++i) {
+            if (sb.charAt(i) != sb.charAt(n - 1 - i)) return false;
+        }
+        return true;
+    }
+
+    //judge whether string is a palindrome
+    public boolean isPalindrome(String s) {
+        int i=0,j=s.length()-1;
+        while(i<j)
+        {
+            while(i<j && !Character.isLetterOrDigit(s.charAt(j)))j--;
+            while(i<j && !Character.isLetterOrDigit(s.charAt(i)))i++;
+            if(Character.toLowerCase(s.charAt(i++))!=Character.toLowerCase(s.charAt(j--)))return false;
+        }
+        return true;
+    }
 
 }

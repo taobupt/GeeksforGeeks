@@ -15,15 +15,15 @@ public class Test {
     public static void main(String []strs)
     {
         List l=new List();
-        int []nums={12,6,29};
+        int []nums={9,9,9};
         l.createList(nums);
 
 
-        int []nums1={23,5,8};
+        int []nums1={2,3,20};
         List l1=new List();
         l1.createList(nums1);
 
-        int []nums2={90,20,59};
+        int []nums2={8,4,2};
         List l2=new List();
         l2.createList(nums2);
 
@@ -32,7 +32,9 @@ public class Test {
         //ListNode newNode=new ListNode(110);
         //PrintList(s.sortedInsert(l.getHead(),newNode));
         //s.AlternatingSplit(l.getHead());
-        s.isSumsorted(l.getHead(),l1.getHead(),l2.getHead(),101);
+        //PrintList(s.addTwoListRecursive(l.getHead(),l1.getHead()));
+        //PrintList(s.addTwoLists2(l.getHead(),l1.getHead()));
+        PrintList(s.plusOne(l.getHead()));
 
 
     }
