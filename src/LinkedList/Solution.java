@@ -697,6 +697,26 @@ public class Solution {
     }
 
 
+    //insert sort single sort
+
+    public ListNode insertSort(ListNode head){
+        if(head==null||head.next==null)
+            return head;
+        ListNode dummy=new ListNode(Integer.MIN_VALUE);
+        //dummy.next=head;
+        while(head!=null){
+            ListNode p=dummy;
+            ListNode tmp=head.next;
+            while(p.next!=null && p.next.val<=head.val){
+                p=p.next;
+            }
+            head.next=p.next;
+            p.next=head;
+            head=tmp;
+        }
+        return dummy.next;
+    }
+
     //find a triplet from three linked lists with sum equal to a given number
     //first brust force
     //second sort b in ascend ,sort c in descend
@@ -817,4 +837,224 @@ public class Solution {
         return true;
     }
 
+    //sorted list which is already sorted on absolutely value
+    //reverse list here
+    //but you can append the negative node in the front of the list each time.
+    public ListNode sortListWithAbsolutelyValue(ListNode head){
+        if(head==null||head.next==null)return head;
+        //ListNode dummy=new ListNode(0);
+        //divide two part
+        ListNode positive=new ListNode(0);
+        ListNode negative=new ListNode(-1);
+        ListNode p=positive;
+        ListNode n=negative;
+        while(head!=null){
+            if(head.val<0){
+                n.next=head;
+                n=n.next;
+            }else{
+                p.next=head;
+                p=p.next;
+            }
+            head=head.next;
+        }
+        if(p!=null)p.next=null;
+        if(n!=null)n.next=null;
+        ListNode dummy=reverseList(negative.next);
+        if(negative.next!=null)
+            negative.next.next=positive.next;
+        else
+            return positive.next;
+        return dummy;
+    }
+
+    //but you can append the negative node in the front of the list each time.
+    public ListNode sortListWithAbsolutelyValue2(ListNode head){
+        if(head==null||head.next==null)return head;
+        ListNode dummy=new ListNode(0);
+        ListNode positive=new ListNode(0);
+        ListNode firstNega=null;
+        ListNode p=positive;
+        while(head!=null){
+            ListNode tmp=head.next;
+            if(head.val<0){
+                if(firstNega==null)
+                    firstNega=head;
+                head.next=dummy.next;
+                dummy.next=head;
+            }else{
+                p.next=head;
+                p=p.next;
+            }
+            head=tmp;
+        }
+        if(p!=null)p.next=null;
+        firstNega.next=positive.next;
+        return dummy.next;
+    }
+
+    //sort 0,1,2, list
+    //the same as the array, holland flag
+    //also you can calculate the count of the number, but you have to copy data, which is time-comsuming
+    public ListNode sortList012(ListNode head){
+        //ListNode dummy=new ListNode(0);
+        //three list
+        ListNode Zero=new ListNode(0);
+        ListNode Two=new ListNode(2);
+        ListNode One=new ListNode(1);
+        ListNode zero=Zero;
+        ListNode one=One;
+        ListNode two=Two;
+        ListNode curr=head;
+        while(curr!=null){
+            if(curr.val==0){
+                zero.next=curr;
+                zero=zero.next;
+            }else if(curr.val==1){
+                one.next=curr;
+                one=one.next;
+            }else{
+                two.next=curr;
+                two=two.next;
+            }
+            curr=curr.next;
+        }
+        zero.next=One.next;
+        one.next=Two.next;
+        two.next=null;
+        return Zero.next;
+
+    }
+
+
+    //1-2-3-4  1-4-2-3
+    //1-2-3-4-5 1-5-2-4-3
+    //rearrange the listnode
+    public ListNode rearrange(ListNode head){
+        if(head==null||head.next==null)return head;
+        ListNode dummy=new ListNode(0);
+        ListNode slow=head;
+        ListNode fast=head.next;
+        while(fast!=null && fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        fast=slow.next;
+        slow.next=null;
+        fast=reverseList(fast);
+        slow=head;
+        ListNode p=dummy;
+        int count=0;
+        while(fast!=null || slow!=null){
+            if(count==0){
+                p.next=slow;
+                if(slow!=null)slow=slow.next;
+                count=1;
+            }else{
+                p.next=fast;
+                if(fast!=null)fast=fast.next;
+                count=0;
+            }
+            p=p.next;
+        }
+        p.next=null;
+        return dummy.next;
+
+    }
+
+
+    //rerrange a linkedlist in zigzag fashion
+    //the same as the wiggle sortI
+    //but wiggle sortII was difficult
+    //also you can use merge sort and then pick the element in appropriate position
+    public ListNode zigzagList(ListNode head){
+        if(head==null||head.next==null)
+            return head;
+        boolean flag=true;// if head.val>head.next.val then swap the node
+        ListNode pre=head;
+        ListNode cur=head.next;
+        while(pre!=null && cur!=null){
+            if((flag && pre.val>cur.val)||(!flag && pre.val<cur.val)){
+                int val=pre.val;
+                pre.val=cur.val;
+                cur.val=val;
+            }
+            pre=pre.next;
+            cur=cur.next;
+            flag=!flag;
+        }
+        return head;
+    }
+
+    //sort a linked list that is sorted alternating ascending and descending orders
+
+    public ListNode sortAscendDescend(ListNode head){
+        if(head==null||head.next==null)
+            return head;
+        ListNode ascending=new ListNode(0);
+        ListNode descding=new ListNode(1);
+        //split first
+        //reverse the descing
+        //merge two sort list
+
+        ListNode as=ascending;
+        ListNode de=descding;
+        boolean isEven=true;
+        while(head!=null){
+            if(isEven){
+                as.next=head;
+                as=as.next;
+            }else{
+                de.next=head;
+                de=de.next;
+            }
+            head=head.next;
+            isEven=!isEven;
+        }
+
+        if(as!=null)as.next=null;
+        if(de!=null)de.next=null;
+        as=ascending.next;
+        de=descding.next;
+        de=reverseList(de);
+        // start to merge two sorted list
+
+
+        ListNode dummy=new ListNode(0);
+        ListNode p=dummy;
+        while(as!=null && de!=null){
+            if(as.val<=de.val){
+                p.next=as;
+                as=as.next;
+            }else{
+                p.next=de;
+                de=de.next;
+            }
+            p=p.next;
+        }
+        p.next=as!=null?as:de;
+        return dummy.next;
+    }
+
+    // merge a linked list into another linkedlist at alternate position
+    public ListNode mergeInAlternate(ListNode head1,ListNode head2){
+        if(head1==null)
+            return head1;
+        ListNode p_curr=head1;
+        ListNode q_curr=head2;
+        while(p_curr!=null){
+            //save the next
+            ListNode pnext=p_curr.next;
+            ListNode qnext=q_curr.next;
+
+            q_curr.next=pnext;
+            p_curr.next=q_curr;
+
+            //iterate
+            p_curr=pnext;
+            q_curr=qnext;
+        }
+        head2=q_curr;
+        return head1;
+    }
 }
