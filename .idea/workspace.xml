@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d65e4c4f-115a-48ce-807c-3a59b097a734" name="Default" comment="add tree&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/tree/TreeTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GeeksforGeeks/LinkedList/List.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GeeksforGeeks/LinkedList/ListNode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GeeksforGeeks/LinkedList/Solution$sortType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GeeksforGeeks/LinkedList/Solution.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GeeksforGeeks/main/Test.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/LinkedList/List.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/LinkedList/ListNode.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/LinkedList/Solution.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GeeksforGeeks.iml" afterPath="$PROJECT_DIR$/GeeksforGeeks.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Test.java" afterPath="$PROJECT_DIR$/src/main/Test.java" />
-    </list>
+    <list default="true" id="d65e4c4f-115a-48ce-807c-3a59b097a734" name="Default" comment="add tree&#10;" />
     <ignored path="GeeksforGeeks.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -889,7 +871,7 @@
       <workItem from="1483060075118" duration="7519000" />
       <workItem from="1483121924736" duration="11840000" />
       <workItem from="1483155234932" duration="114000" />
-      <workItem from="1483232003657" duration="11792000" />
+      <workItem from="1483232003657" duration="11844000" />
     </task>
     <task id="LOCAL-00001" summary="add linkedlist&#10;">
       <created>1483145383999</created>
@@ -897,7 +879,13 @@
       <option name="project" value="LOCAL" />
       <updated>1483145383999</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add tree&#10;">
+      <created>1483252055615</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1483252055615</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -933,7 +921,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66036000" />
+    <option name="totallyTimeSpent" value="66088000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
