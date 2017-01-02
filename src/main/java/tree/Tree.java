@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -22,7 +25,153 @@ public class Tree {
 
     }
 
+    //104 maximum depth of binary tree
+
+    //recursive  way
+    //time complexity is O(n),since it traverse the node once
+    public int maxDepth(TreeNode root) {
+        if (root == null)
+            return 0;
+        else
+            return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+
+    //its corresponding stack version
+    public int maxDepthStack(TreeNode root) {
+        if (root == null)
+            return 0;
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        Stack<Integer> value = new Stack<Integer>();
+        stk.push(root);
+        value.push(1);
+        int max = 0;
+        while (!stk.isEmpty()) {
+            TreeNode node = stk.pop();
+            int tmp = value.pop();
+            max = Math.max(max, tmp);
+            if (node.left != null) {
+                stk.push(node.left);
+                value.push(tmp + 1);
+            }
+            if (node.right != null) {
+                stk.push(node.right);
+                value.push(tmp + 1);
+            }
+        }
+        return max;
+    }
+
+
+    //you can also use queue
+    //iterative way
+
+    public int maxDepthByQueue(TreeNode root) {
+        int count = 0;
+        Deque<TreeNode> dq = new LinkedList<TreeNode>();
+        if (root == null)
+            return 0;
+        dq.offer(root);
+        //push: add element in the front, useless
+        while (!dq.isEmpty()) {
+            int size = dq.size();
+            while (size-- > 0) {
+                TreeNode node = dq.poll();
+                if (node.left != null)
+                    dq.addLast(node.left);
+                if (node.right != null)
+                    dq.addLast(node.right);
+            }
+            count++;
+        }
+        return count;
+
+    }
+
+
+    //111 minimum depth of Binary Tree
+    //recursive way
+    //time complexity is O(n),since it traverse the node only once
+
+    public int minDepth(TreeNode root) {
+        if (root == null)
+            return 0;
+        if (root.left == null)
+            return minDepth(root.right) + 1;
+        else if (root.right == null)
+            return minDepth(root.left) + 1;
+        else
+            return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+    }
+
+    //bfs way level order
+    //time complexity is O(n),space complexity is O(n)
+    public int minDepthByQueue(TreeNode root) {
+        if (root == null)
+            return 0;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        int count = 0;
+        while (!q.isEmpty()) {
+            int size = q.size();
+            count++;
+            while (size-- > 0) {
+                TreeNode node = q.poll();
+                if (node.left == null && node.right == null)
+                    return count;
+                if (node.left != null)
+                    q.offer(node.left);
+                if (node.right != null)
+                    q.offer(node.right);
+            }
+        }
+        return count;
+    }
+
+
+    //235 lowest common ancestor of a binary search tree
+    //recursive way
+    //time complexity is O(h), requires O(H) extra space in function call stack for recursive function calls
+    //we can avoid this by iterative solution
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || p == null || q == null)
+            return null;
+        if (root.val > Math.max(p.val, q.val))
+            return lowestCommonAncestor(root.left, p, q);
+        else if (root.val < Math.min(p.val, q.val))
+            return lowestCommonAncestor(root.right, p, q);
+        else
+            return root;
+    }
+
+    //iterative way
+    public TreeNode lowestCommonAncestorIterative(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || q == null || p == null)
+            return null;
+        TreeNode node = root;
+        while (node != null) {
+            if (node.val > Math.max(p.val, q.val))
+                node = node.left;
+            else if (node.val < Math.min(p.val, q.val))
+                node = node.right;
+            else
+                return node;
+        }
+        return node;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     //you can solve this by previous node
+    //99 recover binary serach tree
     TreeNode pre11=null;
     TreeNode first=null;
     TreeNode second=null;
@@ -49,6 +198,57 @@ public class Tree {
         first.val=second.val;
         second.val=tmp;
     }
+
+    // actually you can slove this by morris traversal, which is the most optimal way
+    //you just replace sout node.val with some code
+    public void recoverTreeByMorrisTraversal(TreeNode root) {
+        TreeNode pre = null;
+        TreeNode cur = root;
+        TreeNode first = null;
+        TreeNode second = null;
+        while (cur != null) {
+            if (cur.left == null) {
+                //replace sout value to some code;
+                if (pre != null && pre.val > cur.val) {
+                    if (first == null) {
+                        first = pre;
+                    }
+                    second = cur;
+                }
+                pre = cur;
+                cur = cur.right;
+            } else {
+                //find the precedessor
+                TreeNode tmp = cur.left;
+                while (tmp.right != null && tmp.right != cur) {
+                    tmp = tmp.right;
+                }
+                if (tmp.right == null) {
+                    tmp.right = cur;
+                    cur = cur.left;
+                } else {
+                    tmp.right = null;
+                    //this condition is very important
+                    if (pre != null && pre.val > cur.val) {
+                        if (first == null) {
+                            first = pre;
+                        }
+                        second = cur;
+                    }
+                    pre = cur;
+                    cur = cur.right;
+                }
+            }
+
+        }
+        if (first != null && second != null) {
+            int val = first.val;
+            first.val = second.val;
+            second.val = val;
+        }
+    }
+
+
 
 
 
