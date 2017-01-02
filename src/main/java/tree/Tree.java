@@ -1,9 +1,7 @@
 package tree;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+
+import java.util.*;
 
 /**
  * Created by Tao on 12/31/2016.
@@ -67,7 +65,7 @@ public class Tree {
 
     public int maxDepthByQueue(TreeNode root) {
         int count = 0;
-        Deque<TreeNode> dq = new LinkedList<TreeNode>();
+        Queue<TreeNode> dq = new LinkedList<TreeNode>();
         if (root == null)
             return 0;
         dq.offer(root);
@@ -77,9 +75,9 @@ public class Tree {
             while (size-- > 0) {
                 TreeNode node = dq.poll();
                 if (node.left != null)
-                    dq.addLast(node.left);
+                    dq.offer(node.left);
                 if (node.right != null)
-                    dq.addLast(node.right);
+                    dq.offer(node.right);
             }
             count++;
         }
@@ -159,6 +157,83 @@ public class Tree {
         return node;
     }
 
+
+    // lowestCommonAncestor of binary tree
+    public TreeNode lowestCommonAncestorBinaryTree(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || p == root || q == root)
+            return root;
+        TreeNode left = lowestCommonAncestorBinaryTree(root.left, p, q);
+        TreeNode right = lowestCommonAncestorBinaryTree(root.right, p, q);
+        if (left != null && right != null)
+            return root;
+        return left != null ? left : right;
+    }
+
+    //you can use stack, which is the best way to understand the nature of the problem
+    //use stack to store store the path
+
+    public List<TreeNode> stkToList(Stack<TreeNode> stk) {
+        List<TreeNode> list = new ArrayList<TreeNode>(stk);//new Arraylist(Collection);
+        return list;
+    }
+
+    public TreeNode lowestCommonAncestorBinaryTreeIterative(TreeNode root, TreeNode p, TreeNode q) {
+        List<TreeNode> vp = new ArrayList<TreeNode>();
+        List<TreeNode> vq = new ArrayList<TreeNode>();
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        //you should mark which nodes has been visited
+        Set<TreeNode> set = new HashSet<TreeNode>();
+        if (root == null || p == root || q == root)
+            return root;
+        stk.push(root);
+        set.add(root);
+        while (!stk.isEmpty()) {
+            TreeNode node = stk.peek();
+            if (node.left != null && !set.contains(node.left)) {
+                stk.push(node.left);
+                set.add(node.left);
+                if (node.left == p) {
+                    vp = stkToList(stk);
+                    if (!vq.isEmpty())
+                        break;
+
+                }
+                if (node.left == q) {
+                    vq = stkToList(stk);
+                    if (!vp.isEmpty())
+                        break;
+                }
+                continue;
+            }
+            if (node.right != null && !set.contains(node.right)) {
+                stk.push(node.right);
+                set.add(node.right);
+                if (node.right == p) {
+                    vp = stkToList(stk);
+                    if (!vq.isEmpty())
+                        break;
+
+                }
+                if (node.right == q) {
+                    vq = stkToList(stk);
+                    if (!vp.isEmpty())
+                        break;
+                }
+                continue;
+            }
+            stk.pop();
+        }
+        int index = Math.min(vp.size(), vq.size());
+        int i = 0;
+        for (; i < index; ++i) {
+            if (vp.get(i) != vq.get(i))
+                break;
+        }
+        if (i == 0 || vp.get(i - 1) == null)
+            return null;
+        return vp.get(i - 1);
+
+    }
 
 
 

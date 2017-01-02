@@ -16,12 +16,15 @@ public class TreeTest {
     @Before
     public void setUp() throws Exception {
         t = new Tree();
-        root = new TreeNode(10);
-        root.left = new TreeNode(12);
-        root.right = new TreeNode(15);
-        root.left.left = new TreeNode(25);
-        root.left.right = new TreeNode(30);
-        root.right.left = new TreeNode(36);
+        root = new TreeNode(3);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(1);
+        root.left.left = new TreeNode(6);
+        root.left.right = new TreeNode(2);
+        root.right.left = new TreeNode(0);
+        root.right.right = new TreeNode(8);
+        root.left.right.left = new TreeNode(7);
+        root.left.right.right = new TreeNode(4);
     }
 
     @Test
@@ -67,5 +70,11 @@ public class TreeTest {
     @Test
     public void testPostorderMorrisTraveral() {
         t.postorderMorrisTraversal(root);
+    }
+
+    @Test
+    public void testLowestCommonAncestorBinaryTreeIterative() {
+        TreeNode res = t.lowestCommonAncestorBinaryTreeIterative(root, root.left, root.left.right.right);
+        assertEquals(res, root.left);
     }
 }
