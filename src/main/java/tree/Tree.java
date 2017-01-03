@@ -17,6 +17,16 @@ class TreeNode{
         right=null;
     }
 }
+
+class Tuple<X, Y> {
+    public final X x;
+    public final Y y;
+
+    public Tuple(X x, Y y) {
+        this.x = x;
+        this.y = y;
+    }
+}
 public class Tree {
 
     public Tree(){
@@ -236,6 +246,216 @@ public class Tree {
     }
 
 
+    //257 binary tree paths
+    //recursive way
+
+    public void dfsBinaryTreePaths(TreeNode node, String path, List<String> res) {
+        if (node == null)
+            return;
+        if (node.left == null && node.right == null) {
+            res.add(path + "" + node.val);
+            return;
+        }
+        if (node.left != null)
+            dfsBinaryTreePaths(node.left, path + node.val + "->", res);
+        if (node.right != null)
+            dfsBinaryTreePaths(node.right, path + node.val + "->", res);
+    }
+
+    public List<String> binaryTreePaths(TreeNode root) {
+        List<String> res = new ArrayList<String>();
+        if (root == null)
+            return res;
+        dfsBinaryTreePaths(root, "", res);
+        return res;
+    }
+
+    //actually you can use a stack
+    //these in dfs order, but queue in level order print binary treePaths
+    public List<String> binaryTreePathsIterativeStack(TreeNode root) {
+        Stack<Tuple<TreeNode, StringBuffer>> stk = new Stack<Tuple<TreeNode, StringBuffer>>();
+        List<String> res = new ArrayList<String>();
+        if (root == null)
+            return res;
+        stk.push(new Tuple(root, new StringBuffer("")));
+        while (!stk.isEmpty()) {
+            Tuple t = stk.pop();
+            TreeNode node = (TreeNode) t.x;
+            StringBuffer path = new StringBuffer();
+            path.append(((StringBuffer) t.y).toString() + "->" + node.val);
+            if (node.left == null && node.right == null) {
+                res.add(path.toString().substring(2));
+            }
+            if (node.right != null) {
+                stk.push(new Tuple(node.right, path));
+            }
+            if (node.left != null) {
+                stk.push(new Tuple(node.left, path));
+            }
+        }
+        return res;
+    }
+
+    // the same as stack, but different order
+    //these leaves in level order;but stack in dfs order
+    public List<String> binaryTreePathsIterativeQueue(TreeNode root) {
+        Queue<Tuple<TreeNode, StringBuffer>> q = new LinkedList<Tuple<TreeNode, StringBuffer>>();
+        List<String> res = new ArrayList<String>();
+        if (root == null)
+            return res;
+        q.offer(new Tuple(root, new StringBuffer("")));
+        while (!q.isEmpty()) {
+            Tuple t = q.poll();
+            TreeNode node = (TreeNode) t.x;
+            StringBuffer path = new StringBuffer();
+            path.append(((StringBuffer) t.y).toString() + "->" + node.val);
+            if (node.left == null && node.right == null) {
+                res.add(path.toString().substring(2));
+            }
+            if (node.left != null) {
+                q.offer(new Tuple(node.left, path));
+            }
+            if (node.right != null) {
+                q.offer(new Tuple(node.right, path));
+            }
+        }
+        return res;
+    }
+
+    //iterative way
+    //use an hashmap to store the parent of the node
+    public List<String> binaryTreePathsIterative(TreeNode root) {
+        Map<TreeNode, TreeNode> parent = new HashMap<TreeNode, TreeNode>();
+        List<String> res = new ArrayList<String>();
+        if (root == null)
+            return res;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
+            if (node.left == null && node.right == null) {
+                //this is a leaf node
+                //find its parent one by one
+                TreeNode tmp = node;
+                String str = "" + tmp.val;
+                while (parent.containsKey(tmp)) {
+                    str = parent.get(tmp).val + "->" + str;
+                    tmp = parent.get(tmp);
+                }
+                res.add(str);
+            }
+            if (node.left != null) {
+                parent.put(node.left, node);
+                q.offer(node.left);
+            }
+            if (node.right != null) {
+                parent.put(node.right, node);
+                q.offer(node.right);
+            }
+        }
+        return res;
+    }
+
+    //leetcode 226 invert binary tree
+
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null)
+            return null;
+        TreeNode saveLeft = root.left;
+        root.left = invertTree(root.right);
+        root.right = invertTree(saveLeft);
+        return root;
+    }
+
+    //follow up iterative way
+    public TreeNode invertTreeIterative(TreeNode root) {
+        if (root == null)
+            return null;
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        stk.push(root);
+        while (!stk.isEmpty()) {
+            TreeNode node = stk.pop();
+            TreeNode tmp = node.left;
+            node.left = node.right;
+            node.right = tmp;
+            if (node.left != null) {
+                stk.push(node.left);
+            }
+            if (node.right != null) {
+                stk.push(node.right);
+            }
+        }
+        return root;
+    }
+
+    //you can also use a queue
+    //just traversal all the nodes
+    //swap their left child and right child
+    public TreeNode invertTreeByQueue(TreeNode root) {
+        if (root == null)
+            return null;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
+            TreeNode tmp = node.left;
+            node.left = node.right;
+            node.right = tmp;
+            if (node.left != null) {
+                q.offer(node.left);
+            }
+            if (node.right != null) {
+                q.offer(node.right);
+            }
+        }
+        return root;
+    }
+
+
+    //leetcode 100 same tree
+    //recursive way
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if (p == null || q == null)
+            return p == q;
+        return (p.val == q.val) && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+
+    //iterative way
+    //p.left!=q.left is forbidden, you canot compare the address
+    public boolean isSameTreeIterative(TreeNode p, TreeNode q) {
+        if (p == null || q == null)
+            return p == q;
+        Stack<TreeNode> pstk = new Stack<TreeNode>();
+        Stack<TreeNode> qstk = new Stack<TreeNode>();
+        pstk.push(p);
+        qstk.push(q);
+        while (!pstk.isEmpty() && !qstk.isEmpty()) {
+            TreeNode pnode = pstk.pop();
+            TreeNode qnode = qstk.pop();
+            if (pnode.val != qnode.val)
+                return false;
+            if (pnode.left != null)
+                pstk.push(pnode.left);
+            if (qnode.left != null)
+                qstk.push(qnode.left);
+            if (pstk.size() != qstk.size())
+                return false;
+            if (pnode.right != null)
+                pstk.push(pnode.right);
+            if (qnode.right != null)
+                qstk.push(qnode.right);
+            if (pstk.size() != qstk.size())
+                return false;
+
+        }
+        return pstk.size() == qstk.size();
+    }
+
+
+
+
+
+
 
 
 
@@ -324,7 +544,81 @@ public class Tree {
     }
 
 
+    //leetcode 102 binary tree level order traversal
+    //three ways of level order
+    //recursive way to do level order;
+    //O(n) time
+    //O(h)space
 
+    public void dfsLevelOrder(TreeNode root, List<List<Integer>> res, int level) {
+        if (root == null)
+            return;
+        if (res.size() == level)
+            res.add(new ArrayList<Integer>());
+        res.get(level).add(root.val);
+        if (root.left != null) {
+            dfsLevelOrder(root.left, res, level + 1);
+        }
+        if (root.right != null) {
+            //res.set(level,res.get(level)+" "+root.val);
+            dfsLevelOrder(root.right, res, level + 1);
+        }
+    }
+
+    public List<List<Integer>> levelOrderRecursive(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if (root == null)
+            return res;
+        dfsLevelOrder(root, res, 0);
+        return res;
+    }
+
+    //geeksforgeeks
+    //Use function to print a given level
+    //first you get the height of the tree
+    //then print level one by one
+    //time complexity is O(N2)
+    public int getHeight(TreeNode root) {
+        if (root == null)
+            return 0;
+        else return 1 + Math.max(getHeight(root.left), getHeight(root.right));
+    }
+
+    public void printGivenLevel(TreeNode root, int level) {
+        if (root == null)
+            return;
+        if (level == 1)
+            System.out.println(root.val + " ");
+        else if (level > 1) {
+            printGivenLevel(root.left, level - 1);
+            printGivenLevel(root.right, level - 1);
+        }
+    }
+
+    public void printLevelOrder(TreeNode node) {
+        int h = getHeight(node);
+        for (int i = 1; i <= h; ++i)
+            printGivenLevel(node, i);
+    }
+
+
+    //iterative way to do level order;
+    //time complexity is O(N),O(N) space
+
+    public void levelOrder(TreeNode root) {
+        if (root == null)
+            return;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
+            System.out.print(node.val + " ");
+            if (node.left != null)
+                q.offer(node.left);
+            if (node.right != null)
+                q.offer(node.right);
+        }
+    }
 
 
     //three ways to traverse preorder,inorder,postorder

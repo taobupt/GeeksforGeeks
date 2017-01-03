@@ -3,6 +3,9 @@ package tree;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -16,15 +19,15 @@ public class TreeTest {
     @Before
     public void setUp() throws Exception {
         t = new Tree();
-        root = new TreeNode(3);
-        root.left = new TreeNode(5);
+        root = new TreeNode(1);
+        //root.left = new TreeNode(5);
         root.right = new TreeNode(1);
-        root.left.left = new TreeNode(6);
-        root.left.right = new TreeNode(2);
-        root.right.left = new TreeNode(0);
-        root.right.right = new TreeNode(8);
-        root.left.right.left = new TreeNode(7);
-        root.left.right.right = new TreeNode(4);
+//        root.left.left = new TreeNode(6);
+//        root.left.right = new TreeNode(2);
+//        root.right.left = new TreeNode(0);
+//        root.right.right = new TreeNode(8);
+//        root.left.right.left = new TreeNode(7);
+//        root.left.right.right = new TreeNode(4);
     }
 
     @Test
@@ -76,5 +79,55 @@ public class TreeTest {
     public void testLowestCommonAncestorBinaryTreeIterative() {
         TreeNode res = t.lowestCommonAncestorBinaryTreeIterative(root, root.left, root.left.right.right);
         assertEquals(res, root.left);
+    }
+
+    @Test
+    public void testBinaryTreePaths() {
+        List<String> res = t.binaryTreePaths(root);
+        for (String str : res)
+            System.out.println(str);
+    }
+
+    @Test
+    public void testBinaryTreePathsIterative() {
+        List<String> res = t.binaryTreePathsIterative(root);
+        for (String str : res)
+            System.out.println(str);
+    }
+
+    @Test
+    public void testBinaryTreePathsIterativeByStack() {
+        List<String> res = t.binaryTreePathsIterativeStack(root);
+        for (String str : res)
+            System.out.println(str);
+    }
+
+    @Test
+    public void testBinaryTreePathsIterativeByQueue() {
+        List<String> res = t.binaryTreePathsIterativeQueue(root);
+        for (String str : res)
+            System.out.println(str);
+
+    }
+
+    @Test
+    public void testLevelOrder() {
+        t.levelOrder(root);
+    }
+
+    @Test
+    public void testLevelOrderRecursive() {
+        List<List<Integer>> res = t.levelOrderRecursive(root);
+        for (List<Integer> it : res) {
+            for (Integer ite : it)
+                System.out.print(ite + " ");
+            System.out.println();
+        }
+
+    }
+
+    @Test
+    public void testIsSameTreeIterative() {
+
     }
 }
