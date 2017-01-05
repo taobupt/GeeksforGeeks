@@ -451,6 +451,43 @@ public class Tree {
         return pstk.size() == qstk.size();
     }
 
+    //110 balanced binary tree
+    //bottom up approach
+    //time complexity O(N)
+    //each node in the tree only need to be accessed once, thus the time complexity is O(N)
+    public int isBalancedDfs(TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = isBalancedDfs(root.left);
+        int right = isBalancedDfs(root.right);
+        if (left < 0 || right < 0 || Math.abs(left - right) > 1)
+            return -1;
+        return Math.max(left, right) + 1;
+    }
+
+    public boolean isBalanced(TreeNode root) {
+        if (root == null)
+            return true;
+        int left = isBalancedDfs(root.left);
+        int right = isBalancedDfs(root.right);
+        if (left < 0 || right < 0 || Math.abs(left - right) > 1)
+            return false;
+        return true;
+    }
+
+    //o(n2) solution
+    //this method checks whether the tree is balanced strictly according to the defination of balanced binary tree
+    //for the current node root,calling depth() for its depth and right children acataully has to access all of its children
+    //
+    public boolean isBalancedON2(TreeNode node) {
+        if (node == null)
+            return true;
+        int left = maxDepth(node.left);
+        int right = maxDepth(node.right);
+        return Math.abs(left - right) <= 1 && isBalancedON2(node.left) && isBalancedON2(node.right);
+    }
+
+
 
 
 
