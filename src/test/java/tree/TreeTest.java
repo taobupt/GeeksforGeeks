@@ -166,7 +166,14 @@ public class TreeTest {
 
     @Test
     public void testKthsmallest() {
-        assertEquals(t.kthSmallestIterative(root, 6), 6);
+        assertEquals(t.kthSmallestIterative(root, 6), 7);
+    }
+
+    @Test
+    public void testFlatten() {
+        //t.flattenReversePreorder(root);
+        t.flattenByLeft(root);
+        t.levelOrder(root);
     }
 
 }

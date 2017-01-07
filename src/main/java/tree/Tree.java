@@ -1157,6 +1157,13 @@ public class Tree {
 
     //173 binary search tree iterator
     //interesting question
+    //So this can satisfy O(h) memory, hasNext() in O(1) time,
+    //But next() is O(h) time.
+    // I can't find a solution that can satisfy both next() in O(1) time, space in O(h).
+    //Each node will be visited at most twice-> average O(1) run time.
+    //The average time complexity of next() function is O(1) indeed in your case.
+    // As the next function can be called n times at most, and the number of right nodes in self.pushAll(tmpNode.right)
+    // function is maximal n in a tree which has n nodes, so the amortized time complexity is O(1).
     public class BSTIterator {
         private Stack<TreeNode> stk;
 
@@ -1193,6 +1200,205 @@ public class Tree {
             }
         }
     }
+
+    //another version
+    public class BSTIteratorAnother {
+        Stack<TreeNode> stk = null;
+        TreeNode current = null;
+
+        public BSTIteratorAnother(TreeNode root) {
+            current = root;
+            stk = new Stack<TreeNode>();
+        }
+
+        public boolean hasNext() {
+            return !stk.isEmpty() || current != null;
+        }
+
+        public int next() {
+            while (current != null) {
+                stk.push(current);
+                current = current.left;
+            }
+            TreeNode t = stk.pop();
+            current = t.right;
+            return t.val;
+        }
+    }
+
+    //morris traversal solution
+
+    public class BSTIteratorMorris {
+        private TreeNode cur = null;
+
+        public BSTIteratorMorris(TreeNode node) {
+            cur = node;
+        }
+
+        public boolean hasNext() {
+            return cur != null;
+        }
+
+        public int next() {
+            TreeNode prev = null;
+            int res = 0;
+            while (cur != null) {
+                if (cur.left == null) {
+                    res = cur.val;
+                    cur = cur.right;
+                    break;
+                } else {
+                    //find predecessor
+                    prev = cur.left;
+                    while (prev.right != null && prev.right != cur) {
+                        prev = prev.right;
+                    }
+                    if (prev.right == null) {
+                        prev.right = cur;
+                        cur = cur.left;
+                    } else {
+                        prev.right = null;
+                        res = cur.val;
+                        cur = cur.right;
+                        break;
+                    }
+                }
+            }
+            return res;
+        }
+    }
+
+    //114 flatten binary tree to linked list
+    //like preorder
+    public void flatten(TreeNode root) {
+        if (root == null)
+            return;
+        flatten(root.left);
+        flatten(root.right);
+        TreeNode save_right = root.right;
+        TreeNode node = root.left;
+        if (node == null)// or you can start from root, because root->leftpart->rightpart, the leftpart could be null, so start from root is right,you can also judge the left part, if the left part is null, you can return
+            return;
+        root.left = null;
+        root.right = node;
+        while (node.right != null)
+            node = node.right;
+        node.right = save_right;
+    }
+
+    //reverse preorder
+    private TreeNode prevous = null;
+
+    public void flattenReversePreorder(TreeNode root) {
+        if (root == null)
+            return;
+        flattenReversePreorder(root.right);
+        flattenReversePreorder(root.left);
+        root.left = null;
+        root.right = prevous;
+        prevous = root;
+    }
+
+    public void flattenByLeft(TreeNode root) {
+        if (root == null)
+            return;
+        flattenByLeft(root.left);
+        flattenByLeft(root.right);
+        root.left = prevous;
+        root.right = null;
+        prevous = root;
+    }
+
+    //But flatten() would be unreusable if prev is set to a field
+    public void flattenWithoutInstanceVariable(TreeNode root) {
+        flatten(root, null);
+    }
+
+    private TreeNode flatten(TreeNode root, TreeNode pre) {
+        if (root == null) return pre;
+        pre = flatten(root.right, pre);
+        pre = flatten(root.left, pre);
+        root.right = pre;
+        root.left = null;
+        pre = root;
+        return pre;
+    }
+
+    //iterative way O(1) space
+    //interesting
+    void flattenIteative(TreeNode root) {
+        TreeNode curr = root;
+        while (curr != null) {
+            if (curr.left != null) {
+                //find current node's prenode that links to current nodes' right subtree
+                TreeNode pre = curr.left;
+                while (pre.right != null) {
+                    pre = pre.right;
+                }
+                pre.right = curr.right;
+                //use current node's left subtree to replace its right subtree
+                //subtree is already linked by current node prenode;
+                curr.right = curr.left;
+                curr.left = null;
+            }
+            curr = curr.right;
+        }
+    }
+
+    //285 inorder successor in BST
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        if (root == null || p == null)
+            return null;
+        if (root.val <= p.val)
+            return inorderSuccessor(root.right, p);
+        else {
+            TreeNode left = inorderSuccessor(root.left, p);
+            return left != null ? left : root;
+        }
+    }
+
+    public TreeNode inorderSuccessorIterative(TreeNode root, TreeNode p) {
+        if (root == null || p == null)
+            return null;
+        TreeNode successor = null;
+        if (p.right != null) {
+            successor = p.right;
+            while (successor.left != null) {
+                successor = successor.left;
+            }
+            return successor;
+        }
+        while (root != null) {
+            if (root.val > p.val) {
+                successor = root;
+                root = root.left;
+            } else if (root.val < p.val) {
+                root = root.right;
+            } else break;
+        }
+        return successor;
+    }
+
+    //The time complexity should be O(h)
+    public TreeNode inorderSuccessorIterative2(TreeNode root, TreeNode p) {
+        if (root == null || p == null)
+            return null;
+        TreeNode successor = null;
+        while (root != null) {
+            if (root.val <= p.val) {
+                root = root.right;
+            } else {
+                successor = root;
+                root = root.left;
+            }
+        }
+        return successor;
+    }
+
+
+
+
+
 
 
 
@@ -1349,12 +1555,16 @@ public class Tree {
         Queue<TreeNode> q = new LinkedList<TreeNode>();
         q.offer(root);
         while (!q.isEmpty()) {
-            TreeNode node = q.poll();
-            System.out.print(node.val + " ");
-            if (node.left != null)
-                q.offer(node.left);
-            if (node.right != null)
-                q.offer(node.right);
+            int size = q.size();
+            while (size-- > 0) {
+                TreeNode node = q.poll();
+                System.out.print(node.val + " ");
+                if (node.left != null)
+                    q.offer(node.left);
+                if (node.right != null)
+                    q.offer(node.right);
+            }
+            System.out.println();
         }
     }
 
@@ -1364,8 +1574,8 @@ public class Tree {
         if(root==null)
             return;
         System.out.println(root.val);
-        preorder(root.left);
         preorder(root.right);
+        preorder(root.left);
     }
 
     public void inorder(TreeNode root){
