@@ -27,6 +27,17 @@ class Tuple<X, Y> {
         this.y = y;
     }
 }
+
+class BalancedResult {
+    boolean isBalanced;
+    int size;
+
+    BalancedResult(boolean b, int s) {
+        isBalanced = b;
+        size = s;
+    }
+
+}
 public class Tree {
 
     public Tree(){
@@ -468,11 +479,7 @@ public class Tree {
     public boolean isBalanced(TreeNode root) {
         if (root == null)
             return true;
-        int left = isBalancedDfs(root.left);
-        int right = isBalancedDfs(root.right);
-        if (left < 0 || right < 0 || Math.abs(left - right) > 1)
-            return false;
-        return true;
+        return isBalancedDfs(root) != -1;
     }
 
     //o(n2) solution
@@ -487,10 +494,530 @@ public class Tree {
         return Math.abs(left - right) <= 1 && isBalancedON2(node.left) && isBalancedON2(node.right);
     }
 
+    //third way
+
+    private BalancedResult isBalanced_res(TreeNode node) {
+        if (node == null)
+            return new BalancedResult(true, 0);
+        BalancedResult left = isBalanced_res(node.left);
+        BalancedResult right = isBalanced_res(node.right);
+        if (!left.isBalanced || !right.isBalanced) {
+            return new BalancedResult(false, -1);
+        } else {
+            if (Math.abs(left.size - right.size) > 1) {
+                return new BalancedResult(false, -1);
+            } else {
+                int newSize = Math.max(left.size, right.size) + 1;
+                return new BalancedResult(true, newSize);
+            }
+        }
+    }
+
+    public boolean isBalancedByResult(TreeNode node) {
+        return isBalanced_res(node).isBalanced;
+    }
+
+    //one way is to pack them together into a class and return object of the class
+    // another way is to use instance variable
+    //third way is to reuse the depth information, since depth of tree can't be negative, we could
+    //use depth=-1 to flag the tree as not balanced,
 
 
+    //101 symmetric tree
+    //recursive way
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null)
+            return true;
+        return isSymmetricHelper(root.left, root.right);
+    }
+
+    public boolean isSymmetricHelper(TreeNode p, TreeNode q) {
+        if (p == null || q == null)
+            return p == q;
+        return p.val == q.val && isSymmetricHelper(p.left, q.right) && isSymmetricHelper(p.right, q.left);
+    }
+
+    //iterative way
+
+    public boolean isSymmetricIterative(TreeNode root) {
+        if (root == null || root.left == null && root.right == null)
+            return true;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        //q.offer(root);
+        if (root.left != null) q.offer(root.left);
+        if (root.right != null) q.offer(root.right);
+        while (!q.isEmpty()) {
+            if (q.size() % 2 != 0)
+                return false;
+            TreeNode node1 = q.poll();
+            TreeNode node2 = q.poll();
+            if (node1.val != node2.val)
+                return false;
+            if (node1.left != null) {
+                if (node2.right == null)
+                    return false;
+                q.offer(node1.left);
+                q.offer(node2.right);
+            } else if (node2.right != null) {
+                return false;
+            }
+            if (node1.right != null) {
+                if (node2.left == null)
+                    return false;
+                q.offer(node1.right);
+                q.offer(node2.left);
+            } else if (node2.left != null) {
+                return false;
+            }
+        }
+        return true;
+
+    }
 
 
+    //270 closest binary search tree value
+    //recursive way
+    //has duplicate
+    /*
+     int a = root.val;
+    TreeNode kid = target < a ? root.left : root.right;
+    if (kid == null) return a;
+    int b = closestValue(kid, target);
+    return Math.abs(a - target) < Math.abs(b - target) ? a : b;
+     */
+    public int closestValue(TreeNode root, double target) {
+        if (root == null || root.left == null && root.right == null)
+            return root == null ? Integer.MAX_VALUE : root.val;
+        if (1.0 * root.val > target && root.left != null) {
+            int left = closestValue(root.left, target);
+            return Math.abs(root.val - target) > Math.abs(left - target) ? left : root.val;
+        } else if (1.0 * root.val < target && root.right != null) {
+            int right = closestValue(root.right, target);
+            return Math.abs(root.val - target) > Math.abs(right - target) ? right : root.val;
+        } else return root.val;
+    }
+
+    //closest binary search tree value iterative way
+    //concise
+    /*
+     int closest = root->val;
+    while (root) {
+        if (abs(closest - target) >= abs(root->val - target))
+            closest = root->val;
+        root = target < root->val ? root->left : root->right;
+    }
+    return closest;
+     */
+    public int closestValueIterative(TreeNode root, double target) {
+        //since there is always one solution
+        int res = root.val;
+        while (root != null) {
+            if (Math.abs(res - target) > Math.abs(root.val - target))
+                res = root.val;
+            if (1.0 * root.val > target && root.left != null)
+                root = root.left;
+            else if (1.0 * root.val < target && root.right != null)
+                root = root.right;
+            else break;
+        }
+        return res;
+    }
+
+    //112 path sum
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null)
+            return false;
+        if (root.left == null && root.right == null && sum == root.val)
+            return true;
+        return root.left != null && hasPathSum(root.left, sum - root.val) || root.right != null && hasPathSum(root.right, sum - root.val);
+    }
+
+    //iterative way
+    //in case of root and node
+    public boolean hasPathSumIterative(TreeNode root, int sum) {
+        if (root == null)
+            return false;
+        Queue<Tuple<TreeNode, Integer>> q = new LinkedList<Tuple<TreeNode, Integer>>();
+        q.offer(new Tuple<TreeNode, Integer>(root, new Integer(root.val)));
+        while (!q.isEmpty()) {
+            Tuple t = q.poll();
+            TreeNode node = (TreeNode) t.x;
+            int val = ((Integer) t.y).intValue();
+            if (node.left == null && node.right == null && val == sum)
+                return true;
+            if (node.left != null) {
+                q.offer(new Tuple(node.left, new Integer(val + node.left.val)));
+            }
+            if (node.right != null) {
+                q.offer(new Tuple(node.right, new Integer(val + node.right.val)));
+            }
+        }
+        return false;
+    }
+
+    //you can use the postorder
+    public boolean hasPathSumIterativePostorder(TreeNode root, int sum) {
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        TreeNode pre = null;
+        TreeNode cur = root;
+        int SUM = 0;
+        while (cur != null || !stk.isEmpty()) {
+            while (cur != null) {
+                stk.push(cur);
+                cur = cur.left;
+                SUM += cur.val;
+            }
+            cur = stk.peek();
+            if (cur.left == null && cur.right == null && SUM == sum) {
+                return true;
+            }
+            if (cur.right != null && pre != cur.right) {
+                cur = cur.right;
+            } else {//if there is no right child or right child has been visited, then you can start to visit the part
+                //System.out.println(cur.val);
+                pre = cur;
+                stk.pop();
+                SUM -= cur.val;
+                cur = null;
+            }
+        }
+        return false;
+    }
+
+    //404 sum of left leaves
+    int leafsum = 0;
+
+    public void sumOfLeftLeavesDfs(TreeNode root) {
+        if (root == null)
+            return;
+        if (root.left != null && root.left.left == null && root.left.right == null)
+            leafsum += root.left.val;
+        sumOfLeftLeavesDfs(root.left);
+        sumOfLeftLeavesDfs(root.right);
+    }
+
+    public int sumOfLeftLeaves(TreeNode root) {
+        if (root == null)
+            return 0;
+        sumOfLeftLeavesDfs(root);
+        return leafsum;
+    }
+
+    //recursive way
+    //interesting
+
+    public int sumOfLeftLeavesRecursive(TreeNode root) {
+        if (root == null)
+            return 0;
+        int ans = 0;
+        if (root.left != null) {
+            if (root.left.left == null && root.left.right == null)
+                ans += root.left.val;
+            else
+                ans += sumOfLeftLeavesRecursive(root.left);
+        }
+        ans += sumOfLeftLeavesRecursive(root.right);
+        return ans;
+    }
+
+    //iterative way
+    public int sumOfLeftLeavesIterative(TreeNode root) {
+        if (root == null)
+            return 0;
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        stk.push(root);
+        int ans = 0;
+        while (!stk.isEmpty()) {
+            TreeNode node = stk.pop();
+            if (node.left != null) {
+                if (node.left.left == null && node.left.right == null)
+                    ans += node.left.val;
+                else
+                    stk.push(node.left);
+            }
+            if (node.right != null) {
+                stk.push(node.right);
+            }
+        }
+        return ans;
+    }
+
+    //leetcode 222 count complete Tree nodes
+    public int getLeft(TreeNode node) {
+        int count = 0;
+        while (node != null) {
+            count++;
+            node = node.left;
+        }
+        return count;
+    }
+
+    public int getRight(TreeNode node) {
+        int count = 0;
+        while (node != null) {
+            count++;
+            node = node.right;
+        }
+        return count;
+    }
+
+    //So overall O(log(n)^2).
+    //I have O(log(n)) steps. Finding a height costs O(log(n))
+    public int countNodes(TreeNode root) {
+        if (root == null)
+            return 0;
+        int ldepth = getLeft(root.left);
+        int rdepth = getRight(root.right);
+        return ldepth == rdepth ? (1 << ldepth) - 1 : countNodes(root.left) + countNodes(root.right);
+    }
+
+
+    //count the last level of complement tree
+
+    public int countNodesLastLevel(TreeNode root) {
+        if (root == null)
+            return 0;
+        if (root.left == null)
+            return 1;
+        int height = 0;
+        int nodeSum = 0;
+        TreeNode curr = root;
+        while (curr.left != null) {
+            nodeSum += (1 << height);
+            height++;
+            curr = curr.left;
+        }
+        return nodeSum + countLastLevel(root, height);
+    }
+
+    public int countLastLevel(TreeNode root, int height) {
+        if (height == 1) {
+            if (root.right != null)
+                return 2;
+            else if (root.left != null)
+                return 1;
+            else
+                return 0;
+        }
+        TreeNode midNode = root.left;
+        int currHeight = 1;
+        while (currHeight < height) {
+            currHeight++;
+            midNode = midNode.right;
+        }
+        if (midNode == null)
+            return countLastLevel(root.left, height - 1);
+        else return (1 << (height - 1)) + countLastLevel(root.right, height - 1);
+    }
+
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new LinkedList<List<Integer>>();
+        if (root == null)
+            return res;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            List<Integer> inner = new ArrayList<Integer>();
+            boolean isReverse = res.size() % 2 == 1;
+            while (size-- > 0) {
+                TreeNode node = q.poll();
+                if (isReverse)
+                    inner.add(0, node.val);
+                else
+                    inner.add(node.val);
+                if (node.left != null)
+                    q.offer(node.left);
+                if (node.right != null)
+                    q.offer(node.right);
+            }
+            res.add(inner);
+        }
+        return res;
+    }
+
+    //dfs version
+    public void dfs(TreeNode root, List<List<Integer>> res, int height) {
+        if (root == null) return;
+        if (res.size() == height) {
+            List<Integer> inner = new LinkedList<Integer>();
+            res.add(inner);
+        }
+        if (height % 2 == 1) res.get(height).add(0, root.val);
+        else res.get(height).add(root.val);
+
+        dfs(root.left, res, height + 1);
+        dfs(root.right, res, height + 1);
+    }
+
+    public List<List<Integer>> zigzagLevelOrderDfsVersion(TreeNode root) {
+        List<List<Integer>> res = new LinkedList<List<Integer>>();
+        dfs(root, res, 0);
+        return res;
+    }
+
+
+    //129. Sum Root to Leaf Numbers
+    int sumRes = 0;
+
+    public void dfs(TreeNode root, int sum1) {
+        if (root == null) return;
+        if (root.left == null && root.right == null) {
+            sumRes += sum1;
+        }
+        if (root.left != null) dfs(root.left, 10 * sum1 + root.left.val);
+        if (root.right != null) dfs(root.right, 10 * sum1 + root.right.val);
+    }
+
+    public int sumNumbers(TreeNode root) {
+        if (root == null) return 0;
+        dfs(root, root.val);
+        return sumRes;
+    }
+
+    //without instance varibale
+    public int sumNumbersII(TreeNode root) {
+        if (root == null)
+            return 0;
+        return sumR(root, 0);
+    }
+
+    public int sumR(TreeNode root, int x) {
+        if (root.right == null && root.left == null)
+            return 10 * x + root.val;
+        int val = 0;
+        if (root.left != null)
+            val += sumR(root.left, 10 * x + root.val);
+        if (root.right != null)
+            val += sumR(root.right, 10 * x + root.val);
+        return val;
+    }
+
+    //129 iterative way
+    public int sumNumbersIterative(TreeNode root) {
+        int res = 0;
+        Queue<Tuple<TreeNode, Integer>> q = new LinkedList<Tuple<TreeNode, Integer>>();
+        if (root == null)
+            return res;
+        q.offer(new Tuple<TreeNode, Integer>(root, new Integer(root.val)));
+        while (!q.isEmpty()) {
+            Tuple t = q.poll();
+            TreeNode node = (TreeNode) t.x;
+            int val = ((Integer) t.y).intValue();
+            if (node.left == null && node.right == null)
+                res += val;
+            if (node.left != null) {
+                q.offer(new Tuple(node.left, 10 * val + node.left.val));
+            }
+            if (node.right != null) {
+                q.offer(new Tuple(node.right, 10 * val + node.right.val));
+            }
+        }
+        return res;
+    }
+
+    //105, construct binary tree from preorder and inorder
+
+    public TreeNode makeTree(int[] preorder, int begin1, int end1, int[] inorder, int begin2, int end2) {
+        if (begin1 > end1)
+            return null;
+        if (begin1 == end1)
+            return new TreeNode(preorder[begin1]);
+        else {
+            TreeNode root = new TreeNode(preorder[begin1]);
+            int index = begin2;
+            while (index < end2) {
+                if (inorder[index] == preorder[begin1])
+                    break;
+                index++;
+            }
+            root.left = makeTree(preorder, begin1 + 1, index - begin2 + begin1, inorder, begin2, index - 1);
+            root.right = makeTree(preorder, index - begin2 + begin1 + 1, end1, inorder, index + 1, end2);
+            return root;
+        }
+    }
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        int n = preorder.length;
+        return makeTree(preorder, 0, n - 1, inorder, 0, n - 1);
+    }
+
+    //iterative way
+    public TreeNode bulidTreeIterative(int[] preorder, int[] inorder) {
+        if (preorder.length == 0)
+            return null;
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        TreeNode root = new TreeNode(preorder[0]);
+        TreeNode cur = root;
+        for (int i = 1, j = 0; i < preorder.length; ++i) {
+            if (cur.val != inorder[j]) {
+                cur.left = new TreeNode(preorder[i]);
+                stk.push(cur);
+                cur = cur.left;
+            } else {
+                j++;
+                while (!stk.isEmpty() && stk.peek().val == inorder[j]) {
+                    cur = stk.pop();
+                    j++;
+                }
+                cur = cur.right = new TreeNode(preorder[i]);
+            }
+        }
+        return root;
+    }
+
+
+    //106 build tree from postorder and inorder
+    //iterative way
+    public TreeNode buildTreeIterativeForPostorder(int[] inorder, int[] postorder) {
+        if (postorder.length == 0)
+            return null;
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        int n = postorder.length;
+        TreeNode root = new TreeNode(postorder[n - 1]);
+        TreeNode cur = root;
+        for (int i = n - 2, j = n - 1; i >= 0; --i) {
+            if (cur.val != inorder[j]) {
+                cur.right = new TreeNode(postorder[i]);
+                stk.push(cur);
+                cur = cur.right;
+            } else {
+                j--;
+                while (!stk.isEmpty() && stk.peek().val == inorder[j]) {
+                    cur = stk.pop();
+                    j--;
+                }
+                cur = cur.left = new TreeNode(postorder[i]);
+            }
+        }
+        return root;
+    }
+
+    //recursive way
+    public TreeNode makeTreeRecursive(int[] inorder, int begin1, int end1, int[] postorder, int begin2, int end2) {
+        if (begin2 > end2)
+            return null;
+        if (begin2 == end2)
+            return new TreeNode(postorder[begin2]);
+        else {
+            TreeNode root = new TreeNode(postorder[end2]);
+            int index = begin1;
+            while (index < end1) {
+                if (inorder[index] == postorder[end2])
+                    break;
+                index++;
+            }
+            root.left = makeTreeRecursive(inorder, begin1, index - 1, postorder, begin2, begin2 + index - 1 - begin1);
+            root.right = makeTreeRecursive(inorder, index + 1, end1, postorder, index - begin1 + begin2, end2 - 1);
+            return root;
+        }
+
+    }
+
+    public TreeNode buildTreeRecursiveway(int[] inorder, int[] postorder) {
+        int n = inorder.length;
+        return makeTreeRecursive(inorder, 0, n - 1, postorder, 0, n - 1);
+    }
 
 
 
@@ -752,6 +1279,29 @@ public class Tree {
                 System.out.println(cur.val);
             }
             pre=cur;
+        }
+    }
+
+    //postorder traveral stack another version
+
+    public void postorderByStack(TreeNode root) {
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        TreeNode pre = null;
+        TreeNode cur = root;
+        while (cur != null || !stk.isEmpty()) {
+            while (cur != null) {
+                stk.push(cur);
+                cur = cur.left;
+            }
+            cur = stk.peek();
+            if (cur.right != null && pre != cur.right) {
+                cur = cur.right;
+            } else {//if there is no right child or right child has been visited, then you can start to visit the part
+                System.out.println(cur.val);
+                pre = cur;
+                stk.pop();
+                cur = null;
+            }
         }
     }
 
