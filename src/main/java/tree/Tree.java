@@ -1020,6 +1020,180 @@ public class Tree {
     }
 
 
+    //199 binary tree right side view
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> res = new LinkedList<Integer>();
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        if (root == null)
+            return res;
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            while (size-- > 0) {
+                TreeNode node = q.poll();
+                if (size == 0)
+                    res.add(node.val);
+                if (node.left != null)
+                    q.offer(node.left);
+                if (node.right != null)
+                    q.offer(node.right);
+            }
+        }
+        return res;
+    }
+
+    //recursive way
+    //the level order's change
+    //interesting
+    public void rightview(TreeNode node, List<Integer> res, int level) {
+        if (node == null)
+            return;
+        if (level == res.size())
+            res.add(node.val);
+        rightview(node.right, res, level + 1);
+        rightview(node.left, res, level + 1);
+    }
+
+    public List<Integer> rightSideViewRecursive(TreeNode node) {
+        List<Integer> res = new ArrayList<Integer>();
+        rightview(node, res, 0);
+        return res;
+    }
+    //divide and conquer
+    /*
+    public List<Integer> rightSideView(TreeNode root) {
+    if(root==null)
+        return new ArrayList<Integer>();
+    List<Integer> left = rightSideView(root.left);
+    List<Integer> right = rightSideView(root.right);
+    List<Integer> re = new ArrayList<Integer>();
+    re.add(root.val);
+    for(int i=0;i<Math.max(left.size(), right.size());i++){
+        if(i>=right.size())
+            re.add(left.get(i));
+        else
+            re.add(right.get(i));
+    }
+    return re;
+}
+     */
+
+    //230 kth smallest element in a bst
+    //bst
+    //almost pass;//sigh,forget a lot ,you should change k too, otherwise,it will update res often;
+    int res = 0;
+
+    public int kthSmallestInorder(TreeNode root, int k) {
+        if (root == null || k < 0)
+            return k;
+        k = kthSmallestInorder(root.left, k);
+        k--;
+        if (k == 0) {
+            res = root.val;
+            return k;
+        }
+        if (k > 0)
+            k = kthSmallestInorder(root.right, k);
+        return k;
+    }
+
+    public int kthSmallest(TreeNode root, int k) {
+        kthSmallestInorder(root, k);
+        return res;
+    }
+
+    //naive way was find the inorder array first and then return v[k-1] directly
+    //iterative way
+    //do you remember how to write the inorder traversal
+    public int kthSmallestIterative(TreeNode root, int k) {
+        TreeNode cur = root;
+        TreeNode prev = null;
+        while (cur != null) {
+            if (cur.left == null) {
+                k--;
+                if (k == 0)
+                    return cur.val;
+                cur = cur.right;
+            } else {
+                //find predecessor
+                prev = cur.left;
+                while (prev.right != null && prev.right != cur) {
+                    prev = prev.right;
+                }
+                if (prev.right == null) {
+                    prev.right = cur;
+                    cur = cur.left;
+                } else {
+                    prev.right = null;
+                    k--;
+                    if (k == 0)
+                        return cur.val;
+                    cur = cur.right;
+                }
+            }
+        }
+        return -1;
+    }
+    //binary search way
+    /*
+    public int kthSmallest(TreeNode root, int k) {
+        int count = countNodes(root.left);
+        if (k <= count) {
+            return kthSmallest(root.left, k);
+        } else if (k > count + 1) {
+            return kthSmallest(root.right, k-1-count); // 1 is counted as current node
+        }
+
+        return root.val;
+    }
+
+    public int countNodes(TreeNode n) {
+        if (n == null) return 0;
+
+        return 1 + countNodes(n.left) + countNodes(n.right);
+    }
+
+     */
+
+    //173 binary search tree iterator
+    //interesting question
+    public class BSTIterator {
+        private Stack<TreeNode> stk;
+
+        public BSTIterator(TreeNode root) {
+            stk = new Stack<TreeNode>();
+            findNext(root);
+
+        }
+
+        /**
+         * @return whether we have a next smallest number
+         */
+        public boolean hasNext() {
+            return stk.isEmpty();
+        }
+
+        /**
+         * @return the next smallest number
+         */
+        public int next() {
+            TreeNode cur = stk.pop();
+            int val = cur.val;
+            if (cur.right != null)
+                findNext(cur.right);
+            return val;
+        }
+
+        public void findNext(TreeNode node) {
+            if (node == null)
+                return;
+            while (node != null) {
+                stk.push(node);
+                node = node.left;
+            }
+        }
+    }
+
 
 
 
@@ -1248,6 +1422,21 @@ public class Tree {
                     node=node.left;
                 }
             }
+        }
+    }
+
+    ////inorder traveral stack another version
+    public void inorderByStack(TreeNode root) {
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        TreeNode cur = root;
+        while (cur != null || !stk.isEmpty()) {
+            while (cur != null) {
+                stk.push(cur);
+                cur = cur.left;
+            }
+            cur = stk.pop();
+            System.out.println(cur.val);
+            cur=cur.right;
         }
     }
 

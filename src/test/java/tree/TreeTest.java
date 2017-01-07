@@ -20,12 +20,12 @@ public class TreeTest {
     public void setUp() throws Exception {
         t = new Tree();
         root = new TreeNode(5);
-        root.left = new TreeNode(4);
-        root.right = new TreeNode(8);
-        root.left.left = new TreeNode(11);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(7);
+        root.left.left = new TreeNode(1);
         root.left.right = new TreeNode(4);
-//        root.right.left = new TreeNode(13);
-//        root.right.right = new TreeNode(4);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(8);
 //        root.left.left.left = new TreeNode(7);
 //        root.left.left.right = new TreeNode(2);
 //        root.right.right.right=new TreeNode(1);
@@ -162,6 +162,11 @@ public class TreeTest {
         int[] preorder = {1, 2, 4, 5, 3, 6, 7};
         int[] inorder = {4, 2, 5, 1, 6, 3, 7};
         t.bulidTreeIterative(preorder, inorder);
+    }
+
+    @Test
+    public void testKthsmallest() {
+        assertEquals(t.kthSmallestIterative(root, 6), 6);
     }
 
 }
