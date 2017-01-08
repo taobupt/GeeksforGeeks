@@ -3,9 +3,7 @@ package tree;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -16,21 +14,33 @@ public class TreeTest {
 
     Tree t;
     TreeNode root;
-
+    TreeLinkNode root1;
     @Before
     public void setUp() throws Exception {
         t = new Tree();
-        root = new TreeNode(2);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(3);
-//        root.left.left = new TreeNode(11);
-//        //root.left.right = new TreeNode(4);
-//        root.right.left = new TreeNode(13);
-//        root.right.right = new TreeNode(4);
-//        root.left.left.left = new TreeNode(7);
+        root = new TreeNode(4);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(6);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(3);
+        root.right.left = new TreeNode(5);
+        root.right.right = new TreeNode(7);
+        //root.left.left.left = new TreeNode(2);
 //        root.left.left.right = new TreeNode(2);
 //        root.right.right.left=new TreeNode(5);
 //        root.right.right.right=new TreeNode(1);
+
+        root1 = new TreeLinkNode(1);
+        root1.left = new TreeLinkNode(2);
+        root1.right = new TreeLinkNode(3);
+        root1.left.left = new TreeLinkNode(4);
+        root1.left.right = new TreeLinkNode(5);
+        root1.right.left = new TreeLinkNode(6);
+        root1.right.right = new TreeLinkNode(7);
+
+
+
+
     }
 
     @Test
@@ -191,6 +201,36 @@ public class TreeTest {
     @Test
     public void testNumTree() {
         assertEquals(t.numTrees(3), 5);
+    }
+
+    @Test
+    public void testConnect() {
+        t.connectO1Space(root1);
+    }
+
+    @Test
+    public void testLongest() {
+        t.longestConsecutiveIterative1(root);
+    }
+
+    @Test
+    public void testcodec() {
+        Codec c = new Codec();
+        String res = c.serialize(root);
+        System.out.println(c.serialize(root));
+        TreeNode node = c.deserialize(res);
+        t.levelOrder(node);
+
+    }
+
+    @Test
+    public void testSubuniq() {
+        System.out.println(t.countUnivalSubtrees(root));
+    }
+
+    @Test
+    public void testCloestKvalue() {
+        t.closestKValues(root, 3.571429, 6);
     }
 
 }

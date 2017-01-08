@@ -7,6 +7,48 @@ import java.util.*;
  * Created by Tao on 12/31/2016.
  */
 
+
+//dque is much faster
+class Codec {
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        StringBuffer sb = new StringBuffer();
+        serializeR(root, sb);
+        return sb.toString();
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        Deque<String> dq = new LinkedList<String>();
+        dq.addAll(Arrays.asList(data.split(" ")));
+        return deserialize(dq);
+    }
+
+    private TreeNode deserialize(Deque<String> datas) {
+        String val = datas.remove();
+        if (val.equals("@"))
+            return null;
+        TreeNode root = new TreeNode(Integer.valueOf(val));
+        root.left = deserialize(datas);
+        root.right = deserialize(datas);
+        return root;
+    }
+
+    private void serializeR(TreeNode root, StringBuffer res) {
+        if (root != null) {
+            res.append(root.val).append(" ");
+            serializeR(root.left, res);
+            serializeR(root.right, res);
+        } else {
+            res.append("@").append(" ");
+        }
+    }
+}
+
+
+
+
 class TreeNode{
     int val;
     TreeNode left;
@@ -18,6 +60,17 @@ class TreeNode{
     }
 }
 
+class TreeLinkNode {
+    int val;
+    TreeLinkNode left, right, next;
+
+    TreeLinkNode(int x) {
+        this.val = x;
+        this.left = null;
+        this.right = null;
+        this.next = null;
+    }
+}
 class info {
     int size;
     boolean isBST;
@@ -31,6 +84,20 @@ class info {
         this.maxValue = Integer.MIN_VALUE;
     }
 }
+
+
+class uniInfo {
+    int size;
+    boolean isUni;
+    int value;
+
+    public uniInfo() {
+        this.size = 0;
+        this.isUni = true;
+        this.value = Integer.MIN_VALUE;
+    }
+}
+
 
 class MyNode {
     TreeNode node;
@@ -651,6 +718,100 @@ public class Tree {
         }
         return res;
     }
+
+    //272 cloestBinarySearchValue II
+
+    public TreeNode getPredecessor(TreeNode root, TreeNode node) {
+        if (root == null)
+            return null;
+        if (root.val >= node.val)
+            return getPredecessor(root.left, node);
+        else {
+            TreeNode right = getPredecessor(root.right, node);
+            return right != null ? right : root;
+        }
+    }
+
+    public TreeNode getSuccessor(TreeNode root, TreeNode node) {
+        if (root == null)
+            return null;
+        if (root.val <= node.val)
+            return getSuccessor(root.right, node);
+        else {
+            TreeNode left = getSuccessor(root.left, node);
+            return left != null ? left : root;
+        }
+    }
+
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        TreeNode closest = root;
+        TreeNode saveRoot = root;
+        while (saveRoot != null) {
+            if (Math.abs(closest.val - target) >= Math.abs(saveRoot.val - target))
+                closest = saveRoot;
+            saveRoot = target < saveRoot.val ? saveRoot.left : saveRoot.right;
+        }
+        List<Integer> res = new ArrayList<Integer>();
+        res.add(closest.val);
+        TreeNode next = getSuccessor(root, closest);
+        TreeNode preNode = getPredecessor(root, closest);
+        while (res.size() != k) {
+            if (next == null || preNode == null) {
+                res.add(next != null ? next.val : preNode.val);
+                next = next != null ? getSuccessor(root, next) : null;
+                preNode = preNode != null ? getPredecessor(root, preNode) : null;
+                if (res.size() == k)
+                    break;
+            } else {
+                if (Math.abs(next.val - target) > Math.abs(preNode.val - target)) {
+                    res.add(preNode.val);
+                    preNode = getPredecessor(root, preNode);
+                } else {
+                    res.add(next.val);
+                    next = getSuccessor(root, next);
+                }
+                if (res.size() == k)
+                    break;
+            }
+        }
+        return res;
+    }
+
+
+    //inorder traversal to split the inorder array into two parts
+
+    public void inorder(TreeNode root, double target, boolean reverse, Stack<Integer> stk) {
+        if (root == null)
+            return;
+        inorder(reverse ? root.right : root.left, target, reverse, stk);
+        if ((reverse && root.val <= target) || (!reverse && root.val >= target))
+            return;
+        stk.push(root.val);
+        inorder(reverse ? root.left : root.right, target, reverse, stk);
+    }
+
+    public List<Integer> closestKValuesSplitTwoParts(TreeNode root, double target, int k) {
+        List<Integer> res = new ArrayList<Integer>();
+        Stack<Integer> s1 = new Stack<Integer>();
+        Stack<Integer> s2 = new Stack<Integer>();
+        inorder(root, target, false, s1);
+        inorder(root, target, true, s2);
+        while (k-- > 0) {
+            if (s1.empty()) {
+                res.add(s2.pop());
+            } else if (s2.empty()) {
+                res.add(s1.pop());
+            } else if (Math.abs(s1.peek() - target) < Math.abs(s2.peek() - target)) {
+                res.add(s1.pop());
+            } else
+                res.add(s2.pop());
+        }
+        return res;
+    }
+
+
+
+
 
     //112 path sum
     public boolean hasPathSum(TreeNode root, int sum) {
@@ -2015,6 +2176,260 @@ public class Tree {
         }
         return root;
     }
+
+
+    //298 longest consecutive sequence
+    public void longestConsecutiveDfs(TreeNode root, int count, int val) {
+        if (root == null)
+            return;
+        if (root.val == val + 1)
+            count++;
+        else
+            count = 1;
+        sumRes = Math.max(sumRes, count);
+        longestConsecutiveDfs(root.left, count, root.val);
+        longestConsecutiveDfs(root.right, count, root.val);
+    }
+
+    public int longestConsecutive(TreeNode root) {
+        if (root == null)
+            return 0;
+        longestConsecutiveDfs(root, 0, root.val);
+        return sumRes;
+    }
+
+    //without using instance variable
+    //maybe that means if you want to examine another tree root, you should initialize a new object of class Solution. Because a global var max would influence this.
+    public int longestConsecutiveRecursive(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return DFS(root, root.val + 1, 1, 1);
+    }
+
+    private int DFS(TreeNode node, int target, int curr, int max) {
+        if (node == null) {
+            return max;
+        }
+        if (node.val == target) {
+            curr++;
+            max = Math.max(max, curr);
+        } else {
+            curr = 1;
+        }
+        return Math.max(DFS(node.left, node.val + 1, curr, max), DFS(node.right, node.val + 1, curr, max));
+    }
+
+    // iterative way
+    //wrong solution
+    //1,2,2 can not pass the test case
+    //count would change, you should let count into the q
+    public int longestConsecutiveIterative1(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int res = 1;
+        int count = 0;
+        Queue<Tuple<TreeNode, Integer>> q = new LinkedList<Tuple<TreeNode, Integer>>();
+        q.offer(new Tuple(root, root.val));
+        while (!q.isEmpty()) {
+            Tuple t = q.poll();
+            TreeNode node = (TreeNode) t.x;
+            int val = ((Integer) t.y).intValue();
+            if (val == node.val) {
+                count++;
+                res = Math.max(count, res);
+            } else
+                count = 1;
+            if (node.left != null) {
+                q.offer(new Tuple(node.left, node.val + 1));
+            }
+            if (node.right != null) {
+                q.offer(new Tuple(node.right, node.val + 1));
+            }
+        }
+        return res;
+    }
+
+
+    //this is the right version
+    public int longestConsecutiveIterative(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int res = 1;
+        Queue<Tuple<TreeNode, Integer>> q = new LinkedList<Tuple<TreeNode, Integer>>();
+        q.offer(new Tuple(root, 1));
+        while (!q.isEmpty()) {
+            Tuple t = q.poll();
+            TreeNode node = (TreeNode) t.x;
+            int val = ((Integer) t.y).intValue();
+            res = Math.max(val, res);
+            if (node.left != null) {
+                int count = node.left.val == node.val + 1 ? val + 1 : 1;
+                q.offer(new Tuple(node.left, count));
+            }
+            if (node.right != null) {
+                int count = node.right.val == node.val + 1 ? val + 1 : 1;
+                q.offer(new Tuple(node.right, count));
+            }
+        }
+        return res;
+    }
+
+
+    //116 Populating Next Right Pointers in Each Node
+    //first O(N) space, using queue,level order
+    public void connectI(TreeLinkNode root) {
+        if (root == null)
+            return;
+        Queue<TreeLinkNode> q = new LinkedList<TreeLinkNode>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            while (size-- > 0) {
+                TreeLinkNode node = q.poll();
+                if (size != 0)
+                    node.next = q.peek();
+                if (node.left != null) {
+                    q.offer(node.left);
+                }
+                if (node.right != null) {
+                    q.offer(node.right);
+                }
+            }
+        }
+    }
+
+    //O(1) space,
+    public void connectO1Space(TreeLinkNode root) {
+        if (root == null)
+            return;
+        TreeLinkNode cur = root;
+        TreeLinkNode nextLinkNode = null;
+        while (cur.left != null) {
+            nextLinkNode = cur.left;
+            while (cur != null) {
+                cur.left.next = cur.right;
+                if (cur.next != null)
+                    cur.right.next = cur.next.left;
+                cur = cur.next;
+            }
+            cur = nextLinkNode;
+        }
+        return;
+    }
+
+    //117 populating next right pointers in each node II
+    //first O(N) space, using queue,level order
+    public void connectO1SpaceII(TreeLinkNode root) {
+        TreeLinkNode nextHead = new TreeLinkNode(0);
+        nextHead.next = root;
+        while (nextHead.next != null) {
+            TreeLinkNode tail = nextHead;
+            TreeLinkNode n = nextHead.next;
+            nextHead.next = null;//go to next level
+            for (; n != null; n = n.next) {
+                if (n.left != null) {
+                    tail.next = n.left;
+                    tail = tail.next;
+                }
+                if (n.right != null) {
+                    tail.next = n.right;
+                    tail = tail.next;
+                }
+            }
+        }
+    }
+
+
+    //124 Binary Tree Maximum Path Sum
+
+
+    //return contains root's path, straight
+    //computes the maximum path sum with highest node is the input node, update maximum if necessary
+    public int dfsMaxPathSum(TreeNode root) {
+        if (root == null)
+            return 0;
+        int l = dfsMaxPathSum(root.left);
+        int r = dfsMaxPathSum(root.right);
+        int res = Math.max(l + root.val, Math.max(r + root.val, root.val));
+        sumRes = Math.max(res, Math.max(sumRes, root.val + l + r));
+        return res;
+    }
+
+    public int maxPathSum(TreeNode root) {
+        sumRes = Integer.MIN_VALUE;
+        dfsMaxPathSum(root);
+        return sumRes;
+    }
+
+    //250 count univalue subtrees
+
+    public uniInfo findUniq(TreeNode root) {
+        uniInfo res = new uniInfo();
+        if (root == null)
+            return res;
+        if (root.left == null && root.right == null) {
+            res.size = 1;
+            res.isUni = true;
+            res.value = root.val;
+            return res;
+        }
+        uniInfo left = findUniq(root.left);
+        uniInfo right = findUniq(root.right);
+        if (left.size == 0 || right.size == 0) {
+            if (left.size != 0)
+                right.value = left.value;
+            else
+                left.value = right.value;
+        }
+        if (!left.isUni || !right.isUni || !(root.val == left.value && root.val == right.value)) {
+            res.isUni = false;
+            res.value = root.val;
+            res.size = left.size + right.size;
+        } else {
+            res.value = root.val;
+            res.isUni = true;
+            res.size = left.size + right.size + 1;
+        }
+        return res;
+    }
+
+    public int countUnivalSubtrees(TreeNode root) {
+        if (root == null)
+            return 0;
+        return findUniq(root).size;
+    }
+
+    //concise
+    public int countUnivalSubtreesConcise(TreeNode root) {
+        int[] count = new int[1];
+        helper(root, count);
+        return count[0];
+    }
+
+    private boolean helper(TreeNode node, int[] count) {
+        if (node == null) {
+            return true;
+        }
+        boolean left = helper(node.left, count);
+        boolean right = helper(node.right, count);
+        if (left && right) {
+            if (node.left != null && node.val != node.left.val) {
+                return false;
+            }
+            if (node.right != null && node.val != node.right.val) {
+                return false;
+            }
+            count[0]++;
+            return true;
+        }
+        return false;
+    }
+
+
+
 
 
 
