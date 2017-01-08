@@ -18,6 +18,33 @@ class TreeNode{
     }
 }
 
+class info {
+    int size;
+    boolean isBST;
+    int minValue;
+    int maxValue;
+
+    public info() {
+        this.size = 0;
+        this.isBST = true;
+        this.minValue = Integer.MAX_VALUE;
+        this.maxValue = Integer.MIN_VALUE;
+    }
+}
+
+class MyNode {
+    TreeNode node;
+    int lb;
+    int rb;
+    int index;
+
+    public MyNode(TreeNode n, int theLeft, int theRight) {
+        this.node = n;
+        this.lb = theLeft;
+        this.rb = theRight;
+    }
+}
+
 class Tuple<X, Y> {
     public final X x;
     public final Y y;
@@ -259,6 +286,8 @@ public class Tree {
 
     //257 binary tree paths
     //recursive way
+    //leafpath
+    //leaf to path
 
     public void dfsBinaryTreePaths(TreeNode node, String path, List<String> res) {
         if (node == null)
@@ -664,8 +693,8 @@ public class Tree {
         while (cur != null || !stk.isEmpty()) {
             while (cur != null) {
                 stk.push(cur);
-                cur = cur.left;
                 SUM += cur.val;
+                cur = cur.left;
             }
             cur = stk.peek();
             if (cur.left == null && cur.right == null && SUM == sum) {
@@ -683,6 +712,144 @@ public class Tree {
         }
         return false;
     }
+
+    //113 path sum II
+
+    public void pathSumDfs(TreeNode root, List<List<Integer>> res, List<Integer> path, int sum) {
+        if (root == null)
+            return;
+        path.add(root.val);
+        if (root.left == null && root.right == null && sum == root.val) {
+
+
+            List<Integer> newPath = new ArrayList<Integer>(path);
+            res.add(newPath);
+            path.remove(path.size() - 1);//do not forget this sentence, otherwise,you can delete return
+            return;
+        }
+        if (root.left != null) {
+            pathSumDfs(root.left, res, path, sum - root.val);
+        }
+        if (root.right != null) {
+            pathSumDfs(root.right, res, path, sum - root.val);
+        }
+        path.remove(path.size() - 1);
+    }
+
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> path = new ArrayList<Integer>();
+        pathSumDfs(root, res, path, sum);
+        return res;
+    }
+
+
+    //iterative way
+    //level order
+    public List<List<Integer>> PathSumIIterative(TreeNode root, int sum) {
+        Map<TreeNode, TreeNode> parent = new HashMap<TreeNode, TreeNode>();
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if (root == null)
+            return res;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
+            if (node.left == null && node.right == null) {
+                //this is a leaf node
+                //find its parent one by one
+                TreeNode tmp = node;
+                int SUM = node.val;
+                List<Integer> path = new ArrayList<Integer>();
+                path.add(node.val);
+                while (parent.containsKey(tmp)) {
+                    SUM += parent.get(tmp).val;
+                    path.add(0, parent.get(tmp).val);
+                    tmp = parent.get(tmp);
+                }
+                if (SUM == sum)
+                    res.add(path);
+            }
+            if (node.left != null) {
+                parent.put(node.left, node);
+                q.offer(node.left);
+            }
+            if (node.right != null) {
+                parent.put(node.right, node);
+                q.offer(node.right);
+            }
+        }
+        return res;
+    }
+
+    //path sumII postorder iterative way
+    public List<List<Integer>> PathSumIIIterativePostorder(TreeNode root, int sum) {
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        TreeNode pre = null;
+        TreeNode cur = root;
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        int SUM = 0;
+        while (cur != null || !stk.isEmpty()) {
+            while (cur != null) {
+                stk.push(cur);
+                cur = cur.left;
+                SUM += cur.val;
+            }
+            cur = stk.peek();
+            if (cur.left == null && cur.right == null && SUM == sum) {
+                List<Integer> path = new ArrayList<Integer>();
+                for (TreeNode node : stk) {
+                    path.add(node.val);
+                }
+                res.add(path);
+            }
+            if (cur.right != null && pre != cur.right) {
+                cur = cur.right;
+            } else {//if there is no right child or right child has been visited, then you can start to visit the part
+                //System.out.println(cur.val);
+                pre = cur;
+                stk.pop();
+                SUM -= cur.val;
+                cur = null;
+            }
+        }
+        return res;
+    }
+
+
+    //437 path sum III
+    //dfs enumerate all possible start points
+    //then dfs from the start point
+    //interesting solution
+    int number = 0;
+
+    public void pathSumIIIDfs1(TreeNode root, int sum) {
+        if (root == null)
+            return;
+        if (root.val == sum) {
+            number++;
+        }
+        pathSumIIIDfs1(root.left, sum - root.val);
+        pathSumIIIDfs1(root.right, sum - root.val);
+    }
+
+    public void pathSumIIIDfs(TreeNode root, int sum) {
+        if (root == null)
+            return;
+        pathSumIIIDfs1(root, sum);
+        pathSumIIIDfs(root.left, sum);
+        pathSumIIIDfs(root.right, sum);
+    }
+
+    public int pathSumIII(TreeNode root, int sum) {
+        if (root == null)
+            return 0;
+        pathSumIIIDfs(root, sum);
+        return number;
+    }
+
+
+
 
     //404 sum of left leaves
     int leafsum = 0;
@@ -1394,6 +1561,465 @@ public class Tree {
         }
         return successor;
     }
+
+    //predecessor
+    public TreeNode predecessor(TreeNode root, TreeNode p) {
+        if (root == null || p == null)
+            return null;
+        if (root.val >= p.val)
+            return predecessor(root.left, p);
+        else {
+            TreeNode right = predecessor(root.right, p);
+            return right != null ? right : root;
+        }
+    }
+
+    //iterative way
+    public TreeNode predecessorIterative(TreeNode root, TreeNode p) {
+        if (root == null || p == null)
+            return null;
+        TreeNode predecessor = null;
+        while (root != null) {
+            if (root.val >= p.val) {
+                root = root.left;
+            } else {
+                predecessor = root;
+                root = root.right;
+            }
+        }
+        return predecessor;
+    }
+
+
+    //98 validate binary search tree
+    //you can use inorder traversal to get the array and judge the array
+    //recursive way
+    public boolean isValidBST(TreeNode root) {
+        if (root == null)
+            return true;
+        if (!isValidBST(root.left))
+            return false;
+        if (prevous != null && prevous.val >= root.val)
+            return false;
+        prevous = root;
+        return isValidBST(root.right);
+    }
+
+    //another recursive way
+
+    public boolean valid(TreeNode root, Integer min, Integer max) {
+        if (root == null)
+            return true;
+        if ((min != null && min >= root.val) || (max != null && max <= root.val))
+            return false;
+        return valid(root.left, min, root.val) && valid(root.right, root.val, max);
+    }
+
+    public boolean isValidBSTRecursive(TreeNode root) {
+        return valid(root, null, null);
+    }
+
+    //iterative way
+
+    public boolean isValidBSTIterative(TreeNode root) {
+        TreeNode cur = root;
+        TreeNode prev = null;
+        TreeNode pNode = null;//the previous node of inorder traversal
+        while (cur != null) {
+            if (cur.left == null) {
+                if (pNode != null && pNode.val >= cur.val)
+                    return false;
+                pNode = cur;
+                cur = cur.right;
+            } else {
+                //find predecessor
+                prev = cur.left;
+                while (prev.right != null && prev.right != cur) {
+                    prev = prev.right;
+                }
+                if (prev.right == null) {
+                    prev.right = cur;
+                    cur = cur.left;
+                } else {
+                    prev.right = null;
+                    if (pNode != null && pNode.val >= cur.val)
+                        return false;
+                    pNode = cur;
+                    cur = cur.right;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    //95 unqiue binary search TREE II
+
+
+    //interesting
+    public List<TreeNode> makeUniqueTrees(int begin, int end) {
+        List<TreeNode> res = new ArrayList<TreeNode>();
+        if (begin > end)
+            res.add(null);
+        else if (begin == end) {
+            res.add(new TreeNode(begin));
+        } else {
+            for (int i = begin; i <= end; ++i) {
+                List<TreeNode> left = makeUniqueTrees(begin, i - 1);
+                List<TreeNode> right = makeUniqueTrees(i + 1, end);
+                for (int k = 0; k < left.size(); ++k) {
+                    for (int j = 0; j < right.size(); ++j) {
+                        TreeNode root = new TreeNode(i);
+                        root.left = left.get(k);
+                        root.right = right.get(j);
+                        res.add(root);
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    public List<TreeNode> generateTrees(int n) {
+        if (n < 1)
+            return new ArrayList<TreeNode>();
+        return makeUniqueTrees(1, n);
+    }
+
+    //96 unique binary search tree
+    public int numTrees(int n) {
+        //cataland number
+        int[] dp = new int[n + 1];
+        dp[0] = dp[1] = 1;
+        for (int i = 2; i <= n; ++i) {
+            for (int j = 0; j <= i - 1; ++j) {
+                dp[i] += dp[j] * dp[i - 1 - j];
+            }
+        }
+        return dp[n];
+    }
+
+
+    //337 house robber III
+    //naive
+    public int robIIINaive(TreeNode root) {
+        if (root == null)
+            return 0;
+        int val = 0;
+        if (root.left != null) {
+            val += robIIINaive(root.left.left) + robIIINaive(root.left.right);
+        }
+        if (root.right != null) {
+            val += robIIINaive(root.right.left) + robIIINaive(root.right.right);
+        }
+        return Math.max(root.val + val, robIIINaive(root.left) + robIIINaive(root.right));
+    }
+
+    //step II--memory based
+
+    public int robIIIStep(TreeNode root) {
+        return robsub(root, new HashMap<TreeNode, Integer>());
+    }
+
+    public int robsub(TreeNode root, Map<TreeNode, Integer> map) {
+        if (root == null)
+            return 0;
+        if (map.containsKey(root))
+            return map.get(root);
+        int val = 0;
+        if (root.left != null) {
+            val += robsub(root.left.left, map) + robsub(root.left.right, map);
+        }
+        if (root.right != null) {
+            val += robsub(root.right.right, map) + robsub(root.right.left, map);
+        }
+        val = Math.max(val + root.val, robsub(root.left, map) + robsub(root.right, map));
+        map.put(root, val);
+        return val;
+    }
+
+
+    //optimal
+    public int[] robIIIDfs(TreeNode root) {
+        int[] res = {0, 0};
+        if (root == null)
+            return res;
+        res[0] = res[1] = Integer.MIN_VALUE;
+        int[] l = robIIIDfs(root.left);//res[0] contains  root, res[1] does not contain root
+        int[] r = robIIIDfs(root.right);
+        res[0] = l[1] + r[1] + root.val;
+        res[1] = Math.max(l[0], l[1]) + Math.max(r[0], r[1]);//very interesting, can start from 3 level
+        return res;
+    }
+
+    public int robIII(TreeNode root) {
+        if (root == null)
+            return 0;
+        int[] res = robIIIDfs(root);
+        return Math.max(res[0], res[1]);
+    }
+
+
+    //convert sorted array to binary search tree
+
+    public TreeNode makeTreeFromArray(int[] nums, int begin, int end) {
+        if (begin > end)
+            return null;
+        if (begin == end)
+            return new TreeNode(nums[begin]);
+        int mid = begin + (end - begin) / 2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = makeTreeFromArray(nums, begin, mid - 1);
+        root.right = makeTreeFromArray(nums, mid + 1, end);
+        return root;
+    }
+
+    public TreeNode sortedArrayToBST(int[] nums) {
+        int n = nums.length;
+        return makeTreeFromArray(nums, 0, n - 1);
+    }
+
+    public TreeNode sortedArrayToBSTIterative(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return null;
+        Queue<MyNode> q = new LinkedList<MyNode>();
+        int left = 0;
+        int right = nums.length - 1;
+        int val = nums[left + (right - left) / 2];
+        TreeNode root = new TreeNode(val);
+        q.offer(new MyNode(root, left, right));
+        while (!q.isEmpty()) {
+            int size = q.size();
+            while (size-- > 0) {
+                MyNode cur = q.poll();
+                int mid = cur.lb + (cur.rb - cur.lb) / 2;
+                if (mid != cur.lb) {
+                    TreeNode leftChild = new TreeNode(nums[cur.lb + (mid - 1 - cur.lb) / 2]);
+                    cur.node.left = leftChild;
+                    q.offer(new MyNode(leftChild, cur.lb, mid - 1));
+                }
+                if (mid != cur.rb) {
+                    TreeNode rightChild = new TreeNode(nums[mid + 1 + (cur.rb - mid - 1) / 2]);
+                    cur.node.right = rightChild;
+                    q.offer(new MyNode(rightChild, mid + 1, cur.rb));
+                }
+            }
+        }
+        return root;
+    }
+
+    //156 binary tree upside down
+    //Java recursive (O(logn) space) and iterative solutions (O(1) space)
+    public TreeNode upsideDownBinaryTree(TreeNode root) {
+        if (root == null || root.left == null && root.right == null)
+            return root;
+        TreeNode left = upsideDownBinaryTree(root.left);
+        root.left.left = root.right;
+        root.left.right = root;
+        root.left = null;
+        root.right = null;
+        return left;
+    }
+
+    //iterative way
+
+    public TreeNode upsideDownBinaryTreeIterative(TreeNode root) {
+        TreeNode curr = root;
+        TreeNode next = null;
+        TreeNode prev = null;
+        TreeNode tmp = null;//need temp to keep the previous right child;
+        while (curr != null) {
+            next = curr.left;
+            curr.left = tmp;
+            tmp = curr.right;
+            curr.right = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+
+
+    //366 find leaves of binary tree
+
+    //recursive way
+    //change tree's structure
+    //worst case when the tree is a line
+    public TreeNode dfsFindLeaves(TreeNode root, List<Integer> path) {
+        if (root == null)
+            return null;
+        if (root.left == null && root.right == null) {
+            path.add(root.val);
+            return null;
+        }
+        root.left = dfsFindLeaves(root.left, path);
+        root.right = dfsFindLeaves(root.right, path);
+        return root;
+    }
+
+    public List<List<Integer>> findLeaves(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> path = new ArrayList<Integer>();
+        while (root != null) {
+            root = dfsFindLeaves(root, path);
+            res.add(new ArrayList(path));
+            path.clear();
+        }
+        return res;
+    }
+
+    //another recursive way
+    public List<List<Integer>> findLeavesRecursive(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        height(root, res);
+        return res;
+    }
+
+    int height(TreeNode node, List<List<Integer>> res) {
+        if (node == null)
+            return -1;
+        int level = 1 + Math.max(height(node.left, res), height(node.right, res));
+        if (res.size() == level)
+            res.add(new ArrayList<Integer>());
+        res.get(level).add(node.val);//one line node.left = node.right = null; to remove visited nodes
+        return level;
+    }
+    //333 largest bst substree
+
+    public info BSTdfs(TreeNode root) {
+        if (root == null)
+            return new info();
+        info left = BSTdfs(root.left);
+        info right = BSTdfs(root.right);
+        info m = new info();
+        if (!left.isBST || !right.isBST || root.val >= right.minValue || root.val <= left.maxValue) {
+            m.size = Math.max(left.size, right.size);
+            m.isBST = false;
+        } else {
+            m.size = left.size + right.size + 1;
+            m.isBST = true;
+            m.minValue = root.left != null ? left.minValue : root.val;
+            m.maxValue = root.right != null ? right.maxValue : root.val;
+        }
+        return m;
+
+    }
+
+    public int largestBSTSubtree(TreeNode root) {
+        return BSTdfs(root).size;
+    }
+
+    //255 verify preorder sequence in binary search tree
+    public boolean verifyPreorder(int[] preorder) {
+        if (preorder == null || preorder.length == 0)
+            return true;
+        int minValue = Integer.MIN_VALUE;
+        int index = -1;
+        for (int i = 0; i < preorder.length; ++i) {
+            if (preorder[i] < minValue)
+                return false;
+            while (index >= 0 && preorder[i] >= preorder[index]) {
+                minValue = preorder[index--];
+            }
+            preorder[++index] = preorder[i];
+        }
+        return true;
+    }
+
+    //verify postorder sequence in bst
+    public boolean verifyPostorder(int[] postorder) {
+        if (postorder == null || postorder.length == 0)
+            return true;
+        int index = postorder.length;
+        int maxValue = Integer.MAX_VALUE;
+        for (int i = postorder.length - 1; i >= 0; --i) {
+            if (postorder[i] > maxValue)
+                return false;
+            while (index < postorder.length && postorder[i] <= postorder[index]) {
+                maxValue = postorder[index++];
+            }
+            postorder[--index] = postorder[i];
+        }
+        return true;
+    }
+
+
+    //450 delete node in bst
+    public TreeNode deleteNode(TreeNode root, int key) {
+        if (root == null)
+            return null;
+        if (root.val > key)
+            root.left = deleteNode(root.left, key);
+        else if (root.val < key)
+            root.right = deleteNode(root.right, key);
+        else {
+            if (root.left == null && root.right == null)
+                return null;
+            else if (root.left == null) {
+                root = root.right;
+                return root;
+            } else if (root.right == null) {
+                root = root.left;
+                return root;
+            } else {
+                TreeNode node = root.right;
+                while (node.left != null) {
+                    node = node.left;
+                }
+                root.val = node.val;
+                root.right = deleteNode(root.right, root.val);
+            }
+        }
+        return root;
+    }
+
+    private TreeNode deleteRootNode(TreeNode root) {
+        if (root == null)
+            return null;
+        if (root.left == null)
+            return root.right;
+        if (root.right == null)
+            return root.left;
+        TreeNode next = root.right;
+        TreeNode pre = null;
+        while (next.left != null) {
+            pre = next;
+            next = next.left;
+        }
+        next.left = root.left;
+        if (root.right != next) {//very interesting
+            pre.left = next.right;
+            next.right = root.right;
+        }
+        return next;
+
+    }
+
+    public TreeNode deleteNodeIterative(TreeNode root, int key) {
+        TreeNode cur = root;
+        TreeNode pre = null;
+        while (cur != null && cur.val != key) {
+            pre = cur;
+            if (key < cur.val)
+                cur = cur.left;
+            else if (key > cur.val)
+                cur = cur.right;
+        }
+        if (pre == null) {
+            return deleteRootNode(cur);
+        }
+        if (pre.left == cur) {
+            pre.left = deleteRootNode(cur);
+        } else {
+            pre.right = deleteRootNode(cur);
+        }
+        return root;
+    }
+
+
+
+
+
 
 
 

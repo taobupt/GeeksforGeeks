@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -19,15 +20,16 @@ public class TreeTest {
     @Before
     public void setUp() throws Exception {
         t = new Tree();
-        root = new TreeNode(5);
-        root.left = new TreeNode(3);
-        root.right = new TreeNode(7);
-        root.left.left = new TreeNode(1);
-        root.left.right = new TreeNode(4);
-        root.right.left = new TreeNode(6);
-        root.right.right = new TreeNode(8);
+        root = new TreeNode(2);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(3);
+//        root.left.left = new TreeNode(11);
+//        //root.left.right = new TreeNode(4);
+//        root.right.left = new TreeNode(13);
+//        root.right.right = new TreeNode(4);
 //        root.left.left.left = new TreeNode(7);
 //        root.left.left.right = new TreeNode(2);
+//        root.right.right.left=new TreeNode(5);
 //        root.right.right.right=new TreeNode(1);
     }
 
@@ -174,6 +176,21 @@ public class TreeTest {
         //t.flattenReversePreorder(root);
         t.flattenByLeft(root);
         t.levelOrder(root);
+    }
+
+    @Test
+    public void testPathSumII() {
+        t.pathSum(root, 22);
+    }
+
+    @Test
+    public void testIsvalidBST() {
+        assertEquals(t.isValidBSTIterative(root), true);
+    }
+
+    @Test
+    public void testNumTree() {
+        assertEquals(t.numTrees(3), 5);
     }
 
 }
