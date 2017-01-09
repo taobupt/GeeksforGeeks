@@ -231,6 +231,7 @@ public class TreeTest {
     @Test
     public void testCloestKvalue() {
         t.closestKValues(root, 3.571429, 6);
+        System.out.println();
     }
 
 }
