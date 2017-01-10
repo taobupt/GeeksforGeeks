@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d65e4c4f-115a-48ce-807c-3a59b097a734" name="Default" comment="add tree&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/LinkedList/Review.java" />
+    <list default="true" id="d65e4c4f-115a-48ce-807c-3a59b097a734" name="Default" comment="add array&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/LinkedList/Solution.class" afterPath="$PROJECT_DIR$/target/classes/LinkedList/Solution.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LinkedList/Solution.java" afterPath="$PROJECT_DIR$/src/main/java/LinkedList/Solution.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" afterPath="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" afterPath="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" />
     </list>
@@ -33,26 +32,14 @@
       <file leaf-file-name="ArrayAlgoQuestion.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2244898">
-              <caret line="755" column="9" selection-start-line="755" selection-start-column="9" selection-end-line="755" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.46439168">
+              <caret line="901" column="19" selection-start-line="901" selection-start-column="19" selection-end-line="901" selection-end-column="19" />
               <folding>
-                <element signature="e#12780#12789#0" expanded="true" />
-                <element signature="e#12828#12837#0" expanded="true" />
-                <element signature="e#15196#15214#0" expanded="true" />
-                <element signature="e#15605#15614#0" expanded="true" />
-                <element signature="e#16054#16072#0" expanded="true" />
-                <element signature="e#16506#16515#0" expanded="true" />
-                <element signature="e#19295#19310#0" expanded="true" />
-                <element signature="e#19400#19409#0" expanded="true" />
-                <element signature="e#19538#19547#0" expanded="true" />
-                <element signature="e#19925#19940#0" expanded="true" />
-                <element signature="e#20094#20103#0" expanded="true" />
-                <element signature="e#20538#20547#0" expanded="true" />
-                <element signature="e#20860#20869#0" expanded="true" />
-                <element signature="e#20976#20985#0" expanded="true" />
-                <element signature="e#21376#21385#0" expanded="true" />
-                <element signature="e#21424#21433#0" expanded="true" />
-                <element signature="e#21832#21841#0" expanded="true" />
+                <element signature="e#150#173#0" expanded="true" />
+                <element signature="e#369#378#0" expanded="true" />
+                <element signature="e#24175#24184#0" expanded="true" />
+                <element signature="e#26441#26449#0" expanded="true" />
+                <element signature="e#27133#27148#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,10 +49,10 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+              <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
               <folding>
-                <element signature="e#986#987#0" expanded="true" />
-                <element signature="e#1029#1030#0" expanded="true" />
+                <element signature="e#1009#1010#0" expanded="true" />
+                <element signature="e#1052#1053#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -166,6 +153,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -335,7 +323,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -360,111 +347,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ArrayTest.testGenerate">
-    <configuration default="false" name="ArrayTest.testMajorityElem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testMajorityElem" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ArrayTest.testMoveCharacter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testMoveCharacter" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ArrayTest.testThirdMax" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testThirdMax" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ArrayTest.testQuickSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testQuickSort" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ArrayTest.testSummaryRanges">
     <configuration default="false" name="ArrayTest.testGenerate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -478,6 +361,110 @@
       <option name="PACKAGE_NAME" value="array" />
       <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
       <option name="METHOD_NAME" value="testGenerate" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testFinddisappearedNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testFinddisappearedNumber" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testMaximumProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testMaximumProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testWordDistance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testWordDistance" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testSummaryRanges" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testSummaryRanges" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -906,19 +893,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMajorityElem" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMoveCharacter" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testThirdMax" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testQuickSort" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testGenerate" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testGenerate" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testFinddisappearedNumber" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumProduct" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testWordDistance" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSummaryRanges" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testGenerate" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testQuickSort" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testThirdMax" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMoveCharacter" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMajorityElem" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSummaryRanges" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testWordDistance" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumProduct" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testFinddisappearedNumber" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testGenerate" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -975,7 +962,8 @@
       <workItem from="1483947074107" duration="1107000" />
       <workItem from="1483980301595" duration="2807000" />
       <workItem from="1484002341792" duration="1462000" />
-      <workItem from="1484009052225" duration="16385000" />
+      <workItem from="1484009052225" duration="16473000" />
+      <workItem from="1484064047036" duration="7019000" />
     </task>
     <task id="LOCAL-00001" summary="add linkedlist&#10;">
       <created>1483145383999</created>
@@ -995,43 +983,49 @@
       <option name="project" value="LOCAL" />
       <updated>1483987487832</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add array&#10;">
+      <created>1484029720179</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1484029720179</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ArrayTest_testGenerate - 2017.01.09 at 23h 20m 45s.xml">
-      <configuration name="ArrayTest.testGenerate" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMaximumProduct - 2017.01.10 at 10h 32m 23s.xml">
+      <configuration name="ArrayTest.testMaximumProduct" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testGenerate - 2017.01.09 at 23h 21m 05s.xml">
-      <configuration name="ArrayTest.testGenerate" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMaximumProduct - 2017.01.10 at 10h 32m 39s.xml">
+      <configuration name="ArrayTest.testMaximumProduct" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testGenerate - 2017.01.09 at 23h 29m 49s.xml">
-      <configuration name="ArrayTest.testGenerate" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 35m 42s.xml">
+      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testGenerate - 2017.01.09 at 23h 30m 02s.xml">
-      <configuration name="ArrayTest.testGenerate" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 37m 16s.xml">
+      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testQuickSort - 2017.01.09 at 21h 24m 23s.xml">
-      <configuration name="ArrayTest.testQuickSort" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 37m 30s.xml">
+      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testQuickSort - 2017.01.09 at 21h 32m 28s.xml">
-      <configuration name="ArrayTest.testQuickSort" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 37m 38s.xml">
+      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testQuickSort - 2017.01.09 at 21h 32m 49s.xml">
-      <configuration name="ArrayTest.testQuickSort" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 51m 43s.xml">
+      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testQuickSort - 2017.01.09 at 21h 40m 06s.xml">
-      <configuration name="ArrayTest.testQuickSort" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 51m 53s.xml">
+      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testQuickSort - 2017.01.09 at 21h 40m 38s.xml">
-      <configuration name="ArrayTest.testQuickSort" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 52m 05s.xml">
+      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testQuickSort - 2017.01.09 at 21h 46m 44s.xml">
-      <configuration name="ArrayTest.testQuickSort" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testWordDistance - 2017.01.10 at 11h 22m 50s.xml">
+      <configuration name="ArrayTest.testWordDistance" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88861000" />
+    <option name="totallyTimeSpent" value="95968000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
@@ -1044,7 +1038,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25937185" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25937185" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16469322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1053,7 +1047,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39614996" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39614996" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1085,7 +1079,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add linkedlist&#10;" />
     <MESSAGE value="add tree&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tree&#10;" />
+    <MESSAGE value="add array&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="add array&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1141,24 +1136,30 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>373</line>
+          <line>431</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>677</line>
+          <line>735</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>707</line>
+          <line>766</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
+          <line>802</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="28" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -1185,23 +1186,36 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#12780#12789#0" expanded="true" />
-            <element signature="e#12828#12837#0" expanded="true" />
-            <element signature="e#15196#15214#0" expanded="true" />
-            <element signature="e#15605#15614#0" expanded="true" />
-            <element signature="e#16054#16072#0" expanded="true" />
-            <element signature="e#16506#16515#0" expanded="true" />
-            <element signature="e#19295#19310#0" expanded="true" />
-            <element signature="e#19400#19409#0" expanded="true" />
-            <element signature="e#19538#19547#0" expanded="true" />
-            <element signature="e#19925#19940#0" expanded="true" />
-            <element signature="e#20094#20103#0" expanded="true" />
-            <element signature="e#20538#20547#0" expanded="true" />
-            <element signature="e#20860#20869#0" expanded="true" />
-            <element signature="e#20976#20985#0" expanded="true" />
-            <element signature="e#21376#21385#0" expanded="true" />
-            <element signature="e#21424#21433#0" expanded="true" />
-            <element signature="e#21832#21841#0" expanded="true" />
+            <element signature="e#150#173#0" expanded="true" />
+            <element signature="e#369#378#0" expanded="true" />
+            <element signature="e#24175#24184#0" expanded="true" />
+            <element signature="e#26441#26449#0" expanded="true" />
+            <element signature="e#27133#27148#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+          <folding>
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#150#173#0" expanded="true" />
+            <element signature="e#369#378#0" expanded="true" />
+            <element signature="e#24175#24184#0" expanded="true" />
+            <element signature="e#26441#26449#0" expanded="true" />
+            <element signature="e#27133#27148#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1211,8 +1225,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
           <folding>
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1222,23 +1236,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#12780#12789#0" expanded="true" />
-            <element signature="e#12828#12837#0" expanded="true" />
-            <element signature="e#15196#15214#0" expanded="true" />
-            <element signature="e#15605#15614#0" expanded="true" />
-            <element signature="e#16054#16072#0" expanded="true" />
-            <element signature="e#16506#16515#0" expanded="true" />
-            <element signature="e#19295#19310#0" expanded="true" />
-            <element signature="e#19400#19409#0" expanded="true" />
-            <element signature="e#19538#19547#0" expanded="true" />
-            <element signature="e#19925#19940#0" expanded="true" />
-            <element signature="e#20094#20103#0" expanded="true" />
-            <element signature="e#20538#20547#0" expanded="true" />
-            <element signature="e#20860#20869#0" expanded="true" />
-            <element signature="e#20976#20985#0" expanded="true" />
-            <element signature="e#21376#21385#0" expanded="true" />
-            <element signature="e#21424#21433#0" expanded="true" />
-            <element signature="e#21832#21841#0" expanded="true" />
+            <element signature="e#150#173#0" expanded="true" />
+            <element signature="e#369#378#0" expanded="true" />
+            <element signature="e#24175#24184#0" expanded="true" />
+            <element signature="e#26441#26449#0" expanded="true" />
+            <element signature="e#27133#27148#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1248,8 +1250,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
           <folding>
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1259,23 +1261,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#12780#12789#0" expanded="true" />
-            <element signature="e#12828#12837#0" expanded="true" />
-            <element signature="e#15196#15214#0" expanded="true" />
-            <element signature="e#15605#15614#0" expanded="true" />
-            <element signature="e#16054#16072#0" expanded="true" />
-            <element signature="e#16506#16515#0" expanded="true" />
-            <element signature="e#19295#19310#0" expanded="true" />
-            <element signature="e#19400#19409#0" expanded="true" />
-            <element signature="e#19538#19547#0" expanded="true" />
-            <element signature="e#19925#19940#0" expanded="true" />
-            <element signature="e#20094#20103#0" expanded="true" />
-            <element signature="e#20538#20547#0" expanded="true" />
-            <element signature="e#20860#20869#0" expanded="true" />
-            <element signature="e#20976#20985#0" expanded="true" />
-            <element signature="e#21376#21385#0" expanded="true" />
-            <element signature="e#21424#21433#0" expanded="true" />
-            <element signature="e#21832#21841#0" expanded="true" />
+            <element signature="e#150#173#0" expanded="true" />
+            <element signature="e#369#378#0" expanded="true" />
+            <element signature="e#24175#24184#0" expanded="true" />
+            <element signature="e#26441#26449#0" expanded="true" />
+            <element signature="e#27133#27148#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1285,8 +1275,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1546,36 +1536,24 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+          <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
           <folding>
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2244898">
-          <caret line="755" column="9" selection-start-line="755" selection-start-column="9" selection-end-line="755" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.46439168">
+          <caret line="901" column="19" selection-start-line="901" selection-start-column="19" selection-end-line="901" selection-end-column="19" />
           <folding>
-            <element signature="e#12780#12789#0" expanded="true" />
-            <element signature="e#12828#12837#0" expanded="true" />
-            <element signature="e#15196#15214#0" expanded="true" />
-            <element signature="e#15605#15614#0" expanded="true" />
-            <element signature="e#16054#16072#0" expanded="true" />
-            <element signature="e#16506#16515#0" expanded="true" />
-            <element signature="e#19295#19310#0" expanded="true" />
-            <element signature="e#19400#19409#0" expanded="true" />
-            <element signature="e#19538#19547#0" expanded="true" />
-            <element signature="e#19925#19940#0" expanded="true" />
-            <element signature="e#20094#20103#0" expanded="true" />
-            <element signature="e#20538#20547#0" expanded="true" />
-            <element signature="e#20860#20869#0" expanded="true" />
-            <element signature="e#20976#20985#0" expanded="true" />
-            <element signature="e#21376#21385#0" expanded="true" />
-            <element signature="e#21424#21433#0" expanded="true" />
-            <element signature="e#21832#21841#0" expanded="true" />
+            <element signature="e#150#173#0" expanded="true" />
+            <element signature="e#369#378#0" expanded="true" />
+            <element signature="e#24175#24184#0" expanded="true" />
+            <element signature="e#26441#26449#0" expanded="true" />
+            <element signature="e#27133#27148#0" expanded="true" />
           </folding>
         </state>
       </provider>

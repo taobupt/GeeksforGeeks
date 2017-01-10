@@ -5,6 +5,41 @@ import java.util.*;
 /**
  * Created by tao on 1/9/17.
  */
+
+
+class WordDistance {
+
+    private Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
+
+    public WordDistance(String[] words) {
+        int n = words.length;
+        for (int i = 0; i < n; ++i) {
+            if (!map.containsKey(words[i])) {
+                List<Integer> index = new ArrayList<Integer>();
+                index.add(i);
+                map.put(words[i], index);
+            } else
+                map.get(words[i]).add(i);
+        }
+    }
+
+    public int shortest(String word1, String word2) {
+        List<Integer> index1 = map.get(word1);
+        List<Integer> index2 = map.get(word2);
+        int i = 0, j = 0, m = index1.size(), n = index2.size();
+        int res = Integer.MAX_VALUE;
+        while (i < m && j < n) {
+            res = Math.min(res, Math.abs(index1.get(i) - index2.get(j)));
+            if (index1.get(i) < index2.get(j))
+                i++;
+            else
+                j++;
+        }
+        return res;
+    }
+}
+
+
 public class ArrayAlgoQuestion {
 
     public ArrayAlgoQuestion() {
@@ -324,6 +359,29 @@ public class ArrayAlgoQuestion {
     }
 
     //or you can get two index array first and then you can start to use two pointers
+
+
+    //245 shortest word distanceII
+    public int shortestWordDistance(String[] words, String word1, String word2) {
+        int index = -1;
+        int n = words.length;
+        int minDistance = Integer.MAX_VALUE;
+        for (int i = 0; i < n; ++i) {
+            if (words[i].equals(word1) || words[i].equals(word2)) {
+                if (index != -1 && (!words[index].equals(words[i]) || word1.equals(word2))) {
+                    minDistance = Math.min(minDistance, i - index);
+                }
+                index = i;
+            }
+        }
+        return minDistance;
+    }
+
+    //also you can split into part, equals and not equals are not together
+
+    //244 shortest word distanceII
+
+
 
     //move zeros 283
     public void moveZeroes(int[] nums) {
@@ -758,6 +816,99 @@ public class ArrayAlgoQuestion {
         }
         return ret;
     }
+
+    //medium
+
+    //152 maximum product array, I am not in status today
+    public int maxProduct(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return Integer.MIN_VALUE;
+        int n = nums.length;
+        int[] maximum = new int[n];
+        int[] minimum = new int[n];
+        maximum[0] = minimum[0] = nums[0];
+        int res = nums[0];
+        for (int i = 1; i < n; ++i) {
+            maximum[i] = Math.max(nums[i], Math.max(maximum[i - 1] * nums[i], minimum[i - 1] * nums[i]));
+            minimum[i] = Math.min(nums[i], Math.min(maximum[i - 1] * nums[i], minimum[i - 1] * nums[i]));
+            res = Math.max(res, maximum[i]);
+        }
+        return res;
+    }
+
+    //save space
+    public int maxPorductSaveSpace(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return Integer.MIN_VALUE;
+        int n = nums.length;
+        int maxi = nums[0], mini = nums[0], saveMaxi = 0;
+        int res = nums[0];
+        for (int i = 1; i < n; ++i) {
+            saveMaxi = maxi;
+            maxi = Math.max(nums[i], Math.max(maxi * nums[i], mini * nums[i]));
+            mini = Math.min(nums[i], Math.min(saveMaxi * nums[i], mini * nums[i]));
+            res = Math.max(res, maxi);
+        }
+        return res;
+    }
+
+    //more concise
+    public void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+
+    public int maxProductConcise(int[] nums) {
+        int r = nums[0], imax = r, imin = r;
+        int n = nums.length;
+        int res = nums[0];
+        for (int i = 1; i < n; ++i) {
+            if (nums[i] < 0) {
+                int tmp = imax;
+                imax = imin;
+                imin = tmp;
+            }
+            imax = Math.max(nums[i], imax * nums[i]);
+            imin = Math.min(nums[i], imin * nums[i]);
+            res = Math.max(res, imax);
+        }
+        return res;
+    }
+
+    //228 summary ranges
+    //interesting
+    public List<String> summaryRanges(int[] nums) {
+        List<String> res = new ArrayList<String>();
+        if (nums == null || nums.length == 0)
+            return res;
+        int n = nums.length;
+        int start = nums[0];
+        for (int i = 0; i < n; ++i) {
+            if (i == n - 1 || nums[i + 1] != nums[i] + 1) {//this can used to remove duplicate code
+                if (nums[i] == start)
+                    res.add(String.valueOf(start));
+                else
+                    res.add(start + "->" + nums[i]);
+                if (i != n - 1)
+                    start = nums[i + 1];
+            }
+        }
+        return res;
+    }
+
+    //216 && 39 && 40
+    // Combination Sum serials
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        return res;
+    }
+
+
+
+
+
+
 
 
 

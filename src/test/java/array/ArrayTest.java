@@ -48,4 +48,31 @@ public class ArrayTest {
         arrayAlgoQuestion.getRow(3);
     }
 
+    @Test
+    public void testFinddisappearedNumber() {
+        int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};
+        arrayAlgoQuestion.findDisappearNumbersConcise(nums);
+    }
+
+    @Test
+    public void testMaximumProduct() {
+        int[] nums = {0, 2};
+        assertEquals(arrayAlgoQuestion.maxProduct(nums), 2);
+    }
+
+    @Test
+    public void testWordDistance() {
+        String[] nums = {"practice", "makes", "perfect", "coding", "makes"};
+        WordDistance a = new WordDistance(nums);
+        System.out.println(a.shortest("practice", "coding"));
+
+    }
+
+    @Test
+    public void testSummaryRanges() {
+        int[] nums = {0, 1, 3, 4, 5, 7};
+        List<String> res = arrayAlgoQuestion.summaryRanges(nums);
+        for (String str : res)
+            System.out.println(str);
+    }
 }
