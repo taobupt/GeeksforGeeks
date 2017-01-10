@@ -789,7 +789,6 @@ public class Solution {
         if (dummy.val == 0) {
             return dummy.next;
         }
-
         return dummy;
     }
     //using reverselist
