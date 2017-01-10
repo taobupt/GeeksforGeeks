@@ -899,10 +899,253 @@ public class ArrayAlgoQuestion {
 
     //216 && 39 && 40
     // Combination Sum serials
+    public void backtrack(List<List<Integer>> res, List<Integer> path, int target, int index, int[] candidates) {
+        if (target == 0) {
+            res.add(new ArrayList<Integer>(path));
+            return;
+        }
+        for (int i = index; i < candidates.length; ++i) {
+            if (target >= candidates[i]) {
+                path.add(candidates[i]);
+                backtrack(res, path, target - candidates[i], i, candidates);
+                path.remove(path.size() - 1);
+            }
+        }
+    }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> path = new ArrayList<Integer>();
+        backtrack(res, path, target, 0, candidates);
         return res;
     }
+
+    //40 combination sum ii
+
+    public void backtrack2(List<List<Integer>> res, List<Integer> path, int target, int index, int[] candidates) {
+        if (target == 0) {
+            res.add(new ArrayList<Integer>(path));
+            return;
+        }
+        for (int i = index; i < candidates.length; ++i) {
+
+            if (i != index && candidates[i] == candidates[i - 1])//skip duplicates
+                continue;
+            if (target >= candidates[i]) {
+                path.add(candidates[i]);
+                backtrack2(res, path, target - candidates[i], i + 1, candidates);
+                path.remove(path.size() - 1);
+            } else
+                break;
+        }
+    }
+
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> path = new ArrayList<Integer>();
+        Arrays.sort(candidates);
+        backtrack2(res, path, target, 0, candidates);
+        return res;
+    }
+
+
+    //216 combination sum III
+    public void backtrack3(List<List<Integer>> res, List<Integer> path, int target, int index, int k) {
+        if (target == 0 && path.size() == k) {
+            res.add(new ArrayList<Integer>(path));
+            return;
+        }
+        for (int i = index; i <= 9; ++i) {
+            if (target >= i) {
+                path.add(i);
+                backtrack3(res, path, target - i, i + 1, k);
+                path.remove(path.size() - 1);
+            } else
+                break;
+        }
+    }
+
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> path = new ArrayList<Integer>();
+        backtrack3(res, path, n, 1, k);
+        return res;
+    }
+
+
+    //48 rotate image
+    //clockwise
+    public void rotate(int[][] matrix) {
+        if (matrix.length == 0 || matrix[0].length == 0)
+            return;
+        //reverse the array
+        int m = matrix.length, n = matrix[0].length;
+        int begin = 0, end = m - 1;
+        while (begin < end) {
+            int[] tmp = matrix[begin];
+            matrix[begin++] = matrix[end];
+            matrix[end--] = tmp;
+        }
+
+        //reverse the diagnoal
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < i; ++j) {
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = tmp;
+            }
+        }
+    }
+
+    public void swap(int[] nums) {
+        if (nums == null || nums.length <= 1)
+            return;
+        int begin = 0, end = nums.length - 1;
+        while (begin < end) {
+            int tmp = nums[begin];
+            nums[begin] = nums[end];
+            nums[end] = tmp;
+        }
+    }
+
+    //follow up rotate counterclockwise
+    public void rotateCounterclockWise(int[][] matrix) {
+        if (matrix.length == 0 || matrix[0].length == 0)
+            return;
+        //reverse the array
+        int m = matrix.length, n = matrix[0].length;
+        for (int i = 0; i < m; ++i)
+            swap(matrix[i]);
+        //reverse the diagnoal
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < i; ++j) {
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = tmp;
+            }
+        }
+    }
+
+
+    //container with most water
+    public int maxArea(int[] height) {
+        int maxArea = 0;
+        int begin = 0, end = height.length - 1;
+        while (begin < end) {
+            if (height[begin] < height[end]) {
+                maxArea = Math.max(maxArea, height[begin] * (end - begin));
+                begin++;
+            } else {
+                maxArea = Math.max(maxArea, height[end] * (end - begin));
+                end--;
+            }
+        }
+        return maxArea;
+    }
+
+    //we can move further
+    public int maxAreaBetter(int[] height) {
+        int maxArea = 0;
+        int begin = 0, end = height.length - 1;
+        while (begin < end) {
+            int h = Math.min(height[begin], height[end]);
+            maxArea = Math.max(maxArea, (end - begin) * h);
+            while (begin < end && height[begin] <= h)
+                begin++;
+            while (begin < end && height[end] <= h)
+                end--;
+        }
+        return maxArea;
+    }
+
+    //209 minimum size subarray sum
+    //two window
+    public int minSubArrayLen(int s, int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        int res = Integer.MAX_VALUE, sum = 0, n = nums.length;
+        int begin = 0, end = 0;
+        while (end < n) {
+            sum += nums[end++];
+            while (sum >= s) {
+                if (res > end - begin) {
+                    res = end - begin;
+                }
+                sum -= nums[begin++];
+            }
+        }
+        return res == Integer.MAX_VALUE ? 0 : res;
+    }
+
+    //you could also get the sum array and binary search
+
+
+    //238 Product of Array Except Self
+    public int[] productExceptSelf(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return nums;
+        int n = nums.length;
+        int[] res = new int[n];
+        res[0] = 1;
+        for (int i = 1; i < n; ++i)
+            res[i] = res[i - 1] * nums[i - 1];
+        int right = 1;
+        for (int i = n - 1; i >= 0; --i) {
+            res[i] *= right;
+            right *= nums[i];
+        }
+        return res;
+
+    }
+
+    //268 missing number
+    //bit manipulation
+    //sum up
+    //binary search
+    //If the array is in order, I prefer Binary Search method. Otherwise, the XOR method is better.
+    public int missingNumber(int[] nums) {
+        int res = 0;
+        int n = nums.length;
+        for (int i = 1; i <= n; ++i) {
+            res ^= nums[i - 1];
+            res ^= i;
+        }
+        return res;
+    }
+
+    //binary search
+    public int missingNumberBinarySearch(int[] nums) {
+        Arrays.sort(nums);
+        int begin = 0, end = nums.length;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] > mid)
+                end = mid;
+            else
+                begin = mid + 1;
+        }
+        return begin;
+    }
+
+    //you can sum them up
+    public int missingNumberUsingSumUp(int[] nums) {
+        int len = nums.length;
+        int sum = (0 + len) * (len + 1) / 2;
+        for (int i = 0; i < len; ++i)
+            sum -= nums[i];
+        return sum;
+    }
+
+    //in case of overflow
+    public int missingNumberOverflow(int[] nums) {
+        int sum = 0;
+        for (int i = 0; i < nums.length; ++i) {
+            sum += nums[i] - i;
+        }
+        return nums.length - sum;
+    }
+
+
+
 
 
 

@@ -75,4 +75,11 @@ public class ArrayTest {
         for (String str : res)
             System.out.println(str);
     }
+
+    @Test
+    public void testMissingNumber() {
+        int[] nums = {1, 2, 3};
+        System.out.println(arrayAlgoQuestion.missingNumberBinarySearch(nums));
+    }
+
 }
