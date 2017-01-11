@@ -1541,6 +1541,7 @@ public class ArrayAlgoQuestion {
     }
 
     //154 find minimum in rotated array II
+    //
     public int findMinII(int[] nums) {
         int n = nums.length;
         int begin = 0, end = n - 1;
@@ -1557,5 +1558,97 @@ public class ArrayAlgoQuestion {
         }
         return nums[begin];
     }
+
+    //62 Unique Paths, actually  it is a combination number
+
+    public int combination(int n, int k) {
+        if (k < n - k)//reduce the multiple times
+            k = n - k;
+        long res = 1;
+        for (int i = n - k + 1; i <= n; ++i)
+            res *= i;
+        for (int i = 1; i <= k; ++i)
+            res /= i;
+        return (int) res;
+    }
+
+    public int uniquePaths(int m, int n) {
+        if (m < 1 || m + n < 2 || n < 1)
+            return 1;
+        return combination(m + n - 2, m - 1);
+
+    }
+
+    //dynamic programming
+    //may be you can find some way to sace some space
+    public int uniquePathsDp(int m, int n) {
+        if (m < 1 || m + n < 2 || n < 1)
+            return 1;
+        int[][] dp = new int[m][n];
+        dp[0][0] = 1;//in case of there is only one position 0,0;
+        for (int i = m - 2; i >= 0; --i)
+            dp[i][n - 1] = 1;
+        for (int i = n - 2; i >= 0; --i)
+            dp[m - 1][i] = 1;
+        for (int i = m - 2; i >= 0; --i) {
+            for (int j = n - 2; j >= 0; --j)
+                dp[i][j] = dp[i + 1][j] + dp[i][j + 1];
+        }
+        return dp[0][0];
+    }
+
+    //63 Follow up for "Unique Paths":
+    //unique pathII
+    //may be you can think some way to save space
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        if (obstacleGrid == null || obstacleGrid.length == 0 || obstacleGrid[0].length == 0)
+            return 0;
+        int m = obstacleGrid.length, n = obstacleGrid[0].length;
+        if (obstacleGrid[0][0] == 1 || obstacleGrid[m - 1][n - 1] == 1)
+            return 0;
+        int[][] dp = new int[m][n];
+        dp[m - 1][n - 1] = 1;
+        for (int i = m - 2; i >= 0; --i) {
+            dp[i][n - 1] = obstacleGrid[i][n - 1] == 1 ? 0 : dp[i + 1][n - 1];
+        }
+
+        for (int i = n - 2; i >= 0; --i) {
+            dp[m - 1][i] = obstacleGrid[m - 1][i] == 1 ? 0 : dp[m - 1][i + 1];
+        }
+
+        for (int i = m - 2; i >= 0; --i) {
+            for (int j = n - 2; j >= 0; --j)
+                dp[i][j] = obstacleGrid[i][j] == 1 ? 0 : dp[i + 1][j] + dp[i][j + 1];
+        }
+        return dp[0][0];
+    }
+
+
+    //64 minimum path sum
+    public int minPathSum(int[][] grid) {
+        if (grid == null || grid.length == 0 || grid[0].length == 0)
+            return 0;
+        int m = grid.length, n = grid[0].length;
+        int[][] dp = new int[m][n];
+        dp[m - 1][n - 1] = grid[m - 1][n - 1];
+        for (int i = m - 2; i >= 0; --i) {
+            dp[i][n - 1] = grid[i][n - 1] + dp[i + 1][n - 1];
+        }
+
+        for (int i = n - 2; i >= 0; --i) {
+            dp[m - 1][i] = grid[m - 1][i] + dp[m - 1][i + 1];
+        }
+
+        for (int i = m - 2; i >= 0; --i) {
+            for (int j = n - 2; j >= 0; --j)
+                dp[i][j] = grid[i][j] + Math.min(dp[i + 1][j], dp[i][j + 1]);
+        }
+        return dp[0][0];
+    }
+
+
+
+
+
 
 }

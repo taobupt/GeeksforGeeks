@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1543" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="789" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1461" mnemonic="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d65e4c4f-115a-48ce-807c-3a59b097a734" name="Default" comment="add array&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/LinkedList/Solution.class" afterPath="$PROJECT_DIR$/target/classes/LinkedList/Solution.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" afterPath="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" afterPath="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" />
     </list>
     <ignored path="GeeksforGeeks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,14 +35,10 @@
       <file leaf-file-name="ArrayAlgoQuestion.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46439168">
-              <caret line="901" column="19" selection-start-line="901" selection-start-column="19" selection-end-line="901" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.71397847">
+              <caret line="1644" column="24" selection-start-line="1644" selection-start-column="24" selection-end-line="1644" selection-end-column="24" />
               <folding>
-                <element signature="e#150#173#0" expanded="true" />
-                <element signature="e#369#378#0" expanded="true" />
-                <element signature="e#24175#24184#0" expanded="true" />
-                <element signature="e#26441#26449#0" expanded="true" />
-                <element signature="e#27133#27148#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -49,11 +48,8 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
-              <folding>
-                <element signature="e#1009#1010#0" expanded="true" />
-                <element signature="e#1052#1053#0" expanded="true" />
-              </folding>
+              <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,6 +150,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -322,7 +319,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -338,6 +334,22 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="266" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="295" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="296" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="971" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="289" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="287" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="289" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="963" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -347,59 +359,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ArrayTest.testSummaryRanges">
-    <configuration default="false" name="ArrayTest.testGenerate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testGenerate" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ArrayTest.testFinddisappearedNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testFinddisappearedNumber" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ArrayTest.testFindMin">
     <configuration default="false" name="ArrayTest.testMaximumProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -465,6 +425,58 @@
       <option name="PACKAGE_NAME" value="array" />
       <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
       <option name="METHOD_NAME" value="testSummaryRanges" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testSpiralOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testSpiralOrder" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testFindMin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testFindMin" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -893,19 +905,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testGenerate" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testFinddisappearedNumber" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumProduct" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testWordDistance" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSummaryRanges" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumProduct" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testWordDistance" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSummaryRanges" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSpiralOrder" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testFindMin" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSummaryRanges" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testWordDistance" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumProduct" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testFinddisappearedNumber" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testGenerate" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testFindMin" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSpiralOrder" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSummaryRanges" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testWordDistance" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumProduct" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -964,6 +976,8 @@
       <workItem from="1484002341792" duration="1462000" />
       <workItem from="1484009052225" duration="16473000" />
       <workItem from="1484064047036" duration="7019000" />
+      <workItem from="1484089790658" duration="15355000" />
+      <workItem from="1484150176554" duration="3090000" />
     </task>
     <task id="LOCAL-00001" summary="add linkedlist&#10;">
       <created>1483145383999</created>
@@ -989,43 +1003,49 @@
       <option name="project" value="LOCAL" />
       <updated>1484029720179</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add array&#10;">
+      <created>1484119345247</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1484119345247</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ArrayTest_testMaximumProduct - 2017.01.10 at 10h 32m 23s.xml">
-      <configuration name="ArrayTest.testMaximumProduct" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testFindMin - 2017.01.11 at 01h 07m 04s.xml">
+      <configuration name="ArrayTest.testFindMin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaximumProduct - 2017.01.10 at 10h 32m 39s.xml">
-      <configuration name="ArrayTest.testMaximumProduct" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testFindMin - 2017.01.11 at 01h 10m 40s.xml">
+      <configuration name="ArrayTest.testFindMin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 35m 42s.xml">
-      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testFindMin - 2017.01.11 at 01h 13m 21s.xml">
+      <configuration name="ArrayTest.testFindMin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 37m 16s.xml">
-      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testFindMin - 2017.01.11 at 01h 13m 40s.xml">
+      <configuration name="ArrayTest.testFindMin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 37m 30s.xml">
-      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testFindMin - 2017.01.11 at 01h 13m 53s.xml">
+      <configuration name="ArrayTest.testFindMin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 37m 38s.xml">
-      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testFindMin - 2017.01.11 at 01h 14m 04s.xml">
+      <configuration name="ArrayTest.testFindMin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 51m 43s.xml">
-      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testFindMin - 2017.01.11 at 01h 14m 16s.xml">
+      <configuration name="ArrayTest.testFindMin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 51m 53s.xml">
-      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSpiralOrder - 2017.01.10 at 18h 34m 38s.xml">
+      <configuration name="ArrayTest.testSpiralOrder" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testSummaryRanges - 2017.01.10 at 11h 52m 05s.xml">
-      <configuration name="ArrayTest.testSummaryRanges" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSpiralOrder - 2017.01.10 at 18h 38m 02s.xml">
+      <configuration name="ArrayTest.testSpiralOrder" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testWordDistance - 2017.01.10 at 11h 22m 50s.xml">
-      <configuration name="ArrayTest.testWordDistance" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testSpiralOrder - 2017.01.10 at 18h 44m 30s.xml">
+      <configuration name="ArrayTest.testSpiralOrder" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95968000" />
+    <option name="totallyTimeSpent" value="114413000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
@@ -1033,12 +1053,11 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25937185" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25937185" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16469322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1055,6 +1074,7 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1136,30 +1156,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>431</line>
+          <line>433</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>735</line>
+          <line>737</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>766</line>
+          <line>768</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>802</line>
+          <line>804</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
+          <line>1534</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
+          <line>1528</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="28" />
+      <option name="time" value="32" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -1186,11 +1218,43 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#150#173#0" expanded="true" />
-            <element signature="e#369#378#0" expanded="true" />
-            <element signature="e#24175#24184#0" expanded="true" />
-            <element signature="e#26441#26449#0" expanded="true" />
-            <element signature="e#27133#27148#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1199,10 +1263,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
-          <folding>
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1211,11 +1272,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#150#173#0" expanded="true" />
-            <element signature="e#369#378#0" expanded="true" />
-            <element signature="e#24175#24184#0" expanded="true" />
-            <element signature="e#26441#26449#0" expanded="true" />
-            <element signature="e#27133#27148#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1224,10 +1281,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-          <folding>
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1236,11 +1290,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#150#173#0" expanded="true" />
-            <element signature="e#369#378#0" expanded="true" />
-            <element signature="e#24175#24184#0" expanded="true" />
-            <element signature="e#26441#26449#0" expanded="true" />
-            <element signature="e#27133#27148#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1249,10 +1299,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-          <folding>
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1261,11 +1308,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#150#173#0" expanded="true" />
-            <element signature="e#369#378#0" expanded="true" />
-            <element signature="e#24175#24184#0" expanded="true" />
-            <element signature="e#26441#26449#0" expanded="true" />
-            <element signature="e#27133#27148#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1274,10 +1317,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1536,24 +1576,17 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
-          <folding>
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-          </folding>
+          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46439168">
-          <caret line="901" column="19" selection-start-line="901" selection-start-column="19" selection-end-line="901" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.71397847">
+          <caret line="1644" column="24" selection-start-line="1644" selection-start-column="24" selection-end-line="1644" selection-end-column="24" />
           <folding>
-            <element signature="e#150#173#0" expanded="true" />
-            <element signature="e#369#378#0" expanded="true" />
-            <element signature="e#24175#24184#0" expanded="true" />
-            <element signature="e#26441#26449#0" expanded="true" />
-            <element signature="e#27133#27148#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
