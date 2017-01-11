@@ -82,4 +82,18 @@ public class ArrayTest {
         System.out.println(arrayAlgoQuestion.missingNumberBinarySearch(nums));
     }
 
+    @Test
+    public void testSpiralOrder() {
+        int[][] nums = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        List<Integer> res = arrayAlgoQuestion.spiralOrderSaveSpace(nums);
+        for (int x : res)
+            System.out.println(x);
+    }
+
+    @Test
+    public void testFindMin() {
+        int[] nums = {2, 4, 5, 6, 7, 0, 1};
+        System.out.println(arrayAlgoQuestion.findMin(nums));
+    }
+
 }

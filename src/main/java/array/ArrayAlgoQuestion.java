@@ -1,5 +1,7 @@
 package array;
 
+import sun.rmi.server.InactiveGroupException;
+
 import java.util.*;
 
 /**
@@ -1144,24 +1146,416 @@ public class ArrayAlgoQuestion {
         return nums.length - sum;
     }
 
+    //259 3sum smaller
+    public int threeSumSmaller(int[] nums, int target) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        Arrays.sort(nums);
+        int n = nums.length;
+        int res = 0;
+        for (int i = 0; i < n - 2; ++i) {
+            int begin = i + 1, end = n - 1;
+            while (begin < end) {
+                while (begin < end && nums[i] + nums[begin] + nums[end] >= target)
+                    end--;
+                res += end - begin;
+                //end=n-1;//don't need to find change end to n-1 again, because begin++,so end must --
+                begin++;
+            }
+        }
+        return res;
+    }
+
+    //without inner loop
+    public int threeSumSmallerWithoutInnerLoop(int[] nums, int target) {
+        int n = nums.length;
+        Arrays.sort(nums);
+        int count = 0;
+        for (int i = 0; i < n - 2; ++i) {
+            int lo = i + 1;
+            int hi = n - 1;
+            while (lo < hi) {
+                if (nums[i] + nums[lo] + nums[hi] < target) {
+                    count += hi - lo;
+                    lo++;
+                } else
+                    hi--;
+            }
+        }
+        return count;
+    }
+
+    //54 spiral matrix
+    //interesting question
+    //clockwise
+    //O(n) space
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> res = new ArrayList<Integer>();
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return res;
+        int m = matrix.length, n = matrix[0].length;
+        int row = 0, col = 0;
+        boolean[][] vis = new boolean[m][n];
+        res.add(matrix[row][col]);
+        vis[row][col] = true;
+        while (res.size() < m * n) {
+            while (col + 1 < n && !vis[row][col + 1]) {
+                res.add(matrix[row][++col]);
+                vis[row][col] = true;
+            }
+            while (row + 1 < m && !vis[row + 1][col]) {
+                res.add(matrix[++row][col]);
+                vis[row][col] = true;
+            }
+
+            while (col > 0 && !vis[row][col - 1]) {
+                res.add(matrix[row][--col]);
+                vis[row][col] = true;
+            }
+
+            while (row > 0 && !vis[row - 1][col]) {
+                res.add(matrix[--row][col]);
+                vis[row][col] = true;
+            }
+        }
+        return res;
+    }
+
+    //if it is counterclockwise?
+    public List<Integer> spiralOrderCounterClockwise(int[][] matrix) {
+        List<Integer> res = new ArrayList<Integer>();
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return res;
+        int m = matrix.length, n = matrix[0].length;
+        int row = 0, col = 0;
+        boolean[][] vis = new boolean[m][n];
+        res.add(matrix[row][col]);
+        vis[row][col] = true;
+        while (res.size() < m * n) {
+            while (row + 1 < m && !vis[row + 1][col]) {
+                res.add(matrix[++row][col]);
+                vis[row][col] = true;
+            }
+            while (col + 1 < n && !vis[row][col + 1]) {
+                res.add(matrix[row][++col]);
+                vis[row][col] = true;
+            }
+            while (row > 0 && !vis[row - 1][col]) {
+                res.add(matrix[--row][col]);
+                vis[row][col] = true;
+            }
+            while (col > 0 && !vis[row][col - 1]) {
+                res.add(matrix[row][--col]);
+                vis[row][col] = true;
+            }
+        }
+        return res;
+    }
 
 
+    //O(1) space
+    public List<Integer> spiralOrderSaveSpace(int[][] matrix) {
+        List<Integer> res = new ArrayList<Integer>();
 
+        if (matrix.length == 0) {
+            return res;
+        }
 
+        int rowBegin = 0;
+        int rowEnd = matrix.length - 1;
+        int colBegin = 0;
+        int colEnd = matrix[0].length - 1;
 
+        while (rowBegin <= rowEnd && colBegin <= colEnd) {
+            // Traverse Right
+            for (int j = colBegin; j <= colEnd; j++) {
+                res.add(matrix[rowBegin][j]);
+            }
+            rowBegin++;
 
+            // Traverse Down
+            for (int j = rowBegin; j <= rowEnd; j++) {
+                res.add(matrix[j][colEnd]);
+            }
+            colEnd--;
 
+            if (rowBegin <= rowEnd) {
+                // Traverse Left
+                for (int j = colEnd; j >= colBegin; j--) {
+                    res.add(matrix[rowEnd][j]);
+                }
+            }
+            rowEnd--;
 
+            if (colBegin <= colEnd) {
+                // Traver Up
+                for (int j = rowEnd; j >= rowBegin; j--) {
+                    res.add(matrix[j][colBegin]);
+                }
+            }
+            colBegin++;
+        }
+        return res;
+    }
 
+    //59 spiral matrix II
+    public int[][] generateMatrix(int n) {
+        int[][] res = new int[n][n];
+        int count = 1;
+        int rowBeg = 0, rowEnd = n - 1, colBeg = 0, colEnd = n - 1;
+        while (rowBeg <= rowEnd && colBeg <= colEnd) {
+            //traverse the left
+            for (int i = colBeg; i <= colEnd; ++i)
+                res[rowBeg][i] = count++;
+            rowBeg++;
 
+            //down
+            for (int i = rowBeg; i <= rowEnd; ++i)
+                res[i][colEnd] = count++;
+            colEnd--;
 
+            if (rowBeg <= rowEnd) {
+                for (int i = colEnd; i >= colBeg; --i)
+                    res[rowEnd][i] = count++;
+            }
+            rowEnd--;
 
+            if (colBeg <= colEnd) {
+                for (int i = rowEnd; i >= rowBeg; --i)
+                    res[i][colBeg] = count++;
+            }
+            colBeg++;
+        }
+        return res;
+    }
 
+    //79 word search
+    //O(N*N) space
+    //won't change board
 
+    int[] dx = {1, -1, 0, 0};
+    int[] dy = {0, 0, 1, -1};
 
+    public boolean dfsExist(char[][] board, String word, int pos, boolean[][] vis, int x, int y) {
+        if (pos == word.length())
+            return true;
+        for (int k = 0; k < 4; ++k) {
+            int xx = x + dx[k];
+            int yy = y + dy[k];
+            if (xx < 0 || xx >= board.length || yy < 0 || yy >= board[0].length || vis[xx][yy] || word.charAt(pos) != board[xx][yy])
+                continue;
+            vis[xx][yy] = true;
+            if (dfsExist(board, word, pos + 1, vis, xx, yy))
+                return true;
+            vis[xx][yy] = false;
+        }
+        return false;
+    }
 
+    public boolean exist(char[][] board, String word) {
+        if (board == null || board.length == 0 || board[0].length == 0 || word.isEmpty())
+            return false;
+        int m = board.length, n = board[0].length;
+        boolean[][] vis = new boolean[m][n];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (!vis[i][j] && board[i][j] == word.charAt(0)) {
+                    vis[i][j] = true;
+                    if (dfsExist(board, word, 1, vis, i, j))
+                        return true;
+                    vis[i][j] = false;
 
+                }
+            }
+        }
+        return false;
+    }
 
+    //change board to save space
+    //Your code works, but when your algorithm is running, board[][] is changed, which prevents it from concurrent usage.
 
+    //
+//    private boolean exist(char[][] board, int y, int x, char[] word, int i) {
+//        if (i == word.length) return true;
+//        if (y<0 || x<0 || y == board.length || x == board[y].length) return false;
+//        if (board[y][x] != word[i]) return false;
+//        board[y][x] ^= 256;
+//        boolean exist = exist(board, y, x+1, word, i+1)
+//                || exist(board, y, x-1, word, i+1)
+//                || exist(board, y+1, x, word, i+1)
+//                || exist(board, y-1, x, word, i+1);
+//        board[y][x] ^= 256;
+//        return exist;
+//    }
+    public boolean exist(char[][] board, int i, int j, String word, int pos) {
+        if (pos == word.length())
+            return true;
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(pos))
+            return false;
+        board[i][j] = '*';
+        boolean result = exist(board, i - 1, j, word, pos + 1) || exist(board, i + 1, j, word, pos + 1) || exist(board, i, j + 1, word, pos + 1) || exist(board, i, j - 1, word, pos + 1);
+        board[i][j] = word.charAt(pos);
+        return result;
+    }
+
+    public boolean existSaveSpace(char[][] board, String word) {
+        if (board == null || board.length == 0 || board[0].length == 0 || word.isEmpty())
+            return false;
+        int m = board.length, n = board[0].length;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (exist(board, i, j, word, 0))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    //120 triangle
+    //change the value of the triangle
+    public int minimumTotal(List<List<Integer>> triangle) {
+        if (triangle == null || triangle.isEmpty() || triangle.get(0).isEmpty())
+            return Integer.MAX_VALUE;
+        int m = triangle.size();
+        for (int i = m - 2; i >= 0; i--) {
+            for (int j = 0; j < triangle.get(i).size(); ++j) {
+                int val = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1));
+                triangle.get(i).set(j, triangle.get(i).get(j) + val);
+            }
+        }
+        return triangle.get(0).get(0);
+    }
+
+    //without changing triangle
+    public int minimumTotalWithoutChange(List<List<Integer>> triangle) {
+        int n = triangle.size();
+        List<Integer> minlen = new ArrayList<Integer>(triangle.get(n - 1));
+        for (int layer = n - 2; layer >= 0; --layer) {
+            for (int i = 0; i <= layer; ++i) {
+                minlen.set(i, Math.min(minlen.get(i), minlen.get(i + 1)) + triangle.get(layer).get(i));
+            }
+        }
+        return minlen.get(0);
+    }
+
+    //162 find peak element
+    //If num[i-1] < num[i] > num[i+1], then num[i] is peak
+    //If num[i-1] < num[i] < num[i+1], then num[i+1...n-1] must contains a peak
+    //If num[i-1] > num[i] > num[i+1], then num[0...i-1] must contains a peak
+    //If num[i-1] > num[i] < num[i+1], then both sides have peak
+    //num[i] ≠ num[i+1]
+    //interseting question
+    public int findPeakElement(int[] nums) {
+        int begin = 0, end = nums.length - 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;//mid maxvalue is end-1;
+            if (nums[mid + 1] > nums[mid])
+                begin = mid + 1;
+            else
+                end = mid;
+        }
+        return begin;
+    }
+
+    //442 find all duplicates in array
+    //hashmap
+    public List<Integer> findDuplicates(int[] nums) {
+        //Map<Integer,Integer>map=new HashMap<Integer, Integer>();
+        Set<Integer> set = new HashSet<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
+        for (int x : nums) {
+            if (!set.add(x))
+                res.add(x);
+        }
+        return res;
+    }
+
+    //also you can sort
+    //you can use O(N) to sort
+    public List<Integer> findDuplicatesBysort(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        List<Integer> res = new ArrayList<Integer>();
+        for (int i = 1; i < n; ++i) {
+            if (nums[i] == nums[i - 1]) {
+                res.add(nums[i]);
+            }
+        }
+        return res;
+    }
+
+    //the same as find disapperaing number leetcode 448
+    public List<Integer> findDuplicatesSimple(int[] nums) {
+        List<Integer> res = new ArrayList<Integer>();
+        int n = nums.length;
+        for (int i = 0; i < n; ++i) {
+            int val = Math.abs(nums[i]) - 1;
+            if (nums[val] < 0)
+                res.add(Math.abs(val + 1));
+            nums[val] = -nums[val];
+        }
+        return res;
+    }
+
+    //75 sort color
+    //荷兰国旗
+    public void sortColors(int[] nums) {
+        int begin = 0, cur = 0, end = nums.length - 1;
+        while (cur <= end) {
+            if (nums[cur] == 0) {
+                swap(nums, cur, begin);
+                cur++;
+                begin++;
+            } else if (nums[cur] == 2) {
+                swap(nums, cur, end);
+                end--;
+            } else
+                cur++;
+        }
+    }
+
+    //122 best time to buy and sell stokcii
+    public int maxProfitII(int[] prices) {
+        int n = prices.length;
+        int maxProfit = 0;
+        for (int i = 1; i < n; ++i)
+            if (prices[i] > prices[i - 1])
+                maxProfit += prices[i] - prices[i - 1];
+        return maxProfit;
+    }
+
+    //153 find minimum in rotated sorted array
+    public int findMin(int[] nums) {
+        int n = nums.length;
+        int begin = 0, end = n - 1;
+        while (begin < end) {
+            if (nums[begin] < nums[end])
+                return nums[begin];
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] > nums[end])//really goode question,mid can equal begin, but can only reach end-1;
+                begin = mid + 1;
+            else
+                end = mid;
+        }
+        return nums[begin];
+    }
+
+    //154 find minimum in rotated array II
+    public int findMinII(int[] nums) {
+        int n = nums.length;
+        int begin = 0, end = n - 1;
+        while (begin < end) {
+            if (nums[begin] < nums[end])
+                return nums[begin];
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] > nums[end])//really goode question,mid can equal begin, but can only reach end-1;
+                begin = mid + 1;
+            else if (nums[mid] < nums[end])
+                end = mid;
+            else
+                end--;//When num[mid] == num[hi], we couldn't sure the position of minimum in mid's left or right, so just let upper bound reduce one.
+        }
+        return nums[begin];
+    }
 
 }
