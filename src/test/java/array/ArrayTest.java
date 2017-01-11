@@ -96,4 +96,16 @@ public class ArrayTest {
         System.out.println(arrayAlgoQuestion.findMin(nums));
     }
 
+    @Test
+    public void testSearchInRotatedArray() {
+        int[] nums = {4, 5, 6, 7, 0, 1, 2};
+        assertEquals(arrayAlgoQuestion.searchInSortedArray(nums, 6), 2);
+    }
+
+    @Test
+    public void testSearchInMatrix() {
+        int[][] nums = {{1}};
+        assertEquals(arrayAlgoQuestion.searchMatrix(nums, 1), true);
+    }
+
 }

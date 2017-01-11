@@ -1353,7 +1353,7 @@ public class ArrayAlgoQuestion {
     }
 
     public boolean exist(char[][] board, String word) {
-        if (board == null || board.length == 0 || board[0].length == 0 || word.isEmpty())
+        if (board == null || board.length == 0 || board[0].length == 0 || word.length() == 0)
             return false;
         int m = board.length, n = board[0].length;
         boolean[][] vis = new boolean[m][n];
@@ -1399,7 +1399,7 @@ public class ArrayAlgoQuestion {
     }
 
     public boolean existSaveSpace(char[][] board, String word) {
-        if (board == null || board.length == 0 || board[0].length == 0 || word.isEmpty())
+        if (board == null || board.length == 0 || board[0].length == 0 || word.length() == 0)
             return false;
         int m = board.length, n = board[0].length;
         for (int i = 0; i < m; ++i) {
@@ -1645,6 +1645,114 @@ public class ArrayAlgoQuestion {
         }
         return dp[0][0];
     }
+
+
+    //35 search insert position
+    //lower_bound
+    public int searchInsertPosition(int[] nums, int target) {
+        int n = nums.length;
+        if (nums[n - 1] < target)
+            return n;
+        int begin = 0, index = 0, end = n - 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] < target) {
+                begin = mid + 1;
+                index = begin;
+            } else {
+                end = mid;
+                index = end;
+            }
+        }
+        return index;
+    }
+
+    //find the celebrity
+    public boolean knows(int a, int b) {
+        return true;
+    }
+
+    public int findCelebrity(int n) {
+        int c = 0;
+        for (int i = 1; i < n; ++i) {
+            if (knows(c, i))
+                c = i;
+        }
+        //check whether c is a valid
+        for (int i = 0; i < n; ++i) {
+            if (i != c) {
+                if (knows(c, i) || !knows(i, c))
+                    return -1;
+            }
+        }
+        return c;
+    }
+
+    //74 search in a 2D matrix
+    //very interesting, you should always check the last line;
+    // it is /n not /m , you should think it about
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+        int m = matrix.length, n = matrix[0].length;
+        int begin = 0, end = m * n - 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (matrix[mid / n][mid % n] == target)
+                return true;
+            else if (matrix[mid / n][mid % n] > target)
+                end = mid;
+            else
+                begin = mid + 1;
+        }
+        return matrix[begin / n][begin % n] == target;
+    }
+
+    //240 search a 2d matrix II
+    //this question is interesting
+    //Hence worst case scenario is O(m+n).
+    public boolean searchMatrixII(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+        int m = matrix.length, n = matrix[0].length;
+        int row = 0, col = n - 1;
+        while (col >= 0 && row < m) {
+            if (matrix[row][col] == target)
+                return true;
+            else if (matrix[row][col] > target)
+                col--;
+            else
+                row++;
+        }
+        return false;
+
+    }
+
+
+    //hard part
+    //33 search in rotated array
+    public int searchInSortedArray(int[] nums, int target) {
+        int begin = 0, end = nums.length - 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] == target)
+                return mid;
+            if (nums[mid] > nums[end]) {
+                if (nums[mid] > target && target >= nums[begin])
+                    end = mid;
+                else
+                    begin = mid + 1;
+            } else if (nums[mid] < nums[end]) {
+                if (nums[mid] < target && target <= nums[end])
+                    begin = mid + 1;
+                else
+                    end = mid;
+            }
+        }
+        return nums[begin] == target ? begin : -1;
+    }
+    //81 search in rotated array II;
+    //just add  else end--;
 
 
 
