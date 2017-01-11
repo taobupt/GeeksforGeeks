@@ -1728,6 +1728,23 @@ public class ArrayAlgoQuestion {
 
     }
 
+    //280 wiggle sort
+    //interesting question
+    //odd and even property
+    public void wiggleSort(int[] nums) {
+        int n = nums.length;
+        for (int i = 1; i < n; ++i) {
+            if (i % 2 == 1 && nums[i] < nums[i - 1]) {
+                swap(nums, i - 1, i);
+            } else if (i % 2 == 0 && nums[i - 1] < nums[i]) {
+                swap(nums, i - 1, i);
+            }
+        }
+    }
+
+
+
+
 
     //hard part
     //33 search in rotated array
