@@ -7,6 +7,7 @@ package array;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.beans.Transient;
 import java.util.*;
 
 import static org.junit.Assert.*;
@@ -106,6 +107,85 @@ public class ArrayTest {
     public void testSearchInMatrix() {
         int[][] nums = {{1}};
         assertEquals(arrayAlgoQuestion.searchMatrix(nums, 1), true);
+    }
+
+    @Test
+    public void testSubset() {
+        int[] nums = {1, 2, 3};
+        arrayAlgoQuestion.subsetsManipulation(nums);
+    }
+
+    @Test
+    public void testnextPeremutation() {
+        int[] nums = {1, 5, 1};
+        arrayAlgoQuestion.nextPermutation(nums);
+        for (int x : nums)
+            System.out.println(x);
+    }
+
+    @Test
+    public void testCanJump() {
+        int[] nums = {1, 1, 0, 1};
+        arrayAlgoQuestion.canJump(nums);
+    }
+
+    @Test
+    public void testSearchRange() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+
+        int[] res = arrayAlgoQuestion.searchRangeOneBinarySearch(nums, 10);
+        for (int x : res)
+            System.out.println(x);
+    }
+
+    @Test
+    public void testGameofLife() {
+        int[][] matrix = {{1, 1, 1}, {0, 1, 0}, {1, 0, 1}};
+        arrayAlgoQuestion.gameOfLife(matrix);
+        int[][] b = matrix.clone();
+        matrix[0][0] = 1;
+    }
+
+    @Test
+    public void InsertAndDelete() {
+        RandomizedSet rs = new RandomizedSet();
+        System.out.println(rs.remove(0));
+        System.out.println(rs.remove(0));
+        System.out.println(rs.insert(0));
+        System.out.println(rs.getRandom());
+        System.out.println(rs.remove(0));
+        System.out.println(rs.insert(0));
+    }
+
+    @Test
+    public void testMerge() {
+        List<Interval> intervals = new ArrayList<Interval>();
+        arrayAlgoQuestion.merge(intervals);
+    }
+
+    @Test
+    public void testfirstMissingPositive() {
+        int[] nums = {0, 2, 2, 1, 1};
+        int x = arrayAlgoQuestion.firstMissingPositiveSaveSpace(nums);
+        System.out.println(x);
+    }
+
+    @Test
+    public void testfindkth() {
+        int[] nums1 = {1, 2, 3, 4, 5};
+        int[] nums2 = {2, 3, 4, 5, 5, 6};
+        int m = nums1.length, n = m + nums2.length;
+        for (int i = 1; i <= n; ++i) {
+            System.out.println(arrayAlgoQuestion.findkth(nums1, 0, nums2, 0, i));
+        }
+    }
+
+    @Test
+    public void testWordLadder() {
+        Set<String> sets = new HashSet<>();
+        sets.add("hit");
+        sets.add("cog");
+        System.out.println(arrayAlgoQuestion.ladderLength("hit", "cog", sets));
     }
 
 }

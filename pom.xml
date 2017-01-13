@@ -14,7 +14,12 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/net.mintern/primitive -->
+        <dependency>
+            <groupId>net.mintern</groupId>
+            <artifactId>primitive</artifactId>
+            <version>1.2.1</version>
+        </dependency>
     </dependencies>
 
 </project>

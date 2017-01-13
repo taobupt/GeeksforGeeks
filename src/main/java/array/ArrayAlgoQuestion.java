@@ -2,11 +2,80 @@ package array;
 
 import sun.rmi.server.InactiveGroupException;
 
+import java.awt.event.HierarchyEvent;
 import java.util.*;
 
 /**
  * Created by tao on 1/9/17.
  */
+
+class Interval {
+    int start;
+    int end;
+
+    Interval(int s, int e) {
+        this.start = s;
+        this.end = e;
+    }
+
+    Interval() {
+        this.start = 0;
+        this.end = 0;
+    }
+}
+
+class RandomizedSet {
+
+
+    private Map<Integer, Integer> mp = null;
+    private List<Integer> nums = null;
+    private Random rand;
+
+    /**
+     * Initialize your data structure here.
+     */
+    public RandomizedSet() {
+        nums = new ArrayList<Integer>();
+        mp = new HashMap<Integer, Integer>();
+        rand = new Random();
+    }
+
+    /**
+     * Inserts a value to the set. Returns true if the set did not already contain the specified element.
+     */
+    public boolean insert(int val) {
+        if (mp.containsKey(val))
+            return false;
+        mp.put(val, nums.size());
+        nums.add(val);
+        return true;
+    }
+
+    /**
+     * Removes a value from the set. Returns true if the set contained the specified element.
+     */
+    public boolean remove(int val) {
+        if (!mp.containsKey(val))
+            return false;
+        //swap to last and delete
+        //judge whether is the same value
+        if (mp.get(val) < nums.size() - 1) {
+            int last = nums.get(nums.size() - 1);
+            nums.set(mp.get(val), last);
+            mp.put(last, mp.get(val));
+        }
+        mp.remove(val);
+        nums.remove(nums.size() - 1);
+        return true;
+    }
+
+    /**
+     * Get a random element from the set.
+     */
+    public int getRandom() {
+        return nums.get(rand.nextInt(nums.size()));
+    }
+}
 
 
 class WordDistance {
@@ -787,6 +856,7 @@ public class ArrayAlgoQuestion {
 
     //448  Find All Numbers Disappeared in an Array
     //but not O(1) space
+    //442
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> res = new ArrayList<Integer>();
         Set<Integer> set = new HashSet<Integer>();
@@ -1743,8 +1813,480 @@ public class ArrayAlgoQuestion {
     }
 
 
+    //78 subsets
+    //given a set of integer, nums,return all possible subsets
+
+    //backtracking
+    public void backtrackSubset(List<List<Integer>> res, List<Integer> path, int[] nums, int pos) {
+        res.add(new ArrayList<Integer>(path));
+        for (int i = pos; i < nums.length; ++i) {
+            path.add(nums[i]);
+            backtrackSubset(res, path, nums, i + 1);
+            path.remove(path.size() - 1);
+        }
+    }
+
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> path = new ArrayList<Integer>();
+        backtrackSubset(res, path, nums, 0);
+        return res;
+    }
+
+    //iterative way
+    public List<List<Integer>> subsetsIterative(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        res.add(new ArrayList<Integer>());
+        int n = nums.length;
+        for (int i = 0; i < n; ++i) {
+            int m = res.size();
+            for (int j = 0; j < m; ++j) {
+                List<Integer> tmp = new ArrayList<Integer>(res.get(j));
+                tmp.add(nums[i]);
+                res.add(tmp);
+            }
+        }
+        return res;
+    }
+
+    //bit manipulation
+    //This is the most clever solution that I have seen, the idea is that to give all the possible subsets, we just need to exhaust all the possible combinations of the numbers,
+    //and each number has only two possibilities, either in or not in a subset, and this can be represented using abit
+    //1 appears once in every two consecutive subsets,2 appear twice in  every four , 3 appear 4 in very eight subsets,
+    public List<List<Integer>> subsetsManipulation(int[] nums) {
+        int num_subset = 1 << nums.length;//like this sentence very much
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        for (int i = 0; i < nums.length; ++i) {
+            for (int j = 0; j < num_subset; ++j) {
+                if (res.size() < j + 1)
+                    res.add(new ArrayList<Integer>());
+                if (((j >> i) & 0x1) != 0)
+                    res.get(j).add(nums[i]);
+            }
+        }
+        return res;
+
+    }
+
+    //subsetII
+    public void backtrackingWithDup(List<List<Integer>> res, List<Integer> path, int pos, int[] nums) {
+        res.add(new ArrayList<Integer>(path));
+        for (int i = pos; i < nums.length; ++i) {
+            path.add(nums[i]);
+            backtrackingWithDup(res, path, i + 1, nums);
+            while (i < nums.length - 1 && nums[i] == nums[i + 1])//remove the duplicate;
+                i++;
+            path.remove(path.size() - 1);
+        }
+
+    }
+
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);//must sort first
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> path = new ArrayList<Integer>();
+        backtrackingWithDup(res, path, 0, nums);
+        return res;
+    }
+
+    public List<List<Integer>> subsetsWithDupIterative(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        int n = 0;
+        res.add(new ArrayList<Integer>());
+        for (int i = 0; i < nums.length; ++i) {
+            int start = (i >= 1 && nums[i] == nums[i + 1]) ? n : 0;//why not i<nums.length-1 && nums[i]==nums[i+1], 针对nums[i+1]的,你这种写法是针对i的，应该使用i-1 和i
+            n = res.size();
+            for (int j = start; j < n; ++j) {
+                List<Integer> tmp = new ArrayList<Integer>(res.get(j));
+                tmp.add(nums[i]);
+                res.add(tmp);
+            }
+        }
+        return res;
+    }
 
 
+    //167 two sum II input array is sorted
+    //you can still use hashmap, but it is a little slow
+    public int[] twoSumII(int[] nums, int target) {
+        int begin = 0, end = nums.length - 1;
+        int[] res = new int[2];
+        while (begin < end) {
+            if (nums[begin] + nums[end] == target) {
+                res[0] = begin;
+                res[1] = end;
+                break;
+            } else if (nums[begin] + nums[end] > target)
+                end--;
+            else
+                begin++;
+        }
+        return res;
+    }
+
+    //15 3sum 3 sum
+    //Three sum
+    //two sum de hashmap upgrade
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        int n = nums.length;
+        for (int i = 0; i < n - 2; ++i) {  //n-2 not n
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
+            int begin = i + 1, end = n - 1;
+            while (begin < end) {
+                int sum = nums[begin] + nums[i] + nums[end];
+                if (sum == 0) {
+                    List<Integer> index = new ArrayList<Integer>();
+                    index.add(nums[i]);
+                    index.add(nums[begin++]);
+                    index.add(nums[end--]);
+                    res.add(index);
+                    while (begin < end && nums[begin] == nums[begin - 1])
+                        begin++;
+                    while (begin < end && nums[end + 1] == nums[end])
+                        end--;
+                } else if (sum < 0)
+                    begin++;
+                else
+                    end--;
+            }
+        }
+        return res;
+    }
+
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        int n = nums.length;
+        for (int j = 0; j < n - 3; ++j) {
+            if (j > 0 && nums[j] == nums[j - 1])
+                continue;
+            if (nums[j] + nums[n - 1] + nums[n - 2] + nums[n - 3] < target) continue;
+            if (nums[j] + nums[j + 1] + nums[j + 2] + nums[j + 3] > target) break;
+            for (int i = j + 1; i < n - 2; ++i) {  //n-2 not n
+                if (i > j + 1 && nums[i] == nums[i - 1])
+                    continue;
+                int begin = i + 1, end = n - 1;
+                while (begin < end) {
+                    int sum = nums[j] + nums[begin] + nums[i] + nums[end];
+                    if (sum == target) {
+                        List<Integer> index = new ArrayList<Integer>();
+                        index.add(nums[j]);
+                        index.add(nums[i]);
+                        index.add(nums[begin++]);
+                        index.add(nums[end--]);
+                        res.add(index);
+                        while (begin < end && nums[begin] == nums[begin - 1])
+                            begin++;
+                        while (begin < end && nums[end + 1] == nums[end])
+                            end--;
+                    } else if (sum < target)
+                        begin++;
+                    else
+                        end--;
+                }
+            }
+        }
+        return res;
+    }
+
+    //16 3sum cloest
+    public int threeSumClosest(int[] nums, int target) {
+        int n = nums.length;
+        Arrays.sort(nums);
+        int res = nums[0] + nums[1] + nums[2];
+        for (int i = 0; i < n - 2; ++i) {
+            int begin = i + 1, end = n - 1;
+            while (begin < end) {
+                int sum = nums[i] + nums[begin] + nums[end];
+                if (Math.abs(sum - target) < Math.abs(res - target))
+                    res = sum;
+                if (sum > target)
+                    end--;
+                else if (sum < target)
+                    begin++;
+                else
+                    return target;
+            }
+        }
+        return res;
+    }
+
+    //31 next permutation
+
+    public void nextPermutation(int[] nums) {
+        int n = nums.length;
+        int j = n - 1;
+        while (j > 0) {
+            if (nums[j] > nums[j - 1])
+                break;
+            j--;
+        }
+        // 1 2 5 4 3
+        //nums is in reverse order
+        if (j == 0) {
+            Arrays.sort(nums);
+            return;
+        }
+        //find the minimum maximum value
+        int key = j - 1;
+        int index = j;//iterator
+        int res = nums[index];//只能用这种方式，不能用res=nums[index]-nums[key],has bugs
+        while (index < n) {
+            if (nums[index] > nums[key] && nums[index] < res) {
+                res = nums[index];
+                j = index;
+            }
+            index++;
+        }
+        swap(nums, key, j);
+        Arrays.sort(nums, key + 1, n);
+    }
+
+
+    public void PrevPermutation(int[] nums) {
+        if (nums.length <= 1)
+            return;
+        int n = nums.length;
+        int j = n - 1;
+        while (j > 0) {
+            if (nums[j] < nums[j - 1])
+                break;
+        }
+        if (j == 0) {
+            for (int i = 0; i < n / 2; ++i)
+                swap(nums, i, n - i - 1);
+            return;
+            //Arrays.sort(nums,Collections.reverseOrder());
+        }
+        int key = j - 1;
+        int index = j;
+        int maximinValue = nums[index];
+        while (index < n) {
+            if (nums[index] < key && nums[index] > maximinValue) {
+                maximinValue = nums[index];
+                j = index;
+            }
+        }
+        swap(nums, key, j);
+        Arrays.sort(nums, j, n);//reverse order
+
+    }
+
+    //55 jump game
+    public boolean canJump(int[] nums) {
+        int n = nums.length;
+        int optimalIndex = 0;
+        while (optimalIndex < n - 1) {
+            if (nums[optimalIndex] == 0)
+                return false;
+            int saveIndex = optimalIndex;
+            int maxReach = nums[saveIndex + 1] + saveIndex + 1;
+            for (int j = 1; j <= nums[saveIndex]; ++j) {
+                if (maxReach <= nums[saveIndex + j] + saveIndex + j) {
+                    maxReach = nums[saveIndex + j] + saveIndex + j;
+                    optimalIndex = j;
+                    if (maxReach >= n - 1)
+                        return true;
+                }
+            }
+        }
+        return true;
+    }
+
+    //optimal way
+    public boolean canJumpBetter(int[] nums) {
+        int n = nums.length, maxReach = 0, i = 0;
+        for (; i < n && i <= maxReach && maxReach < n - 1; ++i) {
+            maxReach = Math.max(maxReach, nums[i] + i);
+        }
+        return maxReach >= n - 1;
+    }
+
+
+    //34 search for a range, did not pass linkedin
+    public int lowerBound(int[] nums, int target) {
+        int index = 0, begin = 0, end = nums.length - 1;
+        if (nums[end] < target)
+            return end + 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] >= target) {
+                end = mid;
+                index = end;
+            } else {
+                begin = mid + 1;
+                index = begin;
+            }
+        }
+        return index;
+    }
+
+    public int upperBound(int[] nums, int target) {
+        int index = 0, begin = 0, end = nums.length - 1;//pos must be 0, think when there is only one element here
+        if (nums[end] <= target)
+            return end + 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] > target) {
+                end = mid;
+                index = end;
+            } else {
+                begin = mid + 1;
+                index = begin;
+            }
+        }
+        return index;
+    }
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] res = {-1, -1};
+        if (nums == null || nums.length == 0)
+            return res;
+        int index1 = lowerBound(nums, target);
+        if (index1 == -1 || index1 == nums.length || nums[index1] != target) {
+            return res;
+        }
+        int index2 = upperBound(nums, target);
+        res[0] = index1;
+        res[1] = index2 - 1;
+        return res;
+    }
+
+    //linkedin search range
+    //a little hard
+    //a lot of corn case
+    //The good point here is the lower_bound and the search for (target+1),But I think (target + 1) may caused overflow...
+    public int[] searchRangeOneBinarySearch(int[] nums, int target) {
+        int[] res = {-1, -1};
+        if (nums == null || nums.length == 0)
+            return res;
+        int begin = 0, end = nums.length - 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] > target)
+                end = mid;
+            else if (nums[mid] < target)
+                begin = mid + 1;
+            else {
+                res[0] = begin;
+                res[1] = end;
+                while (res[0] < mid) {
+                    int mid1 = (mid - res[0]) / 2 + res[0];
+                    if (nums[mid1] == target)
+                        mid = mid1;
+                    else
+                        res[0] = mid1 + 1;
+                }
+                while (mid < res[1]) {
+                    int mid1 = (res[1] - mid) / 2 + mid;
+                    if (nums[mid1] == target)
+                        mid = mid1 + 1;
+                    else
+                        res[1] = mid1;
+                }
+                if (nums[res[1]] != target)
+                    res[1]--;//does not equal to target
+                break;
+            }
+        }
+        if (res[0] == -1 && nums[begin] == target) {
+            res[0] = res[1] = begin;
+        }
+        return res;
+
+    }
+
+    //289 game of life
+
+    public int check(int[][] save, int x, int y) {
+        int cnt = 0;
+        for (int i = x - 1; i <= x + 1; ++i) {
+            if (i < 0 || i >= save.length) continue;
+            for (int j = y - 1; j <= y + 1; ++j) {
+                if (j >= 0 && j < save[0].length) {
+                    if (!(x == i && y == j)) {
+                        if (save[i][j] == 1)
+                            cnt++;
+                    }
+                }
+            }
+        }
+        return cnt;
+    }
+
+    public void gameOfLife(int[][] board) {
+        if (board.length == 0 || board[0].length == 0)
+            return;
+        int m = board.length, n = board[0].length;
+        int[][] save = new int[m][n];
+        for (int i = 0; i < m; ++i) {
+            save[i] = board[i].clone();
+        }
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                int cnt = check(save, i, j);
+                if (board[i][j] == 1 && (cnt < 2 || cnt > 3))
+                    board[i][j] = 0;
+                else if (board[i][j] == 0 && cnt == 3)
+                    board[i][j] = 1;
+            }
+        }
+    }
+
+    //interesting question
+    //- 00  dead (next) <- dead (current)
+    //- 01  dead (next) <- live (current)
+    //- 10  live (next) <- dead (current)
+    //- 11  live (next) <- live (current)
+    //highest vote algo
+    /*
+    To get the current state, simply do
+
+    board[i][j] & 1
+    To get the next state, simply do
+    board[i][j] >> 1
+     */
+    public void gameOfLifeOptimal(int[][] board) {
+        if (board == null || board.length == 0) return;
+        int m = board.length, n = board[0].length;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int lives = liveNeighbors(board, m, n, i, j);
+
+                // In the beginning, every 2nd bit is 0;
+                // So we only need to care about when will the 2nd bit become 1.
+                if (board[i][j] == 1 && lives >= 2 && lives <= 3) {
+                    board[i][j] = 3; // Make the 2nd bit 1: 01 ---> 11
+                }
+                if (board[i][j] == 0 && lives == 3) {
+                    board[i][j] = 2; // Make the 2nd bit 1: 00 ---> 10
+                }
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                board[i][j] >>= 1;  // Get the 2nd state.
+            }
+        }
+    }
+
+    public int liveNeighbors(int[][] board, int m, int n, int i, int j) {
+        int lives = 0;
+        for (int x = Math.max(i - 1, 0); x <= Math.min(i + 1, m - 1); x++) {
+            for (int y = Math.max(j - 1, 0); y <= Math.min(j + 1, n - 1); y++) {
+                lives += board[x][y] & 1;
+            }
+        }
+        lives -= board[i][j] & 1;
+        return lives;
+    }
 
     //hard part
     //33 search in rotated array
@@ -1770,6 +2312,364 @@ public class ArrayAlgoQuestion {
     }
     //81 search in rotated array II;
     //just add  else end--;
+
+
+    //O(nlogn) sort and find
+    //set o(n) but use extra space
+    //two pointers
+    public int findDuplicate(int[] nums) {
+        if (nums.length > 1) {
+            int slow = nums[0];
+            int fast = nums[nums[0]];
+            while (slow != fast) {
+                slow = nums[slow];
+                fast = nums[nums[fast]];
+            }
+            fast = 0;
+            while (fast != slow) {
+                fast = nums[fast];
+                slow = nums[slow];
+            }
+            return slow;
+        }
+        return -1;
+    }
+
+
+    //128 longest consecutive sequence
+    public int longestConsecutive(int[] nums) {
+        Set<Integer> set = new HashSet<Integer>();
+        int maxLength = 0;
+        for (int x : nums)
+            set.add(x);
+        for (int x : nums) {
+            if (!set.contains(x))
+                continue;
+            set.remove(x);
+            int pre = x - 1;
+            int next = x + 1;
+            while (set.contains(pre)) {
+                set.remove(pre);
+                pre--;
+            }
+            while (set.contains(next)) {
+                set.remove(next);
+                next++;
+            }
+            maxLength = Math.max(maxLength, next - pre - 1);
+        }
+        return maxLength;
+    }
+
+    //57 insert interval
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        List<Interval> res = new ArrayList<Interval>();
+        int i = 0, n = intervals.size();
+        while (i < n) {
+            if (intervals.get(i).end < newInterval.start)
+                res.add(intervals.get(i++));
+            else
+                break;
+        }
+        while (i < n && intervals.get(i).start <= newInterval.end) {
+            newInterval.start = Math.min(intervals.get(i).start, newInterval.start);
+            newInterval.end = Math.max(intervals.get(i).end, newInterval.end);
+            i++;
+        }
+        res.add(newInterval);
+        while (i < n) {
+            res.add(intervals.get(i++));
+        }
+        return res;
+    }
+
+    //56 merge interval
+    public List<Interval> merge(List<Interval> intervals) {
+        List<Interval> res = new ArrayList<Interval>();
+//        intervals.sort(new Comparator<Interval>() {
+//            public int compare(Interval o1, Interval o2) {
+//                return Integer.compare(o1.start,o2.start);
+//            }
+//        });
+        intervals.sort((Interval o1, Interval o2) -> o1.start - o2.start);
+        int i = 1, n = intervals.size();
+        if (n == 0)
+            return res;
+        res.add(intervals.get(0));
+        while (i < n) {
+            if (res.get(res.size() - 1).end >= intervals.get(i).start) {
+                res.get(res.size() - 1).end = Math.max(res.get(res.size() - 1).end, intervals.get(i).end);
+            } else
+                res.add(intervals.get(i));
+            i++;
+        }
+        return res;
+    }
+
+    //42 trapping rain water
+    public int trap(int[] height) {
+        int begin = 0, n = height.length;
+        int res = 0, minHeight = 0;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        for (int i = 1; i < n; ++i) {
+            left[i] = Math.max(left[i - 1], height[i - 1]);
+            right[n - 1 - i] = Math.max(right[n - i], height[n - i]);
+        }
+        for (int i = 0; i < n; ++i) {
+            minHeight = Math.min(left[i], right[i]);
+            res += Math.max(0, minHeight - height[i]);
+        }
+        return res;
+    }
+
+    //save more space
+    public int trapSaveSpace(int[] height) {
+        int begin = 0, n = height.length, end = n - 1;
+        int res = 0, leftHeight = 0, rightHeight = 0;
+        while (begin < end) {
+            leftHeight = Math.max(leftHeight, height[begin]);
+            rightHeight = Math.max(rightHeight, height[end]);
+            int minHeight = Math.min(leftHeight, rightHeight);
+            if (height[begin] < height[end]) {
+                res += Math.max(0, minHeight - height[begin++]);
+            } else {
+                res += Math.max(0, minHeight - height[end--]);
+            }
+        }
+        return res;
+    }
+
+    //more concise
+    public int trapSaveSpaceConcise(int[] height) {
+        int begin = 0, n = height.length, end = n - 1;
+        int res = 0, leftHeight = 0, rightHeight = 0;
+        while (begin < end) {
+            if (height[begin] < height[end]) {
+                leftHeight = Math.max(leftHeight, height[begin]);
+                res += Math.max(0, leftHeight - height[begin++]);
+            } else {
+                rightHeight = Math.max(rightHeight, height[end]);
+                res += Math.max(0, rightHeight - height[end--]);
+            }
+        }
+        return res;
+    }
+
+    //41 first missing positive
+    //sort and find
+    public int firstMissingPositive(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        int cnt = 1;
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] < 1 || (i > 0 && nums[i - 1] == nums[i]))//duplicate
+                continue;
+            if (nums[i] != cnt)
+                return cnt;
+            cnt++;
+        }
+        return cnt;
+    }
+
+    //O(N) time and save space
+    //coner case 1,2,3
+    //conner case 0,1,1,2,2//duplicate
+    public int firstMissingPositiveSaveSpace(int[] nums) {
+        int n = nums.length;
+        for (int i = 0; i < n; ++i) {
+            while (nums[i] >= 1 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {
+                swap(nums, nums[i] - 1, i);
+            }
+        }
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] != i + 1)
+                return i + 1;
+        }
+        return n + 1;
+    }
+
+    //84 largest rectangle in histogram
+    public int largestRectangleArea(int[] heights) {
+        Stack<Integer> stk = new Stack<>();//to store the index
+        int n = heights.length, res = 0;
+        for (int i = 0; i <= n; ++i) {
+            int h = (i == n ? 0 : heights[i]);
+            while (!stk.isEmpty() && heights[stk.peek()] > h) {
+                int height = heights[stk.pop()];
+                int index = stk.isEmpty() ? i : i - 1 - stk.peek();//stk.peek() is also not in the range, and i is not in the range
+                res = Math.max(res, height * index);
+            }
+            stk.push(i);
+        }
+        return res;
+    }
+
+    // second; you have to handle the 1,2,3,4,5 case
+    public int largestRectangleArea2(int[] heights) {
+        Stack<Integer> stk = new Stack<>();//to store the index
+        int n = heights.length, res = 0;
+        for (int i = 0; i < n; ++i) {
+            while (!stk.isEmpty() && heights[stk.peek()] > heights[i]) {
+                int height = heights[stk.pop()];
+                int index = stk.isEmpty() ? i : i - 1 - stk.peek();
+                ;
+                res = Math.max(res, height * index);
+            }
+            stk.push(i);
+        }
+        while (!stk.isEmpty()) {
+            int height = heights[stk.pop()];
+            int index = stk.isEmpty() ? n : n - 1 - stk.peek();
+            res = Math.max(res, height * index);
+        }
+        return res;
+    }
+
+    //85 maximal rectangle
+    public int maximalRectangle(char[][] matrix) {
+        if (matrix.length == 0 || matrix[0].length == 0)
+            return 0;
+        int res = 0, m = matrix.length, n = matrix[0].length;
+        int[][] dp = new int[m][n];
+        for (int i = 0; i < n; ++i) {
+            dp[0][i] = matrix[0][i] == '1' ? 1 : 0;
+        }
+        res = Math.max(res, largestRectangleArea(dp[0]));
+        for (int i = 1; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                dp[i][j] = matrix[i][j] == '0' ? 0 : 1 + dp[i - 1][j];
+            }
+            res = Math.max(res, largestRectangleArea(dp[i]));
+        }
+        return res;
+    }
+
+    //best time to but and sell stokc IIi
+    // lt 123
+    public int maxProfitIIi(int[] prices) {
+        //two arrays
+        int n = prices.length;
+        int[] first = new int[n + 1];
+        int[] second = new int[n + 1];
+        int val = Integer.MAX_VALUE;
+        int res = 0;
+        for (int i = 1; i <= n; ++i) {
+            val = Math.min(val, prices[i - 1]);
+            first[i] = Math.max(first[i - 1], prices[i - 1] - val);//concern with last statement, you can use n+1
+        }
+        val = 0;
+        for (int i = n - 1; i >= 0; --i) {
+            val = Math.max(val, prices[i]);
+            second[i] = Math.max(second[i + 1], val - prices[i]);
+            res = Math.max(res, first[i] + second[i]);
+        }
+        return res;
+    }
+
+    //45 jump gameII
+    public int jumpII(int[] nums) {
+        if (nums.length <= 1)
+            return 0;
+        int n = nums.length;
+        int cnt = 0, optimalIndex = 0;
+        while (optimalIndex < n - 1) {
+            int index = optimalIndex + 1, maxReach = nums[index] + index;
+            for (int j = 1; j <= nums[optimalIndex]; ++j) {
+                if (optimalIndex + j >= n - 1) {
+                    cnt++;
+                    return cnt;
+                }
+                if (nums[optimalIndex + j] + j + optimalIndex >= maxReach) {
+                    index = optimalIndex + j;
+                    maxReach = nums[index] + index;
+                }
+            }
+            cnt++;
+            optimalIndex = index;
+        }
+        return cnt;
+    }
+
+    //median of two sorted arrays
+    //The overall run time complexity should be O(log (m+n)).
+    public double findkth(int[] nums1, int start1, int[] nums2, int start2, int k) {
+        if (nums1.length - start1 > nums2.length - start2)
+            return findkth(nums2, start2, nums1, start1, k);
+        if (start1 == nums1.length)
+            return nums2[start2 + k - 1];//in case of index boundary overflow
+        if (k == 1)
+            return Math.min(nums1[start1], nums2[start2]);
+        int pa = Math.min(k / 2, nums1.length - start1);
+        int pb = k - pa;
+        if (nums1[start1 + pa - 1] < nums2[start2 + pb - 1])
+            return findkth(nums1, start1 + pa, nums2, start2, k - pa);
+        else if (nums1[start1 + pa - 1] > nums2[start2 + pb - 1])
+            return findkth(nums1, start1, nums2, start2 + pb, k - pb);
+        return nums1[start1 + pa - 1];//already find the median
+    }
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length == 0 && nums2.length == 0)
+            return 0.0;
+        int m = nums1.length, n = nums2.length;
+        int l = (m + n + 1) >> 1;
+        int r = (m + n + 2) >> 1;
+        return (findkth(nums1, 0, nums2, 0, l) + findkth(nums1, 0, nums2, 0, r)) / 2.0;
+    }
+    //merge two sorted arrays O(m+n)
+    //and then find
+
+    //127 word ladder
+    // yuu can spped up, think about it
+    public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
+        //remove the used word
+        int res = 2;
+        if (beginWord == endWord)
+            return 1;
+        wordList.remove(beginWord);
+        wordList.remove(endWord);
+        Queue<String> q = new LinkedList<>();
+        q.offer(beginWord);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            while (size-- > 0) {
+                StringBuffer cur = new StringBuffer(q.poll());
+                for (int i = 0; i < cur.length(); ++i) {
+                    char p = cur.charAt(i);
+                    for (char c = 'a'; c <= 'z'; ++c) {
+                        cur.setCharAt(i, c);
+                        if (cur.toString().equals(endWord))
+                            return res;
+                        if (wordList.contains(cur.toString())) {
+                            q.offer(cur.toString());
+                            wordList.remove(cur.toString());
+                        }
+                    }
+                    cur.setCharAt(i, p);
+                }
+            }
+            res++;
+        }
+        return 0;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
