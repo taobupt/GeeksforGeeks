@@ -784,7 +784,7 @@ public class Tree {
         if (root == null)
             return;
         inorder(reverse ? root.right : root.left, target, reverse, stk);
-        if ((reverse && root.val <= target) || (!reverse && root.val >= target))
+        if ((reverse && root.val <= target) || (!reverse && root.val > target))
             return;
         stk.push(root.val);
         inorder(reverse ? root.left : root.right, target, reverse, stk);
@@ -1098,6 +1098,26 @@ public class Tree {
         int rdepth = getRight(root.right);
         return ldepth == rdepth ? (1 << ldepth) - 1 : countNodes(root.left) + countNodes(root.right);
     }
+
+    //you can also use isbalanced to solve
+    public int BalancedHeight(TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = BalancedHeight(root.left);
+        int right = BalancedHeight(root.right);
+        if (left < 0 || right < 0 || left != right)
+            return -1;
+        else return left + 1;
+    }
+
+    public int countNodesAnother(TreeNode root) {
+        if (root == null)
+            return 0;
+        int num = BalancedHeight(root);
+        return num == -1 ? 1 + countNodesAnother(root.left) + countNodesAnother(root.right) : (1 << num) - 1;//(1<<num)-1 can't write the 1<<num-1;
+    }
+
+
 
 
     //count the last level of complement tree
@@ -2085,6 +2105,23 @@ public class Tree {
         }
         return true;
     }
+
+    //by stack
+    public boolean verifyPreorderByStack(int[] preorder) {
+        int n = preorder.length;
+        Stack<Integer> stk = new Stack<>();
+        int minValue = Integer.MIN_VALUE;
+        for (int i = 0; i < n; ++i) {
+            if (preorder[i] < minValue)
+                return false;
+            while (!stk.isEmpty() && preorder[i] > stk.peek()) {
+                minValue = stk.pop();
+            }
+            stk.push(preorder[i]);
+        }
+        return true;
+    }
+
 
     //verify postorder sequence in bst
     public boolean verifyPostorder(int[] postorder) {

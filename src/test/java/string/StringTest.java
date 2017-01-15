@@ -39,5 +39,19 @@ public class StringTest {
         System.out.println(sq.reverseStringSolution2("hello"));
     }
 
+    @Test
+    public void testNumberofSegement() {
+        System.out.println(sq.countSegments("Hello, my name is John     hah     haha       haa"));
+    }
+
+    @Test
+    public void testshiftGroup() {
+        String[] strs = {"abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"};
+        sq.groupStrings(strs);
+
+
+    }
+
+
 
 }

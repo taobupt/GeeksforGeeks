@@ -1,8 +1,6 @@
 package string;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by Tao on 1/13/2017.
@@ -205,6 +203,223 @@ public class StringQuestion {
         //if you don't want to use sb.reverse you can use sb.insert(0,char)// but you have to shift other character aways
         //Character.getNumericValue()
     }
+
+    //293 flip game
+    public List<String> generatePossibleNextMove(String s) {
+        StringBuffer sb = new StringBuffer(s);
+        List<String> res = new ArrayList<>();
+        int n = s.length();
+        for (int i = 1; i < n; ++i) {
+            if (sb.substring(i - 1, i + 1).equals("++")) {
+                sb.setCharAt(i, '-');
+                sb.setCharAt(i - 1, '-');
+                res.add(sb.toString());
+                sb.setCharAt(i, '+');
+                sb.setCharAt(i - 1, '+');
+            }
+        }
+        return res;
+    }
+
+    //345 reverse vowels of a string
+    public boolean isVowels(char c) {
+        char cc = Character.toLowerCase(c);
+        return cc == 'a' || cc == 'e' || cc == 'i' || cc == 'o' || cc == 'u';
+    }
+
+    public String reverseVowels(String s) {
+        StringBuffer sb = new StringBuffer(s);
+        int begin = 0, end = s.length() - 1;
+        while (begin < end) {
+            while (begin < end && !isVowels(sb.charAt(end)))
+                end--;
+            while (begin < end && !isVowels(sb.charAt(begin)))
+                begin++;
+            //here you can add begin<end or nothing, you think a little
+            char c = sb.charAt(begin);
+            sb.setCharAt(begin++, sb.charAt(end));
+            sb.setCharAt(end--, c);
+        }
+        return sb.toString();
+    }
+
+    //28 implement strStr()
+    public int strStr(String haystack, String needle) {
+        int n = haystack.length(), m = needle.length();
+        for (int i = 0; i <= n - m; ++i) {//do not forget the n-m not n
+            if (haystack.substring(i, i + m).equals(needle)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //or you can compare character by character
+    public int strStrCharacterByCharacter(String haystack, String needle) {
+        int n = haystack.length(), m = needle.length();
+        for (int i = 0; i <= n - m; ++i) {//do not forget the n-m not n
+            int j = i;
+            for (; j < i + m; ++j) {
+                if (haystack.charAt(j) != needle.charAt(j - i))
+                    break;
+            }
+            if (j == i + m)
+                return i;
+        }
+        return -1;
+    }
+
+    //14 longest common prefix
+    public String longestCommonPrefix(String[] strs) {
+        int n = strs.length;
+        if (n == 0 || strs[0].length() == 0)
+            return "";
+        String res = "";
+        int m = strs[0].length();
+        for (int i = 1; i <= m; ++i) {
+            res = strs[0].substring(0, i);
+            for (int j = 1; j < n; ++j) {
+                if (strs[j].length() >= res.length() && strs[j].substring(0, res.length()).equals(res))
+                    continue;
+                else
+                    return res.substring(0, res.length() - 1);
+            }
+        }
+        return res;
+    }
+
+    //you can use some funciton of java
+    public String longestCommonPrefixConcise(String[] strs) {
+        if (strs.length == 0) return "";
+        String pre = strs[0];
+        for (int i = 1; i < strs.length; i++)
+            while (strs[i].indexOf(pre) != 0)
+                pre = pre.substring(0, pre.length() - 1);
+        return pre;
+    }
+
+    //434 number of segments in a string
+    public int countSegments(String s) {
+        String[] res = s.split(" ");
+        int cnt = 0;
+        for (String str : res) {
+            if (!str.equals(""))
+                cnt++;
+        }
+        return cnt;
+    }
+
+    //another version
+    //2 ms version
+    public int countSegmentsNotUseRegex(String s) {
+        int n = s.length();
+        int begin = 0, cnt = 0;
+        while (begin < n) {
+            while (begin < n && Character.isSpaceChar(s.charAt(begin)))
+                begin++;
+            if (begin < n)
+                cnt++;
+            while (begin < n && !Character.isSpaceChar(s.charAt(begin)))
+                begin++;
+        }
+        return cnt;
+    }
+
+    //459 repeated substring pattern
+    //you can sorted by brute force
+    //pick every substring until n/2 and then check for all possibility
+    //The length of the repeating substring must be a divisor of the length of the input string
+    public boolean repeatedSubstringPattern(String str) {
+        int n = str.length();
+        for (int i = n / 2; i >= 1; --i) {
+            if (n % i == 0) {
+                int m = n / i;
+                String sub = str.substring(0, i);
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < m; ++j) {
+                    sb.append(sub);
+                }
+                if (sb.toString().equals(str))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    //249 group shifted strings
+    public String changeStandard(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        int len = sb.charAt(0) - 'a', n = s.length();
+        for (int i = 0; i < n; ++i) {
+            sb.setCharAt(i, (char) ((sb.charAt(i) - len + 26 - 'a') % 26 + 'a'));
+        }
+        return sb.toString();
+    }
+
+    public List<List<String>> groupStrings(String[] strings) {
+        Map<String, List<String>> mp = new HashMap<>();
+        int n = strings.length;
+        for (int i = 0; i < n; ++i) {
+            String sb = changeStandard(strings[i]);
+            if (mp.containsKey(sb)) {
+                mp.get(sb).add(strings[i]);
+            } else {
+                List<String> tmp = new ArrayList<>();
+                tmp.add(strings[i]);
+                mp.put(sb, tmp);
+            }
+        }
+        List<List<String>> res = new ArrayList<>();
+        for (Map.Entry<String, List<String>> entry : mp.entrySet()) {
+            res.add(entry.getValue());
+        }
+        return res;
+    }
+
+    //157 read N characters given read4
+    private int read4(char[] buf) {
+        return 0;
+    }
+
+    public int read(char[] buf, int n) {
+        char[] buffer = new char[4];
+        int res = 0;
+        while (n > res) {
+            int num = read4(buffer);
+            int length = Math.min(num, n - res);
+            for (int i = 0; i < length; ++i) {
+                buf[res + i] = buffer[i];
+            }
+            res += length;
+            if (num < 4)
+                break;
+        }
+        return res;
+    }
+
+    //158 read many times//    interesting
+    private int buffCnt = 0;
+    private int buffPtr = 0;
+    private char[] buff = new char[4];
+
+    public int readII(char[] buf, int n) {
+        int cnt = 0;
+        boolean hasNext = true;
+        while (cnt < n && hasNext) {
+            if (buffPtr == 0)
+                buffCnt = read4(buff);
+            if (buffCnt < 4)
+                hasNext = false;
+            while (cnt < n && buffPtr < buffCnt) {
+                buf[cnt++] = buff[buffPtr++];
+            }
+            if (buffPtr == buffCnt)
+                buffPtr = 0;
+        }
+        return cnt;
+    }
+
+
 
 
 }
