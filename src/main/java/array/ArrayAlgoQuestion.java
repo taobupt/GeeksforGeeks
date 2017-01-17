@@ -1896,7 +1896,7 @@ public class ArrayAlgoQuestion {
         int n = 0;
         res.add(new ArrayList<Integer>());
         for (int i = 0; i < nums.length; ++i) {
-            int start = (i >= 1 && nums[i] == nums[i + 1]) ? n : 0;//why not i<nums.length-1 && nums[i]==nums[i+1], 针对nums[i+1]的,你这种写法是针对i的，应该使用i-1 和i
+            int start = (i >= 1 && nums[i] == nums[i - 1]) ? n : 0;//why not i<nums.length-1 && nums[i]==nums[i+1], 针对nums[i+1]的,你这种写法是针对i的，应该使用i-1 和i
             n = res.size();
             for (int j = start; j < n; ++j) {
                 List<Integer> tmp = new ArrayList<Integer>(res.get(j));

@@ -419,6 +419,29 @@ public class StringQuestion {
         return cnt;
     }
 
+    //76 Minimum Window Substring
+    public String minWindow(String s, String t) {
+        int m = s.length(), cnt = t.length(), n = t.length(), begin = 0, end = 0, start = 0, length = Integer.MAX_VALUE;
+        char[] mp = new char[128];
+        for (int i = 0; i < n; ++i) {
+            mp[t.charAt(i)]++;
+        }
+        while (end < m) {
+            if (mp[s.charAt(end++)]-- > 0)
+                cnt--;
+            while (cnt == 0) {
+                if (end - begin < length) {
+                    length = end - begin;
+                    start = begin;
+                }
+                if (++mp[s.charAt(begin++)] > 0)
+                    cnt++;
+            }
+        }
+        return length == Integer.MAX_VALUE ? "" : s.substring(start, length + start);
+
+    }
+
 
 
 
