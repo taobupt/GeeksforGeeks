@@ -2655,6 +2655,52 @@ public class ArrayAlgoQuestion {
     }
 
 
+    //485 max consecutive ones
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int res = 0, n = nums.length, begin = 0, end = 0;
+        while (end < n) {
+            while (end < n && nums[end] == 0)
+                end++;
+            begin = end;
+            while (end < n && nums[end] == 1)
+                end++;
+            res = Math.max(res, end - begin);
+        }
+
+        return res;
+    }
+
+    //487 max consecutive ones
+    public int findMaxConsecutiveOnesII(int[] nums) {
+        int res = 0, n = nums.length, begin = 0, end = 0;
+        List<Interval> inter = new ArrayList<>();
+        while (end < n) {
+            while (end < n && nums[end] == 0)
+                end++;
+            begin = end;
+            while (end < n && nums[end] == 1)
+                end++;
+            inter.add(new Interval(begin, end - 1));
+            res = Math.max(res, end - begin);
+        }
+        if (res == n)
+            return n;
+        int m = inter.size();
+        boolean flipped = false;
+        for (int i = 1; i < m; ++i) {
+            if (inter.get(i).start == inter.get(i - 1).end + 2) {
+
+                int newLength = inter.get(i).end - inter.get(i).start + 1 + inter.get(i - 1).end - inter.get(i - 1).start + 2;
+                if (newLength > res) {
+                    res = newLength;
+                    flipped = true;// flip should here, not in the line 2692, which is the last case I can not pass
+                }
+            }
+        }
+        return flipped ? res : res + 1;
+    }
+
+
 
 
 
