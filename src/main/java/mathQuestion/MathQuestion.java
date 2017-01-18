@@ -33,12 +33,15 @@ public class MathQuestion {
     public boolean isReflected(int[][] points) {
         int minX = Integer.MAX_VALUE, maxX = Integer.MIN_VALUE;
         int n = points.length;
+        int same = 0;
         Map<Double, ArrayList<Integer>> map = new HashMap<>();
         double potentialLine = 0;
         for (int i = 0; i < n; ++i) {
             minX = Math.min(minX, points[i][0]);
             maxX = Math.max(maxX, points[i][0]);
             if (map.containsKey(1.0 * points[i][0])) {
+                if (map.get(1.0 * points[i][0]).contains(points[i][1]))
+                    same++;
                 map.get(1.0 * points[i][0]).add(points[i][1]);
             } else {
                 ArrayList<Integer> tmp = new ArrayList<>();
@@ -49,7 +52,11 @@ public class MathQuestion {
         potentialLine = (maxX + minX) / 2.0;
         int onTheLine = 0;
         int leftcnt = 0;
+        Map<Integer, Integer> vis = new HashMap<>();
         for (int i = 0; i < n; ++i) {
+            if (vis.containsKey(points[i][0]) && vis.get(points[i][0]) == points[i][1])
+                continue;
+            vis.put(points[i][0], points[i][1]);
             if (1.0 * points[i][0] < potentialLine) {
                 leftcnt++;
                 double reflectionx = 2 * potentialLine - points[i][0];
@@ -68,7 +75,28 @@ public class MathQuestion {
                 onTheLine++;
             }
         }
-        return 2 * leftcnt == (n - onTheLine);
+        return 2 * leftcnt == (n - onTheLine - same);
+    }
+
+    //revised
+    public boolean isReflectedConcise(int[][] points) {
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        Set<String> set = new HashSet<>();
+        for (int[] p : points) {
+            max = Math.max(max, p[0]);
+            min = Math.min(min, p[0]);
+            String str = p[0] + "a" + p[1];
+            set.add(str);
+        }
+        int sum = max + min;//potential line;
+        for (int[] p : points) {
+            //check every points
+            String str = (sum - p[0]) + "a" + p[1];
+            if (!set.contains(str))
+                return false;
+        }
+        return true;
     }
 
 }

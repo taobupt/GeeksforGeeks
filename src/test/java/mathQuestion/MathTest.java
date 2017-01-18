@@ -28,7 +28,7 @@ public class MathTest {
 
     @Test
     public void testReflection() {
-        int[][] points = {{1, 1}, {-1, 1}};
-        mq.isReflected(points);
+        int[][] points = {{0, 0}, {0, 0}};
+        System.out.println(mq.isReflected(points));
     }
 }

@@ -2701,6 +2701,52 @@ public class ArrayAlgoQuestion {
     }
 
 
+    //163 missing ranges
+    //test case [-2147483648,-2147483648,0,2147483647,2147483647]
+    //-2147483648
+    //  2147483647
+    public List<String> findMissingRanges(int[] nums, int lower, int upper) {
+        int n = nums.length, index = 1;
+        long start = lower, end = lower;
+        List<String> res = new ArrayList<>();
+        if (n == 0) {
+            res.add(lower == upper ? "" + lower : lower + "->" + upper);
+            return res;
+        }
+        if (nums[0] != lower) {
+            res.add(nums[0] == lower + 1 ? "" + lower : lower + "->" + (nums[0] - 1));
+
+        }
+        while (index < n) {
+            if ((long) nums[index] != (long) (nums[index - 1]) + 1) {
+                start = (long) nums[index - 1] + 1;
+                end = (long) nums[index] - 1;
+                if (start <= end)
+                    res.add(start == end ? "" + start : start + "->" + end);
+            }
+            index++;
+        }
+        if (nums[n - 1] != upper) {
+            res.add(nums[n - 1] == upper - 1 ? "" + upper : (nums[n - 1] + 1) + "->" + upper);
+        }
+        return res;
+    }
+
+    //370 range addition
+    public int[] getModifiedArray(int length, int[][] updates) {
+        int[] res = new int[length];
+        for (int[] p : updates) {
+            res[p[0]] += p[2];
+            if (p[1] < length - 1)
+                res[p[1] + 1] -= p[2];
+        }
+        int sum = 0;
+        for (int i = 1; i < length; ++i) {
+            res[i] += res[i - 1];
+        }
+        return res;
+    }
+
 
 
 
