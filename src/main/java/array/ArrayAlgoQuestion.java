@@ -384,7 +384,7 @@ public class ArrayAlgoQuestion {
         for (int j = mid + 1; j <= right; ++j) {
             sum += A[j];
             if (rightsum < sum) {
-                right = sum;
+                rightsum = sum;
             }
         }
         return leftsum + rightsum;
