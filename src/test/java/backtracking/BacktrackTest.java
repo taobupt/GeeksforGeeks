@@ -7,6 +7,8 @@ package backtracking;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.*;
 
 import static org.junit.Assert.*;
@@ -14,6 +16,23 @@ import static org.junit.Assert.*;
 public class BacktrackTest {
 
     Backtrack bk = null;
+
+    public List<String> readTestCase(String fileName) {
+        List<String> res = new ArrayList<>();
+        try {
+
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String str;
+            while ((str = reader.readLine()) != null) {
+                res.add(str);
+            }
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
 
     @Before
     public void setup() {
@@ -99,7 +118,15 @@ public class BacktrackTest {
 
     @Test
     public void testCanWin() {
-        bk.canWin("++++");
+
+
+        List<String> testCase = readTestCase("K:\\github\\GeeksforGeeks\\duipai\\testcase.txt");
+        for (String str : testCase) {
+            //System.out.println("mycanwin"+bk.MycanWinWithHashMap(str));
+            assertEquals(bk.MycanWinWithHashMap(str), bk.canWin(str));
+        }
+        //System.out.println(bk.MycanWinWithHashMap("++----+---+--+++-+"));
+        //System.out.println(bk.canWin("++----+---+--+++-+"));
     }
 
     @Test
@@ -107,6 +134,22 @@ public class BacktrackTest {
         String[] ss = {"cat", "cats", "and", "sand", "dog"};
         List<String> res = new ArrayList<>(Arrays.asList(ss));
         bk.wordBreakII("catsanddog", res);
+    }
+
+    @Test
+    public void testPartitionPalindrome() {
+        bk.partition("aab");
+    }
+
+    @Test
+    public void testPartitionPalindromeCut() {
+        System.out.println(bk.minCut("abcdefgfedc"));
+    }
+
+    @Test
+    public void testJudge() {
+        int[] nums = {1, 1, 1};
+        System.out.println(bk.PredictTheWinner(nums));
     }
 
 

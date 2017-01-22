@@ -240,6 +240,29 @@ public class Tree {
         return count;
     }
 
+    public int minDepthByStack(TreeNode root) {
+        if (root == null)
+            return 0;
+        Stack<Tuple<TreeNode, Integer>> stk = new Stack<>();
+        stk.push(new Tuple(root, 1));
+        int res = Integer.MAX_VALUE;
+        while (!stk.isEmpty()) {
+            Tuple t = stk.pop();
+            TreeNode node = (TreeNode) t.x;
+            int val = ((Integer) t.y).intValue();
+            if (node.left == null && node.right == null) {
+                res = Math.min(res, val);
+            }
+            if (node.left != null) {
+                stk.push(new Tuple(node.left, val + 1));
+            }
+            if (node.right != null) {
+                stk.push(new Tuple(node.right, val + 1));
+            }
+        }
+        return res;
+    }
+
 
     //235 lowest common ancestor of a binary search tree
     //recursive way

@@ -371,6 +371,7 @@ public class Backtrack {
             for (String str : path) {
                 ss += str + ".";
             }
+            res.add(String.join(".", path));
             res.add(ss.substring(0, ss.length() - 1));
             return;
         }
@@ -575,13 +576,83 @@ public class Backtrack {
         return res;
     }
 
+    //464 can I win TLE way
+
+    public boolean canIWinHelper(List<Integer> res, int desiredTotal) {
+        if (!res.isEmpty() && res.get(res.size() - 1) >= desiredTotal)
+            return true;
+        for (int i = 0; i < res.size(); ++i) {
+            int removed = res.remove(i);
+            boolean win = !canIWinHelper(res, desiredTotal - removed);
+            res.add(i, removed);
+            if (win) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+        List<Integer> res = new ArrayList<>();
+        for (int i = 1; i <= maxChoosableInteger; ++i) {
+            res.add(i);
+        }
+        return canIWinHelper(res, desiredTotal);
+    }
+
+    //actually you can use hashmap to store the state
+    public boolean canIWinWithHashmap(int maxChooseableInteger, int desiredTotal) {
+        int value = (1 + maxChooseableInteger) * (maxChooseableInteger) / 2;
+        if (value < desiredTotal)
+            return false;
+        boolean[] used = new boolean[maxChooseableInteger + 1];
+        Map<Integer, Boolean> map = new HashMap<>();
+        return canIWinWithHashmapHelper(used, desiredTotal, map);
+    }
+
+    public boolean canIWinWithHashmapHelper(boolean[] used, int desiredTotal, Map<Integer, Boolean> map) {
+        if (desiredTotal <= 0)
+            return false;
+        int val = formatToInteger(used);
+        if (map.containsKey(val))
+            return map.get(val);
+        for (int i = 1; i < used.length; ++i) {
+            if (!used[i]) {
+                used[i] = true;
+                if (!canIWinWithHashmapHelper(used, desiredTotal - i, map)) {
+                    map.put(val, true);
+                    used[i] = false;
+                    return true;
+                }
+                used[i] = false;
+            }
+        }
+        map.put(val, false);
+        return false;
+    }
+
+    public int formatToInteger(boolean[] used) {
+        int res = 0;
+        for (boolean b : used) {
+            res <<= 1;
+            if (b)
+                res |= 1;
+        }
+        return res;
+    }
+
+
+
+
+
+
     //294 flip gameII
     public boolean canWin(String s) {
         if (s == null || s.length() < 2)
             return false;
         for (int i = 0; i < s.length() - 1; ++i) {
             if (s.startsWith("++", i)) {
-                StringBuilder sb = new StringBuilder(s);
+                StringBuilder sb = new StringBuilder(s);//substring is lower, so you can use stringbuilder
                 sb.setCharAt(i, '-');
                 sb.setCharAt(i + 1, '-');
                 if (!canWin(sb.toString()))
@@ -590,6 +661,50 @@ public class Backtrack {
         }
         return false;
     }
+
+    public boolean MycanWin(String s) {
+        if (s == null || s.length() < 2)
+            return false;
+        for (int i = 0; i < s.length() - 1; ++i) {
+            if (s.substring(i, i + 2).equals("++")) {
+                StringBuilder sb = new StringBuilder(s);
+                sb.setCharAt(i, '-');
+                sb.setCharAt(i + 1, '-');
+                if (!MycanWin(sb.toString()))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
+    //the fastest way to solve this problem
+    public boolean helper(String s, Map<String, Boolean> map) {
+        if (map.containsKey(s))
+            return map.get(s);
+        for (int i = 0; i < s.length() - 1; ++i) {
+            if (s.startsWith("++", i)) {
+                StringBuilder sb = new StringBuilder(s);
+                sb.setCharAt(i, '-');
+                sb.setCharAt(i + 1, '-');
+                if (!helper(sb.toString(), map)) {
+                    map.put(s, true);
+                    return true;
+                }
+            }
+        }
+        map.put(s, false);
+        return false;
+    }
+
+    public boolean MycanWinWithHashMap(String s) {
+        if (s == null || s.length() < 2)
+            return false;
+        Map<String, Boolean> map = new HashMap<>();
+        return helper(s, map);
+    }
+
+
 
     //139 word break I
     public boolean wordBreak(String s, List<String> wordDict) {
@@ -607,9 +722,9 @@ public class Backtrack {
     }
 
     //140 wordbreak II
-
+    //TLE
     public List<String> wordbreakIIdfs(String s, Set<String> sets, Map<String, LinkedList<String>> map, int pos) {
-        if (map.containsKey(s.substring(pos)))//easy to overflow
+        if (map.containsKey(s.substring(pos)))//easy to overflow, so you'd better prepare not use string to find. There are just few words in set. So search in a set is much faster.
             return map.get(s.substring(pos));
         LinkedList<String> res = new LinkedList<>();
         if (s.length() == pos) {
@@ -641,7 +756,7 @@ public class Backtrack {
 
         LinkedList<String> res = new LinkedList<String>();
         if (s.length() == 0) {
-            res.add("");
+            res.add("");// actually "" corresponding to {""}, moreover, if you just return {}, then there is no different with can not find anything. So you must return something
             return res;
         }
         for (String word : wordDict) {
@@ -660,5 +775,123 @@ public class Backtrack {
         return DFS(s, sets, new HashMap<String, LinkedList<String>>());
     }
 
+
+    public boolean isPalindrome(String s) {
+        int n = s.length(), i = 0;
+        while (i < n / 2) {
+            if (s.charAt(i) != s.charAt(n - i - 1))
+                return false;
+            i++;
+        }
+        return true;
+    }
+
+
+    public void getPalindromeDfs(String s, List<List<String>> res, int pos, List<String> path) {
+        if (pos == s.length()) {
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        for (int i = pos + 1; i <= s.length(); ++i) {
+            String substr = s.substring(pos, i);
+            if (isPalindrome(substr)) {
+                path.add(substr);
+                getPalindromeDfs(s, res, i, path);
+                path.remove(path.size() - 1);
+            }
+        }
+    }
+
+    //131 Palindrome Partitioning
+    public List<List<String>> partition(String s) {
+        int n = s.length();
+        List<List<String>> res = new ArrayList<>();
+        getPalindromeDfs(s, res, 0, new ArrayList<String>());
+        return res;
+    }
+
+    //you can also use dp to deal with first
+    public void partitionWithDpdfs(List<List<String>> res, String s, boolean[][] dp, int pos, ArrayList<String> path) {
+        if (pos == s.length()) {
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        for (int i = pos; i < s.length(); ++i) {
+            if (dp[pos][i]) {
+                path.add(s.substring(pos, i + 1));
+                partitionWithDpdfs(res, s, dp, i + 1, path);
+                path.remove(path.size() - 1);
+            }
+        }
+    }
+
+    public List<List<String>> partitionWithDp(String s) {
+        List<List<String>> res = new ArrayList<>();
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n];
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j <= i; ++j) {
+                if (s.charAt(i) == s.charAt(j) && ((i - j <= 2) || dp[j + 1][i - 1]))
+                    dp[j][i] = true;
+            }
+        }
+        partitionWithDpdfs(res, s, dp, 0, new ArrayList<String>());
+        return res;
+    }
+
+    //follow up palindrome partitioning II
+    public int minCut(String s) {
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n];
+        int[] res = new int[n + 1];
+        Arrays.fill(res, -1);
+        for (int i = 0; i < n; ++i) {
+            res[i + 1] = res[i] + 1;
+            dp[i][i] = true;
+            for (int j = 0; j < i; ++j) {
+                if (s.charAt(i) == s.charAt(j) && ((i - j <= 2) || dp[j + 1][i - 1])) {
+                    dp[j][i] = true;
+                    if (j == 0)
+                        res[i + 1] = 0;
+                    else
+                        res[i + 1] = Math.min(res[i + 1], res[j] + 1);
+                    //break;
+                }
+            }
+        }
+        return res[n];
+
+    }
+
+    public boolean helper(List<Integer> list, int[] res, int pos) {
+        if (list.isEmpty()) {
+            int index = pos == 0 ? 1 : 0;
+            return res[pos] >= res[index];
+        }
+        int val = list.remove(0);
+        res[pos] += val;
+        boolean win = !helper(list, res, pos == 0 ? 1 : 0);
+        list.add(0, val);
+        res[pos] -= val;
+        if (win)
+            return true;
+        val = list.remove(list.size() - 1);
+        res[pos] += val;
+        win = !helper(list, res, pos == 0 ? 1 : 0);
+        list.add(val);
+        res[pos] -= val;
+        return win;
+
+    }
+
+    public boolean PredictTheWinner(int[] nums) {
+        int[] res = new int[2];
+        List<Integer> li = new ArrayList<>();
+        for (int x : nums)
+            li.add(x);
+        if (nums.length <= 2)
+            return true;
+        return helper(li, res, 0);
+    }
 
 }
