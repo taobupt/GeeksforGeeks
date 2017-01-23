@@ -9,6 +9,55 @@ import java.util.*;
  * Created by tao on 1/9/17.
  */
 
+
+class SummaryRanges {
+
+    /**
+     * Initialize your data structure here.
+     */
+    public List<Interval> intervals = null;
+
+    public SummaryRanges() {
+        intervals = new ArrayList<>();
+    }
+
+    public void addNum(int val) {
+        Interval newInterval = new Interval(val, val);
+        List<Interval> res = new ArrayList<>();
+        int i = 0, n = intervals.size();
+        while (i < n) {
+            if (intervals.get(i).end < newInterval.start - 1)
+                res.add(intervals.get(i++));
+            else
+                break;
+        }
+        while (i < n && intervals.get(i).start <= newInterval.end + 1) {
+            newInterval.start = Math.min(intervals.get(i).start, newInterval.start);
+            newInterval.end = Math.max(intervals.get(i).end, newInterval.end);
+            i++;
+        }
+        res.add(newInterval);
+        while (i < n) {
+            res.add(intervals.get(i++));
+        }
+        intervals = res;
+    }
+
+    public List<Interval> getIntervals() {
+        return intervals;
+    }
+}
+
+class Unit {
+    Interval a;
+    int index;
+
+    Unit(Interval a, int index) {
+        this.a = a;
+        this.index = index;
+    }
+}
+
 class Interval {
     int start;
     int end;
@@ -21,6 +70,10 @@ class Interval {
     Interval() {
         this.start = 0;
         this.end = 0;
+    }
+
+    public String toString() {
+        return "[" + start + " " + end+"]";
     }
 }
 
@@ -2732,6 +2785,28 @@ public class ArrayAlgoQuestion {
         return res;
     }
 
+    //better ways
+    public List<String> findMissingRangesbetter(int[] a, int low, int high) {
+        //there is no need to compare the neighbour element
+        long lo = (long) low;
+        long hi = (long) high;
+        List<String> res = new ArrayList<>();
+        for (int num : a) {
+            long justbelow = (long) num - 1;
+            if (justbelow == lo)
+                res.add(justbelow + "");
+            else if (justbelow > lo)
+                res.add(lo + "->" + justbelow);
+            lo = (long) num + 1;
+        }
+        if (lo == hi)
+            res.add(lo + "");
+        else if (lo < hi)
+            res.add(lo + "->" + hi);
+        return res;
+    }
+
+
     //370 range addition
     public int[] getModifiedArray(int length, int[][] updates) {
         int[] res = new int[length];
@@ -2746,6 +2821,37 @@ public class ArrayAlgoQuestion {
         }
         return res;
     }
+
+    //436 find the right interval
+    public int binarySearch(List<Unit> res, int target) {
+        int n = res.size() - 1, begin = 0;
+        while (begin < n) {
+            int mid = (n - begin) / 2 + begin;
+            if (res.get(mid).a.start >= target)
+                n = mid;
+            else
+                begin = mid + 1;
+        }
+        return res.get(begin).a.start >= target ? res.get(begin).index : -1;
+    }
+
+    public int[] findRightInterval(Interval[] intervals) {
+        List<Unit> res = new ArrayList<>();
+        int n = intervals.length;
+        for (int i = 0; i < n; ++i) {
+            res.add(new Unit(intervals[i], i));
+        }
+        res.sort((Unit aa, Unit bb) -> aa.a.start - bb.a.start);
+        int[] ans = new int[n];
+        for (int i = 0; i < n; ++i) {
+            ans[i] = binarySearch(res, intervals[i].end);
+        }
+        return ans;
+
+    }
+
+
+
 
 
 

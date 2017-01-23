@@ -6,6 +6,40 @@ import java.util.*;
  * Created by Tao on 1/17/2017.
  */
 
+class TicTacToe {
+    private int[][] rows;
+    private int[][] cols;
+    private int[] diag = new int[2];
+    private int[] adiag = new int[2];
+    private int size;
+
+    public TicTacToe(int n) {
+        size = n;
+        rows = new int[n][2];
+        cols = new int[n][2];
+    }
+
+    public int move(int row, int col, int player) {
+        rows[row][player - 1]++;//  add number
+        if (rows[row][player - 1] == size)
+            return player;
+        cols[col][player - 1]++;
+        if (cols[col][player - 1] == size)
+            return player;
+        if (row == col) {
+            diag[player - 1]++;
+            if (diag[player - 1] == size)
+                return player;
+        }
+        if (row + col == size - 1) {
+            adiag[player - 1]++;
+            if (adiag[player - 1] == size)
+                return player;
+        }
+        return 0;
+    }
+}
+
 class HitCounter {
 
     /**

@@ -73,5 +73,33 @@ public class HASHTABLE {
         return cnt;
     }
 
+    //290 word pattern
+    public boolean wordPattern(String pattern, String str) {
+        String[] strs = str.split(" ");
+        Map<String, Character> s2c = new HashMap<>();
+        Map<Character, String> c2s = new HashMap<>();
+        if (pattern.length() != strs.length)
+            return false;
+        int n = strs.length;
+        for (int i = 0; i < n; ++i) {
+            boolean existString = s2c.containsKey(strs[i]);
+            boolean existCharacter = c2s.containsKey(pattern.charAt(i));
+            if (!existCharacter && !existString) {
+                s2c.put(strs[i], pattern.charAt(i));
+                c2s.put(pattern.charAt(i), strs[i]);
+                continue;
+            }
+            if ((existCharacter && !existString) || (!existCharacter && existString))
+                return false;
+            if (existCharacter && existString) {
+                String sub = c2s.get(pattern.charAt(i));
+                char c = s2c.get(strs[i]);
+                if (!sub.equals(strs[i]) || c != pattern.charAt(i))
+                    return false;
+            }
+        }
+        return true;
+    }
+
 
 }

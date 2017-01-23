@@ -5,6 +5,34 @@ import java.util.*;
 /**
  * Created by Tao on 1/13/2017.
  */
+
+class Codec {
+
+    // Encodes a list of strings to a single string.
+    public String encode(List<String> strs) {
+        StringBuilder sb = new StringBuilder();
+        for (String str : strs)
+            sb.append(str.length() + "@" + str);
+        return sb.toString();
+    }
+
+
+    // Decodes a single string to a list of strings.
+    public List<String> decode(String s) {
+        List<String> res = new ArrayList<>();
+        int n = s.length();
+        int j = 0;
+        while (j < n) {
+            int index = s.indexOf('@', j);
+            int val = Integer.valueOf(s.substring(j, index));
+            res.add(s.substring(index + 1, index + 1 + val));
+            j = index + 1 + val;
+        }
+        return res;
+    }
+}
+
+
 public class StringQuestion {
 
     //58 length of last word
@@ -441,6 +469,27 @@ public class StringQuestion {
         return length == Integer.MAX_VALUE ? "" : s.substring(start, length + start);
 
     }
+
+    public boolean validWordSquare(List<String> words) {
+        int n = words.size();
+        for (int i = 0; i < n; ++i) {
+            int m = words.get(i).length();
+            if (m > n)
+                return false;
+            for (int j = 0; j < m && j < n / 2; ++j) {
+                if (words.get(i).charAt(j) != words.get(j).charAt(i))
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    //481 magic string
+    public int magicalString(int n) {
+        return 0;
+    }
+
+
 
 
 

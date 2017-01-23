@@ -188,4 +188,34 @@ public class ArrayTest {
         System.out.println(arrayAlgoQuestion.ladderLength("hit", "cog", sets));
     }
 
+    @Test
+    public void testSummary() {
+        SummaryRanges sr = new SummaryRanges();
+        sr.addNum(1);
+        List<Interval> res = sr.getIntervals();
+        for (Interval val : res)
+            System.out.print(val + " ");
+        System.out.println();
+        sr.addNum(3);
+        res = sr.getIntervals();
+        for (Interval val : res)
+            System.out.print(val + " ");
+        System.out.println();
+        sr.addNum(7);
+        res = sr.getIntervals();
+        for (Interval val : res)
+            System.out.print(val + " ");
+        System.out.println();
+        sr.addNum(2);
+        res = sr.getIntervals();
+        for (Interval val : res)
+            System.out.print(val + " ");
+        System.out.println();
+        sr.addNum(6);
+        res = sr.getIntervals();
+        for (Interval val : res)
+            System.out.print(val + " ");
+
+    }
+
 }

@@ -894,4 +894,185 @@ public class Backtrack {
         return helper(li, res, 0);
     }
 
+
+    //357 count number with unique digits
+
+    //this would lead LTE
+    public void backtrackUniqueDigits(int[] res, int n, String path) {
+        if (!path.equals("")) {
+            if (!(path.length() > 1 && path.charAt(0) == '0'))
+                res[0]++;
+        }
+        if (path.length() >= n)
+            return;
+        for (int i = 0; i <= 9; ++i) {
+            if (!path.contains(String.valueOf(i))) {
+                backtrackUniqueDigits(res, n, path + String.valueOf(i));
+            }
+        }
+    }
+
+    public int countNumbersWithUniqueDigits(int n) {
+        int[] res = new int[1];
+        backtrackUniqueDigits(res, n, "");
+        return res[0];
+    }
+
+    //dynamic programming
+    public int countNumbersWithUniqueDigitsDP(int n) {
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        if (n == 0)
+            return dp[0];
+        dp[1] = 9;
+        for (int i = 2; i <= n; ++i) {
+            dp[i] = dp[i - 1] * (11 - i);
+        }
+        int sum = 0;
+        for (int x : dp)
+            sum += x;
+        return sum;
+    }
+
+    //291 word patternII
+    //TLE
+    public boolean check(String pattern, List<String> strs) {
+        Map<String, Character> s2c = new HashMap<>();
+        Map<Character, String> c2s = new HashMap<>();
+        if (pattern.length() != strs.size())
+            return false;
+        int n = strs.size();
+        for (int i = 0; i < n; ++i) {
+            boolean existString = s2c.containsKey(strs.get(i));
+            boolean existCharacter = c2s.containsKey(pattern.charAt(i));
+            if (!existCharacter && !existString) {
+                s2c.put(strs.get(i), pattern.charAt(i));
+                c2s.put(pattern.charAt(i), strs.get(i));
+                continue;
+            }
+            if ((existCharacter && !existString) || (!existCharacter && existString))
+                return false;
+            if (existCharacter && existString) {
+                String sub = c2s.get(pattern.charAt(i));
+                char c = s2c.get(strs.get(i));
+                if (!sub.equals(strs.get(i)) || c != pattern.charAt(i))
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean wordPatternMatchBack(List<String> path, String str, String pattern, int pos) {
+        if (pos == str.length() && path.size() == pattern.length()) {
+            return check(pattern, path);
+        }
+        if (path.size() >= pattern.length())
+            return false;
+        for (int i = pos + 1; i <= str.length(); ++i) {
+            String sub = str.substring(pos, i);
+            path.add(sub);
+            if (wordPatternMatchBack(path, str, pattern, i))
+                return true;
+            path.remove(path.size() - 1);
+        }
+        return false;
+    }
+
+    public boolean wordPatternMatch(String pattern, String str) {
+        List<String> path = new ArrayList<>();
+        return wordPatternMatchBack(path, str, pattern, 0);
+    }
+
+
+    public boolean check(List<String> strs, String pattern) {
+        Map<String, Character> s2c = new HashMap<>();
+        Map<Character, String> c2s = new HashMap<>();
+        int n = strs.size();
+        for (int i = 0; i < n; ++i) {
+            boolean existString = s2c.containsKey(strs.get(i));
+            boolean existCharacter = c2s.containsKey(pattern.charAt(i));
+            if (!existCharacter && !existString) {
+                s2c.put(strs.get(i), pattern.charAt(i));
+                c2s.put(pattern.charAt(i), strs.get(i));
+                continue;
+            }
+            if ((existCharacter && !existString) || (!existCharacter && existString))
+                return false;
+            if (existCharacter && existString) {
+                String sub = c2s.get(pattern.charAt(i));
+                char c = s2c.get(strs.get(i));
+                if (!sub.equals(strs.get(i)) || c != pattern.charAt(i))
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    //imporvoed version
+    public boolean wordPatternMatchBackImproved(List<String> path, String str, String pattern, int pos) {
+        if (pos == str.length() && path.size() == pattern.length()) {
+            return check(path, str);
+        }
+        if (path.size() >= pattern.length())
+            return false;
+        for (int i = pos + 1; i <= str.length(); ++i) {
+            String sub = str.substring(pos, i);
+            path.add(sub);
+            if (check(path, pattern) && wordPatternMatchBackImproved(path, str, pattern, i))
+                return true;
+            path.remove(path.size() - 1);
+        }
+        return false;
+    }
+
+    public boolean wordPatternMatchImproved(String pattern, String str) {
+        List<String> path = new ArrayList<>();
+        Map<String, Character> s2c = new HashMap<>();
+        Map<Character, String> c2s = new HashMap<>();
+        return wordPatternMatchBackImproved(path, str, pattern, 0);
+    }
+
+
+    //320 Generalized Abbreviation
+
+    public void backtracking(List<String> res, String word, int k, int pos, List<Integer> path) {
+        if (path.size() == k) {
+            StringBuilder sb = new StringBuilder(word);
+            for (int x : path) {
+                sb.setCharAt(x, '@');
+            }
+            int nn = sb.length(), j = 0;
+            String tmp = "";
+            while (j < nn) {
+                if (sb.charAt(j) == '@') {
+                    int count = 1;
+                    while (j + 1 < nn && sb.charAt(j) == sb.charAt(j + 1)) {
+                        j++;
+                        count++;
+                    }
+                    tmp += "" + count;
+                } else
+                    tmp += sb.charAt(j);
+                j++;
+            }
+            res.add(tmp);
+            return;
+        }
+        for (int i = pos; i < word.length(); ++i) {
+            path.add(i);
+            backtracking(res, word, k, i + 1, path);
+            path.remove(path.size() - 1);
+        }
+    }
+
+    public List<String> generateAbbreviations(String word) {
+        List<String> res = new ArrayList<String>();
+        int n = word.length();
+        List<Integer> path = new ArrayList<>();
+        for (int i = 0; i <= n; ++i) {
+            backtracking(res, word, i, 0, path);
+        }
+        return res;
+    }
+
 }

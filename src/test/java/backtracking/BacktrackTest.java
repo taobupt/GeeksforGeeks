@@ -152,5 +152,23 @@ public class BacktrackTest {
         System.out.println(bk.PredictTheWinner(nums));
     }
 
+    @Test
+    public void testGenerateUniq() {
+        System.out.println(bk.countNumbersWithUniqueDigits(3));
+    }
+
+    @Test
+    public void testPattern() {
+        System.out.println(bk.wordPatternMatchImproved("aabb", "xyzabcxzyabc"));
+    }
+
+    @Test
+    public void testGenerateAbbreavation() {
+
+        List<String> res = bk.generateAbbreviations("dictionary");
+        System.out.println(res.size());
+        for (String str : res)
+            System.out.println(str);
+    }
 
 }

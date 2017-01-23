@@ -52,6 +52,22 @@ public class StringTest {
 
     }
 
+    @Test
+    public void testValidWord() {
+        List<String> str = new ArrayList<>();
+        str.add("balle");
+        str.add("aset");
+        str.add("le");
+        str.add("lt");
+        str.add("lt");
+        sq.validWordSquare(str);
+    }
+
+    @Test
+    public void testMagic() {
+        sq.magicalString(6);
+    }
+
 
 
 }

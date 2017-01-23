@@ -99,4 +99,54 @@ public class MathQuestion {
         return true;
     }
 
+    //Minimum Moves to Equal Array Elements
+    //sum+(n-1)*m=x*n;
+    //x=min+m;
+    //sum-m=min*n;
+    //m=sum-min*n;
+    public long minMoves(int[] nums) {
+        long res = 0;
+        int minValue = Integer.MIN_VALUE, n = nums.length;
+        for (int x : nums) {
+            minValue = Math.min(minValue, x);
+            res += x;
+        }
+        return res - n * minValue;
+    }
+
+    //462 minimum moves to equal array elementsII
+    public int minMoves2(int[] nums) {
+        Arrays.sort(nums);
+        int begin = 0, end = nums.length - 1, cnt = 0;
+        while (begin < end) {
+            cnt += nums[end--] - nums[begin++];
+        }
+        return cnt;
+    }
+
+    //you can find the middle number
+    public int minTotalDistance(int[][] grid) {
+        List<Integer> xx = new ArrayList<>();
+        List<Integer> yy = new ArrayList<>();
+        if (grid.length == 0 || grid[0].length == 0)
+            return 0;
+        int m = grid.length, n = grid[0].length;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 1) {
+                    xx.add(i);
+                    yy.add(j);
+                }
+            }
+        }
+        Collections.sort(xx);
+        Collections.sort(yy);
+        int cnt = 0, begin = 0, end = xx.size() - 1;
+        while (begin < end) {
+            cnt += xx.get(end) - xx.get(begin) + yy.get(end) - yy.get(begin);
+        }
+        return cnt;
+
+    }
+
 }
