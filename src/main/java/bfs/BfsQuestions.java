@@ -30,7 +30,7 @@ public class BfsQuestions {
                     Queue<int[]> q = new LinkedList<>();
                     q.offer(new int[]{i, j});
                     boolean[][] vis = new boolean[m][n];
-                    int level = 1;
+                    int level = 1;//this is very tricky
                     while (!q.isEmpty()) {
                         int size = q.size();
                         while (size-- > 0) {
@@ -300,5 +300,40 @@ public class BfsQuestions {
             }
         }
         return res;
+    }
+
+
+    //286 walls and gates
+    public void wallsAndGates(int[][] rooms) {
+        if (rooms.length == 0 || rooms[0].length == 0)
+            return;
+        int m = rooms.length, n = rooms[0].length;
+        Queue<int[]> q = new LinkedList<>();
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (rooms[i][j] == 0)
+                    q.offer(new int[]{i, j});
+            }
+        }
+        while (!q.isEmpty()) {
+            int[] cur = q.poll();
+            if (cur[0] > 0 && rooms[cur[0] - 1][cur[1]] == Integer.MAX_VALUE) {
+                rooms[cur[0] - 1][cur[1]] = rooms[cur[0]][cur[1]] + 1;
+                q.offer(new int[]{cur[0] - 1, cur[1]});
+            }
+            if (cur[1] > 0 && rooms[cur[0]][cur[1] - 1] == Integer.MAX_VALUE) {
+                rooms[cur[0]][cur[1] - 1] = rooms[cur[0]][cur[1]] + 1;
+                q.offer(new int[]{cur[0], cur[1] - 1});
+            }
+            if (cur[0] < m - 1 && rooms[cur[0] + 1][cur[1]] == Integer.MAX_VALUE) {
+                rooms[cur[0] + 1][cur[1]] = rooms[cur[0]][cur[1]] + 1;
+                q.offer(new int[]{cur[0] + 1, cur[1]});
+            }
+            if (cur[1] < n - 1 && rooms[cur[0]][cur[1] + 1] == Integer.MAX_VALUE) {
+                rooms[cur[0]][cur[1] + 1] = rooms[cur[0]][cur[1]] + 1;
+                q.offer(new int[]{cur[0], cur[1] + 1});
+            }
+        }
+
     }
 }

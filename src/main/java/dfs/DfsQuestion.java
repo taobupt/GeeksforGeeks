@@ -81,6 +81,13 @@ public class DfsQuestion {
         cnt[0]--;
     }
 
+
+    public void union(int x, int y, int[] parent) {
+        int xx = find(x, parent);
+        int yy = find(y, parent);
+        if (xx != yy)
+            parent[xx] = yy;
+    }
     public int numIslandsByUnionFind(char[][] grid) {
         if (grid.length == 0 || grid[0].length == 0)
             return 0;
@@ -117,4 +124,59 @@ public class DfsQuestion {
         }
         return cnt[0];
     }
+
+    public int countComponents(int n, int[][] edges) {
+        int[] parent = new int[n];
+        for (int i = 0; i < n; ++i)
+            parent[i] = i;
+        int res = n;
+        for (int i = 0; i < edges.length; ++i) {
+            res++;
+            int xx = find(edges[i][0], parent);
+            int yy = find(edges[i][1], parent);
+            if (xx != yy) {
+                parent[xx] = yy;
+                res--;
+            }
+        }
+        return res;
+    }
+
+
+    //you can also solve this by union find
+    //the idea comes from the observation that if a region is NOT captured, it is connected to the boundary, so if we
+    //coonect all the 'O' nodes on the boundary to a dummy node, and then connect each 'O' to its neighbour 'O' nodes,
+    // then we can tell directly whether a 'O' node is captrued by checking whether it is connect to the dummy node
+    //130 solved by union find
+    public void solveByUnionFind(char[][] board) {
+        if (board.length == 0 || board[0].length == 0)
+            return;
+        int m = board.length, n = board[0].length;
+        int[] parent = new int[m * n + 1];//parent[m*n] is the dummy node
+        for (int i = 0; i <= m * n; ++i)
+            parent[i] = i;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if ((i == 0 || j == 0 || i == m - 1 || j == n - 1) && board[i][j] == 'O') {
+                    union(i * n + j, m * n, parent);//connect to the dummy node
+                } else if (board[i][j] == 'O') {
+                    if (i > 0 && board[i - 1][j] == 'O')
+                        union(i * n + j, i * n + j - n, parent);
+                    if (j > 0 && board[i][j - 1] == 'O')
+                        union(i * n + j, i * n + j - 1, parent);
+                    if (i < m - 1 && board[i + 1][j] == 'O')
+                        union(i * n + j, i * n + n + j, parent);
+                    if (j < n - 1 && board[i][j + 1] == 'O')
+                        union(i * n + j, i * n + j + 1, parent);
+                }
+            }
+        }
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (find(i * n + j, parent) != find(m * n, parent))
+                    board[i][j] = 'X';
+            }
+        }
+    }
+
 }
