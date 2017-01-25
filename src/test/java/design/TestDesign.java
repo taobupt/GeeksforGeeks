@@ -52,4 +52,28 @@ public class TestDesign {
         tw.getNewsFeed(1);
     }
 
+    @Test
+    public void testPhone() {
+        PhoneDirectory pd = new PhoneDirectory(3);
+        //["PhoneDirectory","check","get","get","release","check","get","get","check","get","check","check","get","release","check","check"]
+        //[[3],[2],[],[],[2],[1],[],[],[0],[],[1],[2],[],[1],[1],[0]]
+        pd.check(2);
+        System.out.println(pd.get());
+        System.out.println(pd.get());
+        pd.release(2);
+        System.out.println(pd.check(1));
+        System.out.println(pd.get());
+        System.out.println(pd.get());
+        System.out.println(pd.check(0));
+        System.out.println(pd.get());
+        System.out.println(pd.check(1));
+        System.out.println(pd.check(2));
+        System.out.println(pd.get());
+        pd.release(1);
+        System.out.println(pd.check(1));
+        System.out.println(pd.check(0));
+
+
+    }
+
 }

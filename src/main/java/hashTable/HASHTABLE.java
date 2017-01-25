@@ -101,5 +101,115 @@ public class HASHTABLE {
         return true;
     }
 
+    //246 Strobogrammatic number
+    public boolean isStrobogrammatic(String num) {
+        Map<Character, Character> map = new HashMap<>();
+        map.put('0', '0');
+        map.put('1', '1');
+        map.put('6', '9');
+        map.put('8', '8');
+        map.put('9', '6');
+        StringBuilder sb = new StringBuilder(num);
+        int n = num.length();
+        for (int i = 0; i < n; ++i) {
+            if (!map.containsKey(sb.charAt(i)))
+                return false;
+            else
+                sb.setCharAt(i, map.get(sb.charAt(i)));
+        }
+        sb.reverse();
+        return num.equals(sb.toString());
+    }
+
+    //two pointes is another way, just confirm whether they are equal
+    public boolean isStrobogrammaticTwoPointers(String num) {
+        Map<Character, Character> map = new HashMap<Character, Character>();
+        map.put('6', '9');
+        map.put('9', '6');
+        map.put('0', '0');
+        map.put('1', '1');
+        map.put('8', '8');
+
+        int l = 0, r = num.length() - 1;
+        while (l <= r) {
+            if (!map.containsKey(num.charAt(l))) return false;
+            if (map.get(num.charAt(l)) != num.charAt(r))
+                return false;
+            l++;
+            r--;
+        }
+
+        return true;
+    }
+
+    //247 strobogrammatic ii
+    public List<String> findStrobogrammaticHelper(int n) {
+        List<String> res = new ArrayList();
+        if (n == 0) {
+            res.add("");
+            return res;
+        }
+        if (n == 1) {
+            res.addAll(Arrays.asList(new String[]{"0", "1", "8"}));
+            return res;
+        } else {
+            List<String> ans = findStrobogrammaticHelper(n - 2);
+            for (String str : ans) {
+                res.add("0" + str + "0");
+                res.add("1" + str + "1");
+                res.add("6" + str + "9");
+                res.add("8" + str + "8");
+                res.add("9" + str + "6");
+            }
+            return res;
+        }
+    }
+
+    public List<String> findStrobogrammatic(int n) {
+        List<String> ans = findStrobogrammaticHelper(n);
+        //return ans;
+        List<String> res = new ArrayList<>();
+        for (String str : ans) {
+            if (!str.startsWith("0") || (str.equals("0")))//n=1 is a special case
+                res.add(str);
+        }
+        return res;
+    }
+
+    //another version
+
+    public List<String> findStrobogrammaticConcise(int n) {
+        return helper(n, n);//this is tricky
+    }
+
+    List<String> helper(int n, int m) {
+        if (n == 0) return new ArrayList<String>(Arrays.asList(""));
+        if (n == 1) return new ArrayList<String>(Arrays.asList("0", "1", "8"));
+
+        List<String> list = helper(n - 2, m);
+
+        List<String> res = new ArrayList<String>();
+
+        for (int i = 0; i < list.size(); i++) {
+            String s = list.get(i);
+
+            if (n != m) res.add("0" + s + "0");
+
+            res.add("1" + s + "1");
+            res.add("6" + s + "9");
+            res.add("8" + s + "8");
+            res.add("9" + s + "6");
+        }
+
+        return res;
+    }
+
+    //248 strobogrammaticInRange
+    //I get the rule, but I can't calculate the number of string who is larger the lower in the same level
+
+
+
+
+
 
 }

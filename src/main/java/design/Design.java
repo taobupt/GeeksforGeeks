@@ -6,6 +6,53 @@ import java.util.*;
  * Created by Tao on 1/17/2017.
  */
 
+
+class PhoneDirectory {
+
+    private Set<Integer> set = null;
+    private PriorityQueue<Integer> pq = null;
+    int maximum = 0;
+
+    public PhoneDirectory(int maxNumbers) {
+        maximum = maxNumbers;
+        set = new HashSet<>();
+        pq = new PriorityQueue<>();
+        for (int i = 0; i < maxNumbers; ++i) {
+            //set.add(i);
+            pq.offer(i);
+        }
+    }
+
+    /**
+     * Provide a number which is not assigned to anyone.
+     *
+     * @return - Return an available number. Return -1 if none is available.
+     */
+    public int get() {
+        Integer val = pq.poll();
+        if (val == null)
+            return -1;
+        set.add(val);
+        return val;
+    }
+
+    /**
+     * Check if a number is available or not.
+     */
+    public boolean check(int number) {
+        if (number < 0 || number >= maximum)
+            return false;
+        return !set.contains(number);
+    }
+
+    /**
+     * Recycle or release a number.
+     */
+    public void release(int number) {
+        if (set.remove(number))//there is a comma
+            pq.offer(number);
+    }
+}
 class TicTacToe {
     private int[][] rows;
     private int[][] cols;
