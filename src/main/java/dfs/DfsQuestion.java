@@ -1,5 +1,8 @@
 package dfs;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Tao on 1/23/2017.
  */
@@ -177,6 +180,42 @@ public class DfsQuestion {
                     board[i][j] = 'X';
             }
         }
+    }
+
+
+    public List<Integer> numIslands2(int m, int n, int[][] positions) {
+        List<Integer> res = new ArrayList<>();
+        if (m == 0 || n == 0 || positions.length == 0)
+            return res;
+        int[] parent = new int[m * n];
+        for (int i = 0; i < m * n; ++i)
+            parent[i] = i;
+        int[] cnt = new int[1];
+        boolean[][] vis = new boolean[m][n];
+        for (int i = 0; i < positions.length; ++i) {
+            cnt[0]++;
+            vis[positions[i][0]][positions[i][1]] = true;
+            int p = positions[i][0] * n + positions[i][1];
+            int q = 0;
+            if (positions[i][0] > 0 && vis[positions[i][0] - 1][positions[i][1]]) {
+                q = p - n;
+                union(p, q, parent, cnt);
+            }
+            if (positions[i][1] > 0 && vis[positions[i][0]][positions[i][1] - 1]) {
+                q = p - 1;
+                union(p, q, parent, cnt);
+            }
+            if (positions[i][0] < m - 1 && vis[positions[i][0] + 1][positions[i][1]]) {
+                q = p + n;
+                union(p, q, parent, cnt);
+            }
+            if (positions[i][1] < n - 1 && vis[positions[i][0]][positions[i][1] + 1]) {
+                q = p + 1;
+                union(p, q, parent, cnt);
+            }
+            res.add(cnt[0]);
+        }
+        return res;
     }
 
 }
