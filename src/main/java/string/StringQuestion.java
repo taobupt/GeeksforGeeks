@@ -485,8 +485,34 @@ public class StringQuestion {
     }
 
     //481 magic string
+    //using string would lead to LTE, so you would better use StringBuilder
     public int magicalString(int n) {
-        return 0;
+        if (n <= 0)
+            return 0;
+        StringBuilder sb = new StringBuilder("122");
+        StringBuilder count = new StringBuilder("12");
+        int index = 2, cnt = 0;
+        while (sb.length() < n) {
+            count = sb;
+            int i = index;
+            while (i < count.length()) {
+                if (count.charAt(i) == '1') {
+                    sb.append(sb.charAt(sb.length() - 1) == '2' ? '1' : '2');
+                } else {
+                    sb.append(sb.charAt(sb.length() - 1) == '2' ? "11" : "22");
+                }
+                if (sb.length() >= n)
+                    break;
+                i++;
+            }
+            index = count.length();
+        }
+        for (int i = 0; i < n; ++i) {
+            if (sb.charAt(i) == '1')
+                cnt++;
+        }
+        //System.out.println(s);
+        return cnt;
     }
 
 

@@ -4,6 +4,7 @@ package string;
  * Created by Tao on 1/13/2017.
  */
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -65,7 +66,7 @@ public class StringTest {
 
     @Test
     public void testMagic() {
-        sq.magicalString(6);
+        System.out.println(sq.magicalString(16));
     }
 
 

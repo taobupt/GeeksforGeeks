@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 import common.SpecialInterval;
+import common.Interval;
 
 
 /**
@@ -56,31 +57,32 @@ public class Greedy {
 
     //452. Minimum Number of Arrows to Burst Balloons
     public int findMinArrowShots(int[][] points) {
-        List<SpecialInterval> res = new ArrayList<>();
+        List<Interval> res = new ArrayList<>();
         int n = points.length;
-        for (int[] point : points) {
-            res.add(new SpecialInterval(point[0], false));
-            res.add(new SpecialInterval(point[1], true));
-        }
-
-        res.sort(new Comparator<SpecialInterval>() {
+        for (int[] point : points)
+            res.add(new Interval(point[0], point[1]));
+        res.sort(new Comparator<Interval>() {
             @Override
-            public int compare(SpecialInterval o1, SpecialInterval o2) {
-                if (o1.val < o2.val || (o1.val == o2.val && !o1.isEnd))
+            public int compare(Interval o1, Interval o2) {
+                if (o1.start < o2.start || (o1.start == o2.start && o1.end < o2.end))
                     return -1;
-                else if (o1.val > o2.val || (o1.val == o2.val && o1.isEnd))
+                else if (o1.start > o2.start || (o1.start == o2.start && o1.end > o2.end))
                     return 1;
                 else
                     return 0;
+
             }
         });
         int cnt = 0, j = 0;
-        while (j < 2 * n) {
-            int i = j;
-            while (j < 2 * n && !res.get(j).isEnd)
+        while (j < n) {
+            int minval = res.get(j).end;
+            while (j < n && res.get(j).start <= minval) {
                 j++;
+                if (j < n)
+                    minval = Math.min(minval, res.get(j).end);
+            }
+
             cnt++;
-            j += j - i;
         }
         return cnt;
     }
