@@ -2850,5 +2850,18 @@ public class ArrayAlgoQuestion {
 
     }
 
+    public int findPoisonedDuration(int[]timeSeries,int duration){
+        List<Interval>res=new ArrayList<>();
+        for(int x:timeSeries){
+            res.add(new Interval(x,x+duration-1));
+        }
+        List<Interval>ans=merge(res);
+        int cnt=0;
+        for(Interval interval:ans){
+            cnt+=interval.end-interval.start+1;
+        }
+        return cnt;
+    }
+
 
 }

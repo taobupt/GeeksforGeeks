@@ -894,6 +894,15 @@ public class Backtrack {
         return helper(li, res, 0);
     }
 
+    //concise
+
+    public boolean predictWinnerConcise(int[]nums){
+        return helper(nums,0,nums.length-1)>=0;
+    }
+    private int helper(int[]nums,int s,int e){
+        return s==e?nums[e]: Math.max(nums[e]-helper(nums,s,e-1),nums[s]-helper(nums,s+1,e));
+    }
+
 
     //357 count number with unique digits
 
@@ -1073,6 +1082,24 @@ public class Backtrack {
             backtracking(res, word, i, 0, path);
         }
         return res;
+    }
+
+    //better solution
+    public void backtracking(List<String>ret, String word, int pos,String cur,int count){
+        if(pos==word.length()){
+            if(count>0)
+                cur+=count;
+            ret.add(cur);
+        }else{
+            backtracking(ret,word,pos+1,cur,count+1);
+            backtracking(ret,word,pos+1,cur+(count>0?count:"")+word.charAt(pos),0);
+
+        }
+    }
+    public List<String> generateAbbreviationsBetter(String word) {
+        List<String> ret = new ArrayList<String>();
+        backtracking(ret, word, 0, "", 0);
+        return ret;
     }
 
 }
