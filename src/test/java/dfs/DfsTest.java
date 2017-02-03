@@ -26,4 +26,11 @@ public class DfsTest {
         // char [][]board={{'1'},{'1'}};
         System.out.println(dq.numIslandsByUnionFind(board));
     }
+
+    @Test
+    //masterstick
+    public void testmakesquare() {
+        int[] nums = {5, 5, 5, 5, 16, 4, 4, 4, 4, 4, 3, 3, 3, 3, 4};
+        System.out.println(dq.makesquare(nums));
+    }
 }

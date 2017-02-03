@@ -69,6 +69,10 @@ public class StringTest {
         System.out.println(sq.magicalString(16));
     }
 
+    @Test
+    public void testParse() {
+        System.out.println(sq.parseTernary("T?T?F?2:F?1:T?2:100:5:3"));
+    }
 
 
 }

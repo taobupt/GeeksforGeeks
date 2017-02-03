@@ -515,6 +515,47 @@ public class StringQuestion {
         return cnt;
     }
 
+    //tenser parser
+    //439
+    public String parseTernary(String expression) {
+        Stack<Character> stk = new Stack<>();
+        int n = expression.length();
+        for (int i = n - 1; i >= 0; --i) {
+            if (Character.isLetterOrDigit(expression.charAt(i))) {
+                stk.push(expression.charAt(i));
+            } else if (expression.charAt(i) == '?') {
+                Character a = stk.pop();
+                Character b = stk.pop();
+                stk.push(expression.charAt(i - 1) == 'T' ? a : b);
+                i--;
+            }
+        }
+        return String.valueOf(stk.peek());
+    }
+
+    //482 license key formatting
+    public String licenseKeyFormatting(String S, int K) {
+        StringBuilder sb = new StringBuilder("");
+        int n = S.length();
+        int count = 0;
+        for (int i = n - 1; i >= 0; --i) {
+            if (S.charAt(i) != '-') {
+                count++;
+                sb.append(Character.toUpperCase(S.charAt(i)));
+                if (count == K) {
+                    count = 0;
+                    sb.append('-');
+                }
+            }
+        }
+        sb.reverse();
+        if (sb.length() != 0 && sb.charAt(0) == '-')
+            sb.deleteCharAt(0);
+        return sb.toString();
+    }
+
+
+
 
 
 

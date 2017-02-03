@@ -218,4 +218,45 @@ public class DfsQuestion {
         return res;
     }
 
+    //473. Matchsticks to Square
+
+    public boolean makesquare(int[] nums, int[] subsetSum, boolean[] vis, int target, int k, int n, int curIndex, int limited) {
+        if (subsetSum[curIndex] == target) {
+            if (curIndex == k - 2)
+                return true;
+            return makesquare(nums, subsetSum, vis, target, k, n, curIndex + 1, n - 1);
+        }
+        for (int i = limited; i >= 0; --i) {
+            if (vis[i])
+                continue;
+            int tmp = subsetSum[curIndex] + nums[i];
+            if (tmp <= target) {
+                vis[i] = true;
+                subsetSum[curIndex] += nums[i];
+                boolean next = makesquare(nums, subsetSum, vis, target, k, n, curIndex, i - 1);
+                vis[i] = false;
+                subsetSum[curIndex] -= nums[i];
+                if (next)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean makesquare(int[] nums) {
+        int sum = 0, maxValue = Integer.MIN_VALUE;
+        for (int x : nums) {
+            sum += x;
+            maxValue = Math.max(x, maxValue);
+        }
+        if (sum % 4 != 0 || maxValue > sum / 4)
+            return false;
+        int n = nums.length;
+        boolean[] vis = new boolean[n];
+        int[] subsetSum = new int[4];
+        subsetSum[0] = nums[n - 1];
+        vis[n - 1] = true;
+        return makesquare(nums, subsetSum, vis, sum / 4, 4, n, 0, n - 1);
+    }
+
 }

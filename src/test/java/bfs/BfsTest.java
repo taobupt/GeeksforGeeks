@@ -5,6 +5,7 @@ package bfs;
  */
 
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +34,14 @@ public class BfsTest {
     public void testPacific() {
         int[][] board = {{1, 2, 2, 3, 5}, {3, 2, 3, 4, 4}, {2, 4, 5, 3, 1}, {6, 7, 1, 4, 5}, {5, 1, 1, 2, 4}};
         bq.pacificAtlantic(board);
+    }
+
+    @Test
+    public void testMaze() {
+        int[][] maze = {{0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 1, 0}, {1, 1, 0, 1, 1}, {0, 0, 0, 0, 0}};
+        int[] start = {0, 4};
+        int[] des = {3, 2};
+        System.out.println(bq.hasPath(maze, start, des));
     }
 
 }
