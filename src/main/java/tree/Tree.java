@@ -693,6 +693,41 @@ public class Tree {
 
     }
 
+    public boolean isSymmetricIt(TreeNode root) {
+        if (root == null || root.left == null && root.right == null)
+            return true;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        //q.offer(root);
+        if (root.left != null) q.offer(root.left);
+        if (root.right != null) q.offer(root.right);
+        while (!q.isEmpty()) {
+            if (q.size() % 2 != 0)
+                return false;
+            TreeNode node1 = q.poll();
+            TreeNode node2 = q.poll();
+            if (node1.val != node2.val)
+                return false;
+            if (node1.left != null) {
+                q.offer(node1.left);
+
+            }
+            if (node2.right != null) {
+                q.offer(node2.right);
+            }
+            if (q.size() % 2 != 0)
+                return false;
+            if (node1.right != null) {
+                q.offer(node1.right);
+            }
+            if (node2.left != null) {
+                q.offer(node2.left);
+            }
+            if (q.size() % 2 != 0)
+                return false;
+        }
+        return true;
+    }
+
 
     //270 closest binary search tree value
     //recursive way

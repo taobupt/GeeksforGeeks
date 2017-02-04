@@ -18,13 +18,13 @@ public class TreeTest {
     @Before
     public void setUp() throws Exception {
         t = new Tree();
-        root = new TreeNode(4);
+        root = new TreeNode(1);
         root.left = new TreeNode(2);
-        root.right = new TreeNode(6);
-        root.left.left = new TreeNode(1);
-        root.left.right = new TreeNode(3);
-        root.right.left = new TreeNode(5);
-        root.right.right = new TreeNode(7);
+        root.right = new TreeNode(2);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(4);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(3);
         //root.left.left.left = new TreeNode(2);
 //        root.left.left.right = new TreeNode(2);
 //        root.right.right.left=new TreeNode(5);
@@ -232,6 +232,11 @@ public class TreeTest {
     public void testCloestKvalue() {
         t.closestKValues(root, 3.571429, 6);
         System.out.println();
+    }
+
+    @Test
+    public void testSymmetric() {
+        t.isSymmetricIt(root);
     }
 
 }
