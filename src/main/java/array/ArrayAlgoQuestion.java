@@ -2877,5 +2877,139 @@ public class ArrayAlgoQuestion {
         return res;
     }
 
+    public int[] nextGreaterElement(int[] findNums, int[] nums) {
+        List<Integer> res = new ArrayList<>();
+        int m = findNums.length, n = nums.length;
+        for (int i = 0; i < m; ++i) {
+            int j = 0;
+            for (; j < n; ++j) {
+                if (findNums[i] == nums[j])
+                    break;
+            }
+            boolean flag = true;
+            for (int k = j + 1; k < n; ++k) {
+                if (nums[k] > findNums[i]) {
+                    res.add(nums[k]);
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+                res.add(-1);
+        }
+        int[] ans = new int[res.size()];
+        for (int i = 0; i < ans.length; ++i)
+            ans[i] = res.get(i);
+        return ans;
+    }
+
+    public int[] nextGreaterElements(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        for (int i = 0; i < n; ++i) {
+            int j = i + 1;
+            boolean flag = true;
+            for (; j < n + i; ++j) {
+                if (nums[j % n] > nums[i]) {
+                    res[i] = nums[j % n];
+                    flag = false;
+                    break;
+
+                }
+            }
+            if (flag)
+                res[i] = -1;
+
+        }
+        return res;
+    }
+
+
+    public int[] findDiagonalOrder(int[][] matrix) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (matrix.length == 0 || matrix[0].length == 0)
+            return new int[0];
+        int m = matrix.length, n = matrix[0].length;
+        for (int j = 0; j < n; ++j) {
+            int i = 0;
+            List<Integer> path = new ArrayList<>();
+            for (int k = j; k >= 0 && i < m; --k)
+                path.add(matrix[i++][k]);
+            res.add(path);
+        }
+        for (int i = 1; i < m; ++i) {
+            int j = n - 1;
+            List<Integer> path = new ArrayList<>();
+            for (int k = i; k < m && j >= 0; ++k)
+                path.add(matrix[k][j--]);
+            res.add(path);
+        }
+        for (int i = 0; i < res.size(); ++i) {
+            if (i % 2 == 0)
+                Collections.reverse(res.get(i));
+        }
+        int[] ans = new int[m * n];
+        int index = 0;
+        for (int i = 0; i < res.size(); ++i) {
+            for (int x : res.get(i))
+                ans[index++] = x;
+        }
+        return ans;
+
+    }
+
+    //302 Smallest Rectangle Enclosing Black Pixels
+    //binary search
+
+    public boolean check(char[][] image, int mid, boolean isCol) {
+        if (isCol) {
+            for (int i = 0; i < image.length; ++i) {
+                if (image[i][mid] == '1')
+                    return true;
+            }
+            return false;
+        } else {
+            for (int i = 0; i < image[0].length; ++i) {
+                if (image[mid][i] == '1')
+                    return true;
+            }
+            return false;
+        }
+    }
+
+    //can check begin,but can't check end, so you 'd better begin again before return
+    public int binarySearch(char[][] image, int begin, int end, boolean isCol, boolean isLower) {
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (isLower) {
+                if (check(image, mid, isCol))
+                    end = mid;
+                else
+                    begin = mid + 1;
+            } else {
+                if (!check(image, mid, isCol))
+                    end = mid;
+                else
+                    begin = mid + 1;
+            }
+        }
+        return !check(image, begin, isCol) ? begin - 1 : begin;
+    }
+
+    public int minArea(char[][] image, int x, int y) {
+        if (image.length == 0 || image[0].length == 0)
+            return 0;
+        int m = image.length, n = image[0].length;
+        int left = binarySearch(image, 0, y, true, true);
+        int right = binarySearch(image, y, n - 1, true, false);
+        int upper = binarySearch(image, 0, x, false, true);
+        int lower = binarySearch(image, x, m - 1, false, false);
+        //right=Math.min(right,n-1);
+        //lower=Math.min(lower,m-1);
+        return (right - left + 1) * (lower - upper + 1);
+    }
+
+
+
 
 }

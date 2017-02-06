@@ -149,4 +149,54 @@ public class MathQuestion {
 
     }
 
+
+    //386 386. Lexicographical Numbers
+    public void dfs(int n, List<Integer> res, int index) {
+        if (index <= n) {
+            res.add(index);
+        } else if (index > n)
+            return;
+        for (int j = 0; j <= 9; ++j) {
+            if (10 * index + j <= n)
+                dfs(n, res, 10 * index + j);
+            else
+                return;
+        }
+    }
+
+    public List<Integer> lexicalOrder(int n) {
+        List<Integer> res = new ArrayList<>();
+        for (int i = 1; i <= 9; ++i)
+            dfs(n, res, i);
+        return res;
+    }
+
+    //440 K-th Smallest in Lexicographical Order
+    //move (k - 1) steps to the target node
+    public int findKthNumber(int n, int k) {
+        int curr = 1;
+        k = k - 1;
+        while (k > 0) {
+            int steps = calSteps(n, curr, curr + 1);
+            if (steps <= k) {
+                curr += 1;
+                k -= steps;
+            } else {
+                curr *= 10;
+                k -= 1;
+            }
+        }
+        return curr;
+    }
+
+    public int calSteps(int n, long n1, long n2) {
+        int steps = 0;
+        while (n1 <= n) {
+            steps += Math.min(n + 1, n2) - n1;//到达n+1之后才能算是跳了n步
+            n1 *= 10;
+            n2 *= 10;
+        }
+        return steps;
+    }
+
 }

@@ -31,4 +31,9 @@ public class MathTest {
         int[][] points = {{0, 0}, {0, 0}};
         System.out.println(mq.isReflected(points));
     }
+
+    @Test
+    public void testLexior() {
+        mq.lexicalOrder(5000000);
+    }
 }

@@ -4,6 +4,7 @@ package backtracking;
  * Created by Tao on 1/16/2017.
  */
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -169,6 +170,12 @@ public class BacktrackTest {
         System.out.println(res.size());
         for (String str : res)
             System.out.println(str);
+    }
+
+    @Test
+    public void getPermu() {
+        for (int i = 1; i <= 6; ++i)
+            System.out.println(bk.getPermutation(3, i));
     }
 
 }

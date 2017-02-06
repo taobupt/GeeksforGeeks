@@ -2522,6 +2522,53 @@ public class Tree {
         return false;
     }
 
+    //508 most frequence subtree sum
+    public int dfsSum(TreeNode root, List<Integer> res) {
+        if (root.left == null && root.right == null) {
+            res.add(root.val);
+            return root.val;
+        }
+        int val = root.val;
+        if (root.left != null) {
+            int leftSum = dfsSum(root.left, res);
+            //res.add(leftSum);
+            val += leftSum;
+        }
+        if (root.right != null) {
+            int rightSum = dfsSum(root.right, res);
+            //res.add(rightSum);
+            val += rightSum;
+        }
+        res.add(val);
+        return val;
+    }
+
+    public int[] findFrequentTreeSum(TreeNode root) {
+        if (root == null)
+            return new int[]{};
+        List<Integer> res = new ArrayList<>();
+        dfsSum(root, res);
+        Map<Integer, Integer> cnt = new HashMap<>();
+        int most = 0;
+        for (int x : res) {
+            if (!cnt.containsKey(x))
+                cnt.put(x, 1);
+            else
+                cnt.put(x, cnt.get(x) + 1);
+            most = Math.max(most, cnt.get(x));
+        }
+        res.clear();
+        for (Map.Entry<Integer, Integer> entry : cnt.entrySet()) {
+            if (entry.getValue() == most)
+                res.add(entry.getKey());
+        }
+
+        int[] ans = new int[res.size()];
+        for (int i = 0; i < ans.length; ++i)
+            ans[i] = res.get(i);
+        return ans;
+    }
+
 
 
 
@@ -2958,5 +3005,6 @@ public class Tree {
         }
 
     }
+
 
 }

@@ -554,6 +554,33 @@ public class StringQuestion {
         return sb.toString();
     }
 
+    //500
+    public String[] findWords(String[] words) {
+        Map<Character, Integer> map = new HashMap<>();
+        String[] strs = {"QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"};
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < strs[i].length(); ++j) {
+                map.put(strs[i].charAt(j), i);
+            }
+        }
+        List<String> res = new ArrayList<>();
+        for (String word : words) {
+            int index = map.get(Character.toUpperCase(word.charAt(0)));
+            int i = 1;
+            for (i = 1; i < word.length(); ++i) {
+                if (map.get(Character.toUpperCase(word.charAt(i))) != index)
+                    break;
+            }
+            if (i == word.length())
+                res.add(word);
+
+        }
+        String[] ans = new String[res.size()];
+        for (int i = 0; i < ans.length; ++i)
+            ans[i] = res.get(i);
+        return ans;
+    }
+
 
 
 

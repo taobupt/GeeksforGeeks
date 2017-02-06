@@ -1102,4 +1102,70 @@ public class Backtrack {
         return ret;
     }
 
+    //351 android unlock patterns
+    //The optimization idea is that 1,3,7,9 are symmetric, 2,4,6,8 are also symmetric. Hence we only calculate one among each group and multiply by 4.
+    public int dfs(boolean[] vis, int[][] skip, int cur, int remain) {
+        if (remain < 0)
+            return 0;
+        if (remain == 0)
+            return 1;
+        vis[cur] = true;
+        int rst = 0;
+        for (int i = 1; i <= 9; ++i) {
+            if (!vis[i] && (skip[cur][i] == 0 || (vis[skip[cur][i]])))
+                rst += dfs(vis, skip, i, remain - 1);
+        }
+        vis[cur] = false;
+        return rst;
+    }
+
+    public int numberOfPatterns(int m, int n) {
+        int[][] skip = new int[10][10];
+        skip[3][1] = skip[1][3] = 2;
+        skip[1][7] = skip[7][1] = 4;
+        skip[3][9] = skip[9][3] = 6;
+        skip[7][9] = skip[9][7] = 8;
+        skip[1][9] = skip[9][1] = skip[2][8] = skip[8][2] = skip[3][7] = skip[7][3] = skip[4][6] = skip[6][4] = 5;
+        boolean[] vis = new boolean[10];
+        int res = 0;
+        for (int i = m; i <= n; ++i) {
+            res += dfs(vis, skip, 1, i - 1) * 4;//it is i-1 not i, remember this
+            res += dfs(vis, skip, 2, i - 1) * 4;
+            res += dfs(vis, skip, 5, i - 1);
+        }
+        return res;
+    }
+
+    //60 Permutation Sequence
+    //if k==0, then the left should be a
+    public String getPermutation(int n, int k) {
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        StringBuilder nums = new StringBuilder("");
+        for (int i = 1; i <= n; ++i) {
+            dp[i] = dp[i - 1] * i;
+            nums.append((char) (i + '0'));
+        }
+        int index = n - 1;
+        StringBuilder sb = new StringBuilder("");
+        while (k > 0) {
+            int steps = 0;
+            if (k % dp[index] == 0) {
+                steps = k / dp[index];
+                k -= dp[index] * steps;
+            } else {
+                steps = k / dp[index] + 1;
+                k -= dp[index] * (steps - 1);
+            }
+            index--;
+            sb.append(nums.charAt(steps - 1));
+            nums.deleteCharAt(steps - 1);
+        }
+        char[] ans = nums.toString().toCharArray();
+        Arrays.sort(ans);
+        for (int i = ans.length - 1; i >= 0; --i)
+            sb.append(ans[i]);
+        return sb.toString();
+    }
+
 }
