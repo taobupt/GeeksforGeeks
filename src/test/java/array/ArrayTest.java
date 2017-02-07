@@ -30,7 +30,7 @@ public class ArrayTest {
     @Test
     public void testMoveCharacter() {
         String s = "abcdGHiGhjjhGhXiH";
-        System.out.println(arrayAlgoQuestion.moveCharacter(s));
+        System.out.println(arrayAlgoQuestion.moveCharacterBetter(s));
     }
 
     @Test
@@ -87,7 +87,7 @@ public class ArrayTest {
     @Test
     public void testSpiralOrder() {
         int[][] nums = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        List<Integer> res = arrayAlgoQuestion.spiralOrderSaveSpace(nums);
+        List<Integer> res = arrayAlgoQuestion.spiralOrder(nums);
         for (int x : res)
             System.out.println(x);
     }

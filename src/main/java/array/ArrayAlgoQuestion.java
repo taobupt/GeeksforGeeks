@@ -1,5 +1,6 @@
 package array;
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import sun.rmi.server.InactiveGroupException;
 
 import java.awt.event.HierarchyEvent;
@@ -537,16 +538,15 @@ public class ArrayAlgoQuestion {
 
     //Tecent summer intern question
     // keep order you should swap
-    public String moveCharacter(String nums) {
-        int j = 0;
-        int n = nums.length();
-        StringBuffer sb = new StringBuffer(nums);
-        for (int i = 0; i < n; i++) {
-            if (Character.isLowerCase(sb.charAt(i))) {
-                char temp = sb.charAt(j);
-                sb.setCharAt(j, sb.charAt(i));
-                sb.setCharAt(i, temp);
-                j++;
+
+    //the above is not we want
+    public String moveCharacterBetter(String nums) {
+        StringBuilder sb = new StringBuilder(nums);
+        int d = 0, n = nums.length();
+        for (int i = 0; i < n; ++i) {
+            char c = nums.charAt(i);
+            if (c <= 90 && c >= 65) {
+                sb.deleteCharAt(i - d++).append(c);
             }
         }
         return sb.toString();
@@ -841,6 +841,30 @@ public class ArrayAlgoQuestion {
 
     //the most efficient way
 
+    public int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    public void leftRotate(int[] nums, int d) {
+        int n = nums.length, tmp = 0, k = 0;
+        int gcdNumber = gcd(n, d);
+        for (int i = 0; i < gcdNumber; ++i) {
+            tmp = nums[i];
+            int j = i;
+            while (true) {
+                k = (j + d) % n;
+                if (k == i)
+                    break;
+                nums[j] = nums[k];
+                j = k;
+            }
+            nums[j] = tmp;
+        }
+
+    }
+    //as for the right rotate, you can use leftrotate,or just write the similar code
+
+
 
     //118 pascal's triangle
     public List<List<Integer>> generate(int numRows) {
@@ -1097,6 +1121,24 @@ public class ArrayAlgoQuestion {
     }
 
 
+    //377 combinationSum4
+
+    public int combinationSum4(int[] nums, int target) {
+        int n = nums.length;
+        int[] dp = new int[target + 1];
+        Arrays.sort(nums);
+        dp[0] = 1;
+        for (int i = 1; i <= target; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (i >= nums[j]) {
+                    dp[i] += dp[i - nums[j]];
+                } else
+                    break;
+            }
+        }
+        return dp[target];
+    }
+
     //48 rotate image
     //clockwise
     public void rotate(int[][] matrix) {
@@ -1127,8 +1169,8 @@ public class ArrayAlgoQuestion {
         int begin = 0, end = nums.length - 1;
         while (begin < end) {
             int tmp = nums[begin];
-            nums[begin] = nums[end];
-            nums[end] = tmp;
+            nums[begin++] = nums[end];
+            nums[end--] = tmp;
         }
     }
 
@@ -1192,7 +1234,7 @@ public class ArrayAlgoQuestion {
         while (end < n) {
             sum += nums[end++];
             while (sum >= s) {
-                if (res > end - begin) {
+                if (res > end - begin) {//do remember that end is out of boundary, so just end -begin is ok
                     res = end - begin;
                 }
                 sum -= nums[begin++];
@@ -1402,7 +1444,7 @@ public class ArrayAlgoQuestion {
             }
             colEnd--;
 
-            if (rowBegin <= rowEnd) {
+            if (rowBegin <= rowEnd) {//the condition is rowBegin<=rowEnd, so after rowBegin++, it is possible destory the condition.
                 // Traverse Left
                 for (int j = colEnd; j >= colBegin; j--) {
                     res.add(matrix[rowEnd][j]);
@@ -1552,7 +1594,7 @@ public class ArrayAlgoQuestion {
     //without changing triangle
     public int minimumTotalWithoutChange(List<List<Integer>> triangle) {
         int n = triangle.size();
-        List<Integer> minlen = new ArrayList<Integer>(triangle.get(n - 1));
+        List<Integer> minlen = new ArrayList<Integer>(triangle.get(n - 1));//copy the last level
         for (int layer = n - 2; layer >= 0; --layer) {
             for (int i = 0; i <= layer; ++i) {
                 minlen.set(i, Math.min(minlen.get(i), minlen.get(i + 1)) + triangle.get(layer).get(i));
@@ -1572,7 +1614,7 @@ public class ArrayAlgoQuestion {
         int begin = 0, end = nums.length - 1;
         while (begin < end) {
             int mid = (end - begin) / 2 + begin;//mid maxvalue is end-1;
-            if (nums[mid + 1] > nums[mid])
+            if (nums[mid + 1] > nums[mid])//so mid+1, not mid and mid-1
                 begin = mid + 1;
             else
                 end = mid;
@@ -1655,7 +1697,7 @@ public class ArrayAlgoQuestion {
             if (nums[begin] < nums[end])
                 return nums[begin];
             int mid = (end - begin) / 2 + begin;
-            if (nums[mid] > nums[end])//really goode question,mid can equal begin, but can only reach end-1;
+            if (nums[mid] > nums[end])//really good question,mid can equal begin, but can only reach end-1; so >begin is wrong
                 begin = mid + 1;
             else
                 end = mid;
@@ -1828,7 +1870,7 @@ public class ArrayAlgoQuestion {
             else
                 begin = mid + 1;
         }
-        return matrix[begin / n][begin % n] == target;
+        return matrix[begin / n][begin % n] == target;//in my kind of binary search ,I need to check before return
     }
 
     //240 search a 2d matrix II
@@ -1912,7 +1954,7 @@ public class ArrayAlgoQuestion {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         for (int i = 0; i < nums.length; ++i) {
             for (int j = 0; j < num_subset; ++j) {
-                if (res.size() < j + 1)
+                if (res.size() < j + 1)//interesting question
                     res.add(new ArrayList<Integer>());
                 if (((j >> i) & 0x1) != 0)
                     res.get(j).add(nums[i]);
@@ -1928,7 +1970,7 @@ public class ArrayAlgoQuestion {
         for (int i = pos; i < nums.length; ++i) {
             path.add(nums[i]);
             backtrackingWithDup(res, path, i + 1, nums);
-            while (i < nums.length - 1 && nums[i] == nums[i + 1])//remove the duplicate;
+            while (i < nums.length - 1 && nums[i] == nums[i + 1])//remove the duplicate;,nums[i] has been used.
                 i++;
             path.remove(path.size() - 1);
         }
