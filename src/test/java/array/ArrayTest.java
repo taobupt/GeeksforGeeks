@@ -238,5 +238,10 @@ public class ArrayTest {
         System.out.println(arrayAlgoQuestion.minArea(image, 3, 2));
     }
 
+    @Test
+    public void testAnother() {
+        int[] nums = {3, 1};
+        System.out.println(arrayAlgoQuestion.searchInSortedArrayAnotherVersion(nums, 3));
+    }
 
 }

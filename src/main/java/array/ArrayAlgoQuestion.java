@@ -2142,6 +2142,47 @@ public class ArrayAlgoQuestion {
         Arrays.sort(nums, key + 1, n);
     }
 
+    //concise
+
+    public void reverseSort(int[] nums, int begin, int end) {
+        if (begin > end)
+            return;
+        while (begin < end) {
+            swap(nums, begin, end);
+            begin++;
+            end--;
+        }
+    }
+
+    public void nextPermutationBetter(int[] nums) {
+        int n = nums.length;
+        if (n < 2)
+            return;
+        int index = n - 1;
+        while (index > 0) {
+            if (nums[index] > nums[index - 1])
+                break;
+            index--;
+        }
+        if (index == 0) {
+            reverseSort(nums, 0, n - 1);
+            return;
+        } else {
+            //find the smallest larger number
+            int val = nums[index - 1];
+            int j = n - 1;
+            while (j >= index) {
+                if (nums[j] > val)
+                    break;
+                j--;
+            }
+            swap(nums, j, index - 1);
+            reverseSort(nums, index, n - 1);
+            return;
+        }
+
+    }
+
 
     public void PrevPermutation(int[] nums) {
         if (nums.length <= 1)
@@ -2289,6 +2330,7 @@ public class ArrayAlgoQuestion {
                 break;
             }
         }
+        //only one element in the array.
         if (res[0] == -1 && nums[begin] == target) {
             res[0] = res[1] = begin;
         }
@@ -2408,7 +2450,37 @@ public class ArrayAlgoQuestion {
     //81 search in rotated array II;
     //just add  else end--;
 
+    public int searchInSortedArrayAnotherVersion(int[] nums, int target) {
+        int n = nums.length;
+        if (n == 0)
+            return -1;
+        int lo = 0, hi = n - 1;
+        while (lo < hi) {
+            int mid = (hi - lo) / 2 + lo;
+            if (nums[mid] > nums[hi])
+                lo = mid + 1;
+            else
+                hi = mid;
+        }
+        int rot = lo;
+        lo = 0;
+        hi = n - 1;
+        while (lo < hi) {
+            int mid = (hi - lo) / 2 + lo;
+            int readlmid = (rot + mid) % n;
+            if (nums[readlmid] == target)
+                return readlmid;
+            else if (nums[readlmid] > target)
+                hi = mid;
+            else
+                lo = mid + 1;
+        }
+        int real = (rot + lo) % n;
+        return nums[real] == target ? real : -1;
+    }
 
+
+    //287
     //O(nlogn) sort and find
     //set o(n) but use extra space
     //two pointers
