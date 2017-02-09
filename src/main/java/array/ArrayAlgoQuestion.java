@@ -165,6 +165,20 @@ class WordDistance {
 }
 
 
+class ValueWtihFrequency {
+    public int val;
+    public int count;
+    public int index;
+
+    public ValueWtihFrequency(int val, int count, int index) {
+        this.val = val;
+        this.count = count;
+        this.index = index;
+    }
+}
+
+
+
 public class ArrayAlgoQuestion {
 
     public ArrayAlgoQuestion() {
@@ -2981,12 +2995,12 @@ public class ArrayAlgoQuestion {
     public int findRadius(int[] houses, int[] heaters) {
         Arrays.sort(houses);
         Arrays.sort(heaters);
-        int res = Integer.MAX_VALUE;
+        int res = Integer.MIN_VALUE;
         int j = 0;
         for (int i = 0; i < houses.length; ++i) {
-            while (j < heaters.length - 1 && Math.abs(heaters[j] - houses[i]) <= Math.abs(heaters[j + 1] - houses[i]))
+            while (j < heaters.length - 1 && Math.abs(heaters[j] - houses[i]) >= Math.abs(heaters[j + 1] - houses[i]))
                 j++;
-            res = Math.min(res, Math.abs(heaters[j] - houses[i]));
+            res = Math.max(res, Math.abs(heaters[j] - houses[i]));
         }
         return res;
     }
@@ -3123,6 +3137,84 @@ public class ArrayAlgoQuestion {
         return (right - left + 1) * (lower - upper + 1);
     }
 
+    //Sort elements by frequency
+    //you can also use bst
+    //you can also use count sort;//
+    public void sortByFrequency(int[] nums) {
+        Map<Integer, int[]> map = new HashMap<>();
+        int n = nums.length;
+        for (int i = 0; i < n; ++i) {
+            if (map.containsKey(nums[i])) {
+                int[] tmp = map.get(nums[i]);
+                tmp[0]++;
+                map.put(nums[i], tmp);
+            } else {
+                map.put(nums[i], new int[]{1, i});
+            }
+        }
+        //struct to push all
+        List<ValueWtihFrequency> li = new ArrayList<>();
+        for (Map.Entry<Integer, int[]> entry : map.entrySet()) {
+            li.add(new ValueWtihFrequency(entry.getKey(), entry.getValue()[0], entry.getValue()[1]));
+        }
+        li.sort(new Comparator<ValueWtihFrequency>() {
+            @Override
+            public int compare(ValueWtihFrequency o1, ValueWtihFrequency o2) {
+                if (o1.count == o2.count) {
+                    if (o1.index == o2.index)
+                        return 0;
+                    else if (o1.index > o2.index)
+                        return 1;
+                    else
+                        return -1;
+                } else if (o1.count > o2.count)
+                    return -1;
+                else
+                    return 1;
+            }
+        });
+
+        for (ValueWtihFrequency f : li) {
+            int count = f.count;
+            while (count-- > 0)
+                System.out.println(f.val);
+        }
+    }
+
+    public void merge(int[] nums, int start, int mid, int end, int[] count) {
+        int[] res = new int[end - start + 1];
+        int i = start, j = mid + 1, index = 0;
+        while (i <= mid && j <= end) {
+            if (nums[i] > nums[j]) {
+                res[index++] = nums[j++];
+                count[0] += mid - i + 1;
+            } else
+                res[index++] = nums[i++];
+        }
+        while (i <= mid) {
+            res[index++] = nums[i++];
+        }
+        while (j <= end)
+            res[index++] = nums[j++];
+        for (int k = 0; k < index; ++k)
+            nums[k + start] = res[k];
+    }
+
+    public void mergeSort(int[] nums, int start, int end, int[] count) {
+        if (start >= end)
+            return;
+        int mid = (end - start) / 2 + start;
+        mergeSort(nums, start, mid, count);
+        mergeSort(nums, mid + 1, end, count);
+        merge(nums, start, mid, end, count);
+    }
+
+    public void mergeSort(int[] nums) {
+        int[] cnt = new int[1];
+        mergeSort(nums, 0, nums.length - 1, cnt);
+        System.out.println(cnt[0]);
+
+    }
 
 
 

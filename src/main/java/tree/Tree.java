@@ -3006,5 +3006,25 @@ public class Tree {
 
     }
 
+    //find secmin tourmant
+    public int findSecmin(TreeNode root) {
+        if (root == null)
+            return Integer.MAX_VALUE;
+        if (root.left == null && root.right == null)
+            return root.val;
+        int val1 = 0;
+        int val2 = 0;
+        if (root.left.val == root.val) {
+            val1 = root.right.val;
+            val2 = findSecmin(root.left);
+        } else {
+            val1 = root.left.val;
+            val2 = findSecmin(root.right);
+        }
+        if (val2 == root.val)
+            return val1;
+        return Math.min(val1, val2);
+    }
+
 
 }

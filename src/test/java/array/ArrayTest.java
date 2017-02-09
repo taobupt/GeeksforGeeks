@@ -244,4 +244,19 @@ public class ArrayTest {
         System.out.println(arrayAlgoQuestion.searchInSortedArrayAnotherVersion(nums, 3));
     }
 
+    @Test
+    public void testSortWithFrequ() {
+        int[] nums = {2, 5, 2, 6, -1, 9999999, 5, 8, 8, 8};
+        arrayAlgoQuestion.sortByFrequency(nums);
+    }
+
+    @Test
+    public void testMergeSort() {
+        int[] nums = {5, 2, 6, 1, 4};
+        arrayAlgoQuestion.mergeSort(nums);
+        System.out.println("---------");
+        for (int x : nums)
+            System.out.println(x);
+    }
+
 }
