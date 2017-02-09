@@ -1,14 +1,113 @@
 package array;
 
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
-import sun.rmi.server.InactiveGroupException;
 
-import java.awt.event.HierarchyEvent;
 import java.util.*;
 
 /**
  * Created by tao on 1/9/17.
  */
+
+class NumMatrix {
+
+    public int[][] sumArray = null;
+    public int[][] matrix = null;
+    public int m = 0;
+    public int n = 0;
+
+    public int lowbit(int x) {
+        return x & (-x);
+    }
+
+    public NumMatrix(int[][] matrix) {
+        this.matrix = matrix;
+        if (matrix.length != 0) {
+            this.m = matrix.length;
+            this.n = matrix[0].length;
+        }
+        sumArray = new int[m + 1][n + 1];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                add(i + 1, j + 1, matrix[i][j]);
+            }
+        }
+    }
+
+    public void add(int x, int y, int val) {
+        for (int i = x; i <= m; i += lowbit(i)) {
+            for (int j = y; j <= n; j += lowbit(j)) {
+                sumArray[i][j] += val;
+            }
+        }
+    }
+
+
+    public int sum(int x, int y) {
+        int res = 0;
+        for (int i = x; i > 0; i -= lowbit(i)) {
+            for (int j = y; j > 0; j -= lowbit(j))
+                res += sumArray[i][j];
+        }
+        return res;
+    }
+
+    public void update(int row, int col, int val) {
+        add(row + 1, col + 1, val - matrix[row][col]);
+        add(row + 1, col, val - matrix[row][col]);
+        add(row, col + 1, val - matrix[row][col]);
+        matrix[row][col] = val;
+    }
+
+    public int sumRegion(int row1, int col1, int row2, int col2) {
+        return m == 0 || n == 0 ? 0 : sum(row2 + 1, col2 + 1) + sum(row1, col1) - sum(row2 + 1, col1) - sum(row1, col2 + 1);
+    }
+}
+
+
+//307 range sum query mutable
+class NumArray {
+    public int[] sumArray = null;
+    public int n = 0;
+    public int[] nums = null;
+
+    public int lowbit(int x) {
+        return x & (-x);
+    }
+
+
+    public void add(int x, int val) {
+        while (x <= n) {
+            sumArray[x] += val;
+            x += lowbit(x);
+        }
+    }
+
+    public int sum(int x) {
+        int res = 0;
+        while (x > 0) {
+            res += sumArray[x];
+            x -= lowbit(x);
+        }
+        return res;
+    }
+
+    public NumArray(int[] nums) {
+        this.n = nums.length;
+        sumArray = new int[n + 1];
+        this.nums = nums;
+        for (int i = 0; i < n; ++i)
+            add(i + 1, nums[i]);
+    }
+
+    public void update(int i, int val) {
+        add(i + 1, val - nums[i]);
+        nums[i] = val;//this can influence the above instructions
+    }
+
+    public int sumRange(int i, int j) {
+        return n == 0 ? 0 : sum(j + 1) - sum(i);//from 1
+    }
+}
+
 
 
 class SummaryRanges {
@@ -3215,6 +3314,28 @@ public class ArrayAlgoQuestion {
         System.out.println(cnt[0]);
 
     }
+
+    //dan diao queue
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        if (n == 0 || k == 0 || n < k) return new int[0];
+        int[] res = new int[n - k + 1];
+        int index = 0;
+        Deque<Integer> q = new LinkedList<>();
+        for (int i = 0; i < n; ++i) {
+
+            while (!q.isEmpty() && nums[q.peekLast()] < nums[i]) {
+                q.pollLast();
+            }
+            q.offer(i);
+            if (i >= k - 1)
+                res[index++] = nums[q.peekFirst()];
+            if (!q.isEmpty() && q.peekFirst() <= i - k + 1)
+                q.pollFirst();
+        }
+        return res;
+    }
+
 
 
 

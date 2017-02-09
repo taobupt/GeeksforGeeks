@@ -7,6 +7,40 @@ import java.util.*;
  * Created by Tao on 12/31/2016.
  */
 
+class FenwickTree {
+    public int n;
+    public int[] sumArray = null;
+
+    public int lowbit(int x) {
+        return x & (-x);
+    }
+
+    public FenwickTree(int n) {
+        this.n = n;
+        sumArray = new int[n + 1];
+    }
+
+    public void update(int x, int d) {
+        while (x <= n) {
+            sumArray[x] += d;
+            x += lowbit(x);
+        }
+    }
+
+    public int sum(int x) {
+        int sum = 0;
+        while (x > 0) {
+            sum += sumArray[x];
+            x -= lowbit(x);
+        }
+        return sum;
+    }
+
+    public int sum(int x, int y) {
+        return sum(y + 1) - sum(x);
+    }
+}
+
 
 //dque is much faster
 class Codec {
@@ -3024,6 +3058,25 @@ public class Tree {
         if (val2 == root.val)
             return val1;
         return Math.min(val1, val2);
+    }
+
+
+    //315. Count of Smaller Numbers After Self
+    public List<Integer> countSmaller(int[] nums) {
+        int[] tmp = nums.clone();
+        Arrays.sort(tmp);
+        int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; ++i)
+            map.put(tmp[i], i + 1);
+        FenwickTree fenwickTree = new FenwickTree(n);
+        List<Integer> res = new ArrayList<>();
+        for (int i = n - 1; i >= 0; --i) {
+            res.add(fenwickTree.sum(map.get(nums[i]) - 1));
+            fenwickTree.update(map.get(nums[i]), 1);
+        }
+        Collections.reverse(res);
+        return res;
     }
 
 

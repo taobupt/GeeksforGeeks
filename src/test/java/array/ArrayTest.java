@@ -239,6 +239,12 @@ public class ArrayTest {
     }
 
     @Test
+    public void testWindow() {
+        int[] nums = {1, 3, -1, -3, 5, 3, 6, 7};
+        arrayAlgoQuestion.maxSlidingWindow(nums, 3);
+    }
+
+    @Test
     public void testAnother() {
         int[] nums = {3, 1};
         System.out.println(arrayAlgoQuestion.searchInSortedArrayAnotherVersion(nums, 3));

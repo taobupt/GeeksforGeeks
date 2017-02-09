@@ -257,4 +257,10 @@ public class TreeTest {
         System.out.println(t.findSecmin(root));
     }
 
+    @Test
+    public void testFenwick() {
+        int[] nums = {5, 2, 6, 1, 5};
+        t.countSmaller(nums);
+    }
+
 }
