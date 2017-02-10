@@ -1,5 +1,6 @@
 package tree;
 
+import common.Interval;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -261,6 +262,32 @@ public class TreeTest {
     public void testFenwick() {
         int[] nums = {5, 2, 6, 1, 5};
         t.countSmaller(nums);
+    }
+
+    @Test
+    public void testSegment() {
+        SegmentTree segmentTree = new SegmentTree();
+        int[] nums = {2, 1, 0, 3};
+        SegmentTreeNode root = segmentTree.build(nums);
+//        System.out.println(segmentTree.query(root,1,1));
+//        System.out.println(segmentTree.query(root,1,2));
+//        System.out.println(segmentTree.query(root,2,3));
+//        System.out.println(segmentTree.query(root,0,2));
+        segmentTree.modify(root, 2, 4);
+        System.out.println(root.maxValue);
+    }
+
+    @Test
+    public void testSegmentTreeQuestion() {
+        SegmentTreeQuestions sg = new SegmentTreeQuestions();
+        int[] nums = {1, 2, 7, 8, 5};
+        ArrayList<Interval> queries = new ArrayList<>();
+        queries.add(new Interval(1, 2));
+        queries.add(new Interval(0, 4));
+        queries.add(new Interval(2, 4));
+        ArrayList<Integer> res = sg.intervalMinNumber(nums, queries);
+        for (int x : res)
+            System.out.println(x);
     }
 
 }
