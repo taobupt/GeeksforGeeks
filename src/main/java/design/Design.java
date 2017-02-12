@@ -6,6 +6,49 @@ import java.util.*;
  * Created by Tao on 1/17/2017.
  */
 
+class LRUCache {
+    private Map<Integer, Tuple<Integer, Integer>> map = null;//key ,value and index of key in list
+    private List<Integer> link = null;
+    private int _capacity = 0;
+
+    public LRUCache(int capacity) {
+        _capacity = capacity;
+        map = new HashMap<>();
+        link = new LinkedList<>();
+    }
+
+    public int get(int key) {
+        if (!map.containsKey(key))
+            return -1;
+        setRecently(key);
+        return map.get(key).x;
+    }
+
+    public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            map.put(key, new Tuple(value, map.get(key).y));
+            setRecently(key);
+        } else {
+            if (link.size() < _capacity) {
+                link.add(0, key);
+                map.put(key, new Tuple(value, 0));
+            } else {
+                map.remove(link.get(link.size() - 1));
+                link.remove(link.size() - 1);
+                link.add(0, key);
+                map.put(key, new Tuple<>(value, 0));
+            }
+
+        }
+    }
+
+    public void setRecently(int key) {
+        link.remove(map.get(key).y);
+        link.add(0, key);
+        map.put(key, new Tuple(map.get(key).x, 0));
+    }
+}
+
 
 class PhoneDirectory {
 

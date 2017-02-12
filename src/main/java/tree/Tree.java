@@ -3080,4 +3080,85 @@ public class Tree {
     }
 
 
+    public int[] findValueMostElement(TreeNode root) {
+        if (root == null)
+            return new int[]{};
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        List<Integer> ans = new ArrayList<>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            int maxValue = Integer.MIN_VALUE;
+            while (size-- > 0) {
+                TreeNode node = q.poll();
+                if (maxValue < node.val)
+                    maxValue = node.val;
+                if (node.left != null)
+                    q.offer(node.left);
+                if (node.right != null)
+                    q.offer(node.right);
+            }
+            ans.add(maxValue);
+        }
+        int n = ans.size();
+        int[] res = new int[n];
+        for (int i = 0; i < n; ++i)
+            res[i] = ans.get(i);
+        return res;
+    }
+
+    public int upperBound(List<Tuple<Long, Integer>> nums, long target) {
+        int index = 0, begin = 0, end = nums.size() - 1;//pos must be 0, think when there is only one element here
+        if (nums.get(end).x <= target)
+            return end + 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (nums.get(mid).x > target) {
+                end = mid;
+                index = end;
+            } else {
+                begin = mid + 1;
+                index = begin;
+            }
+        }
+        return index;
+    }
+
+    public int reversePairs(int[] nums) {
+        int n = nums.length;
+        if (n < 2)
+            return 0;
+        List<Tuple<Long, Integer>> res = new ArrayList<>();
+        for (int i = 0; i < n; ++i) {
+            res.add(new Tuple((long) nums[i], i));
+        }
+        res.sort(new Comparator<Tuple<Long, Integer>>() {
+            @Override
+            public int compare(Tuple<Long, Integer> o1, Tuple<Long, Integer> o2) {
+                if (o1.x > o2.x)
+                    return 1;
+                else if (o1.x == o2.x)
+                    return 0;
+                else
+                    return -1;
+            }
+        });
+
+        int ans = 0;
+        for (int i = 0; i < n - 1; ++i) {
+            if (res.get(i).x > 1073741823)
+                break;
+            long target = (long) res.get(i).x;
+            int index = upperBound(res, 2 * target);
+            if (index == n)
+                break;
+            for (int j = index; j < n; ++j) {
+                if (res.get(j).y < res.get(i).y)
+                    ans++;
+            }
+
+        }
+        return ans;
+    }
+
 }

@@ -263,4 +263,11 @@ public class TreeTest {
         t.countSmaller(nums);
     }
 
+    @Test
+    public void testreverse() {
+        int[] nums = {2147483647, 2147483647, -2147483647, -2147483647, -2147483647, 2147483647};
+        System.out.println(t.reversePairs(nums));
+    }
+
+
 }

@@ -444,15 +444,21 @@ public class ArrayAlgoQuestion {
 
     //53 maximum subarray
     //kadane algo
+    //if wan you to calculate the start point and end point
     public int maxSubArray(int[] nums) {
-        int sum = 0;
+        int sum = 0, n = nums.length, start = 0, end = 0, s = 0;
         int res = Integer.MIN_VALUE;
-        for (int x : nums) {
-            if (sum >= 0) {
-                sum += x;
-            } else
-                sum = x;
-            res = Math.max(res, sum);
+        for (int i = 0; i < n; ++i) {
+            sum += nums[i];
+            if (sum > res) {
+                res = sum;
+                start = s;
+                end = i;
+            }
+            if (sum < 0) {
+                sum = 0;
+                s = i + 1;
+            }
         }
         return res;
     }
@@ -3334,6 +3340,51 @@ public class ArrayAlgoQuestion {
                 q.pollFirst();
         }
         return res;
+    }
+
+
+    //lint code Maximum Subarray II
+    public int getMax(ArrayList<Integer> nums, int begin, int end) {
+        int secMaxSum = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int i = begin; i <= end && i < nums.size(); ++i) {
+            sum += nums.get(i);
+            if (secMaxSum < sum)
+                secMaxSum = sum;
+            if (sum < 0)
+                sum = 0;
+        }
+        return secMaxSum;
+    }
+
+    public int maxTwoSubArrays(ArrayList<Integer> nums) {
+        // write your code
+        int maxSum = Integer.MIN_VALUE;
+        int start = 0, end = 0, s = 0, sum = 0, n = nums.size();
+        for (int i = 0; i < n; ++i) {
+            sum += nums.get(i);
+            if (maxSum < sum) {
+                start = s;
+                end = i;
+                maxSum = sum;
+            }
+            if (sum < 0) {
+                sum = 0;
+                s = i + 1;
+            }
+        }
+        int val2 = Math.max(getMax(nums, 0, start - 1), getMax(nums, end + 1, n - 1)) + maxSum;//
+        if (start != end) {
+            int minValue = Integer.MAX_VALUE;
+            for (int i = start; i <= end; ++i) {
+                minValue = Math.min(minValue, nums.get(i));
+            }
+            int val1 = maxSum - minValue;//-minium value
+
+            return Math.max(val1, Math.max(val2, maxSum));
+        } else {
+            return val2;
+        }
     }
 
 

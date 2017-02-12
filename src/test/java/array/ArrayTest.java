@@ -265,4 +265,14 @@ public class ArrayTest {
             System.out.println(x);
     }
 
+    @Test
+    public void testMaximumSub() {
+        int[] nums = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -2, 1, -15, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        for (int x : nums)
+            res.add(x);
+        arrayAlgoQuestion.maxTwoSubArrays(res);
+    }
+
+
 }
