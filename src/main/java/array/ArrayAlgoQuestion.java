@@ -854,6 +854,25 @@ public class ArrayAlgoQuestion {
         return false;
     }
 
+    //220 contains duplicate III
+    public boolean containsNearByAlmostDuplicate(int[] nums, int k, int t) {
+        if (nums.length == 0 || k < 0)
+            return false;
+        final TreeSet<Long> values = new TreeSet<>();
+        int n = nums.length;
+        for (int ind = 0; ind < n; ++ind) {
+            final Long floor = values.floor((long) nums[ind] + t);
+            final Long ceil = values.ceiling((long) nums[ind] - t);
+            if (floor != null && floor >= nums[ind] || (ceil != null && ceil <= nums[ind]))
+                return true;
+            values.add((long) nums[ind]);
+            if (ind >= k)//here you can change ind>k and remove nums[ind-k-1] and move this part code to upper
+                values.remove(nums[ind - k]);
+        }
+        return false;
+    }
+
+
 
     //88 merge sorted array
     public void merge(int[] nums1, int m, int[] nums2, int n) {

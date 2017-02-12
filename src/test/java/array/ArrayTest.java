@@ -5,6 +5,7 @@ package array;
  */
 
 import com.sun.org.apache.xpath.internal.SourceTree;
+import leetcodeContest.ContestQuestion;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -272,6 +273,20 @@ public class ArrayTest {
         for (int x : nums)
             res.add(x);
         arrayAlgoQuestion.maxTwoSubArrays(res);
+    }
+
+    @Test
+    public void testContainsDuplicate() {
+        int[] nums = {-3, 3};
+        System.out.println(arrayAlgoQuestion.containsNearByAlmostDuplicate(nums, 2, 4));
+    }
+
+    @Test
+    public void testReverse() {
+        ContestQuestion cq = new ContestQuestion();
+        int[] nums = {2147483647, 2147483647, -2147483647, -2147483647, -2147483647, 2147483647};
+        cq.reversePairs(nums);
+        cq.countSmaller(nums);
     }
 
 

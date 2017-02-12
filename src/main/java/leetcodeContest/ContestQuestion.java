@@ -100,4 +100,30 @@ public class ContestQuestion {
         }
         return new ArrayList<Integer>();
     }
+
+    public int reversePairs(int[] nums) {
+        FenwickTree fenwickTree = new FenwickTree(200050);
+        List<Long> cnt = new ArrayList<>();
+        int n = nums.length;
+        for (int i = 0; i < n; ++i) {
+            cnt.add((long) nums[i]);
+            cnt.add(2 * (long) nums[i]);
+        }
+        Collections.sort(cnt);
+        Map<Long, Integer> map = new HashMap<>();
+        for (int i = 0; i < 2 * n; ++i) {
+            map.put(cnt.get(i), i + 1);
+        }
+        int res = 0;
+        for (int i = 0; i < n; ++i) {
+            int x = 200000;
+            long ceil = fenwickTree.sum(x);
+            long floor = fenwickTree.sum(map.get(2 * (long) nums[i]));
+            res += ceil - floor;
+            fenwickTree.update(map.get((long) nums[i]), 1);
+        }
+        return res;
+    }
+
+
 }

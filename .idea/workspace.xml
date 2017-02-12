@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" description="in case of overflow" line="1722" mnemonic="1" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="950" mnemonic="2" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1640" mnemonic="3" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1870" mnemonic="4" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2044" mnemonic="5" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2312" mnemonic="6" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2759" mnemonic="7" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2779" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" description="in case of overflow" line="1741" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="969" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1659" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1889" mnemonic="4" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2063" mnemonic="5" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2331" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2778" mnemonic="7" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2798" mnemonic="8" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/string/StringQuestion.java" line="55" mnemonic="9" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/tree/Tree.java" line="2097" mnemonic="0" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/string/StringQuestion.java" line="427" mnemonic="A" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d65e4c4f-115a-48ce-807c-3a59b097a734" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/ArrayAlgoQuestion.class" afterPath="$PROJECT_DIR$/target/classes/array/ArrayAlgoQuestion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/Interval.class" afterPath="$PROJECT_DIR$/target/classes/array/Interval.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/RandomizedSet.class" afterPath="$PROJECT_DIR$/target/classes/array/RandomizedSet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/SummaryRanges.class" afterPath="$PROJECT_DIR$/target/classes/array/SummaryRanges.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/Unit.class" afterPath="$PROJECT_DIR$/target/classes/array/Unit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/WordDistance.class" afterPath="$PROJECT_DIR$/target/classes/array/WordDistance.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/design/Design.class" afterPath="$PROJECT_DIR$/target/classes/design/Design.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/design/HitCounter.class" afterPath="$PROJECT_DIR$/target/classes/design/HitCounter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/design/MedianFinder.class" afterPath="$PROJECT_DIR$/target/classes/design/MedianFinder.class" />
@@ -31,27 +25,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/design/Twitter$1.class" afterPath="$PROJECT_DIR$/target/classes/design/Twitter$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/design/Twitter$2.class" afterPath="$PROJECT_DIR$/target/classes/design/Twitter$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/design/Twitter.class" afterPath="$PROJECT_DIR$/target/classes/design/Twitter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/BalancedResult.class" afterPath="$PROJECT_DIR$/target/classes/tree/BalancedResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/Codec.class" afterPath="$PROJECT_DIR$/target/classes/tree/Codec.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/MyNode.class" afterPath="$PROJECT_DIR$/target/classes/tree/MyNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/Tree$BSTIterator.class" afterPath="$PROJECT_DIR$/target/classes/tree/Tree$BSTIterator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/Tree$BSTIteratorAnother.class" afterPath="$PROJECT_DIR$/target/classes/tree/Tree$BSTIteratorAnother.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/Tree$BSTIteratorMorris.class" afterPath="$PROJECT_DIR$/target/classes/tree/Tree$BSTIteratorMorris.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/Tree.class" afterPath="$PROJECT_DIR$/target/classes/tree/Tree.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/TreeLinkNode.class" afterPath="$PROJECT_DIR$/target/classes/tree/TreeLinkNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/TreeNode.class" afterPath="$PROJECT_DIR$/target/classes/tree/TreeNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/Tuple.class" afterPath="$PROJECT_DIR$/target/classes/tree/Tuple.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/info.class" afterPath="$PROJECT_DIR$/target/classes/tree/info.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/uniInfo.class" afterPath="$PROJECT_DIR$/target/classes/tree/uniInfo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/array/ArrayTest.class" afterPath="$PROJECT_DIR$/target/test-classes/array/ArrayTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/design/TestDesign.class" afterPath="$PROJECT_DIR$/target/test-classes/design/TestDesign.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/tree/TreeTest.class" afterPath="$PROJECT_DIR$/target/test-classes/tree/TreeTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" afterPath="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/design/Design.java" afterPath="$PROJECT_DIR$/src/main/java/design/Design.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java" afterPath="$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tree/Tree.java" afterPath="$PROJECT_DIR$/src/main/java/tree/Tree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" afterPath="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/design/TestDesign.java" afterPath="$PROJECT_DIR$/src/test/java/design/TestDesign.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tree/TreeTest.java" afterPath="$PROJECT_DIR$/src/test/java/tree/TreeTest.java" />
     </list>
     <ignored path="GeeksforGeeks.iws" />
@@ -95,11 +77,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ArrayAlgoQuestion.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArrayAlgoQuestion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="2383" column="51" lean-forward="true" selection-start-line="2383" selection-start-column="51" selection-end-line="2383" selection-end-column="51" />
+            <state relative-caret-position="42522">
+              <caret line="2256" column="23" lean-forward="false" selection-start-line="2256" selection-start-column="23" selection-end-line="2256" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContestQuestion.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2147">
+              <caret line="115" column="9" lean-forward="false" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tree.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tree/Tree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="3101" column="52" lean-forward="true" selection-start-line="3101" selection-start-column="52" selection-end-line="3101" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreeTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/tree/TreeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4275">
+              <caret line="266" column="31" lean-forward="false" selection-start-line="266" selection-start-column="31" selection-end-line="266" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrayTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5282">
+              <caret line="288" column="30" lean-forward="false" selection-start-line="285" selection-start-column="7" selection-end-line="288" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -117,7 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shuffle</find>
       <find>shortest word</find>
       <find>root=</find>
       <find>ups</find>
@@ -147,6 +168,7 @@
       <find>upper</find>
       <find>rightview</find>
       <find>lowerbo</find>
+      <find>219</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,6 +177,7 @@
         <option value="Tao" />
       </list>
     </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="PUSH_TAGS">
       <GitPushTagMode />
@@ -203,11 +226,11 @@
         <option value="$PROJECT_DIR$/src/main/java/backtracking/Backtrack.java" />
         <option value="$PROJECT_DIR$/src/main/java/graph/Graph.java" />
         <option value="$PROJECT_DIR$/src/test/java/graph/GraphTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" />
-        <option value="$PROJECT_DIR$/src/test/java/tree/TreeTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tree/Tree.java" />
         <option value="$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tree/Tree.java" />
+        <option value="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/tree/TreeTest.java" />
       </list>
     </option>
   </component>
@@ -248,6 +271,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -332,6 +357,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="array" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeeksforGeeks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeeksforGeeks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -364,6 +415,32 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Tree.java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeeksforGeeks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeeksforGeeks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tree" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -451,8 +528,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -493,58 +568,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TreeTest.testreverse">
-    <configuration default="false" name="ArrayTest.testSortWithFrequ" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testSortWithFrequ" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="TreeTest.testFindSec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="tree.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="tree" />
-      <option name="MAIN_CLASS_NAME" value="tree.TreeTest" />
-      <option name="METHOD_NAME" value="testFindSec" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="ArrayTest.testMergeSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -610,6 +633,58 @@
       <option name="PACKAGE_NAME" value="tree" />
       <option name="MAIN_CLASS_NAME" value="tree.TreeTest" />
       <option name="METHOD_NAME" value="testreverse" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testContainsDuplicate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testContainsDuplicate" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testReverse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testReverse" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1004,19 +1079,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSortWithFrequ" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TreeTest.testFindSec" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMergeSort" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumSub" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TreeTest.testreverse" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMergeSort" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumSub" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TreeTest.testreverse" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testContainsDuplicate" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testReverse" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.TreeTest.testreverse" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumSub" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMergeSort" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TreeTest.testFindSec" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testSortWithFrequ" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testReverse" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testContainsDuplicate" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaximumSub" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMergeSort" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1133,7 +1208,8 @@
       <workItem from="1486606332962" duration="6531000" />
       <workItem from="1486692684262" duration="4446000" />
       <workItem from="1486865078366" duration="9338000" />
-      <workItem from="1486915145410" duration="391000" />
+      <workItem from="1486915145410" duration="6566000" />
+      <workItem from="1486924800226" duration="406000" />
     </task>
     <task id="LOCAL-00001" summary="add linkedlist&#10;">
       <created>1483145383999</created>
@@ -1247,33 +1323,31 @@
       <option name="project" value="LOCAL" />
       <updated>1486535606667</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="leetcode contest&#10;">
+      <created>1486915578264</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1486915578264</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 15m 52s.xml">
-      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testContainsDuplicate - 2017.02.12 at 10h 45m 07s.xml">
+      <configuration name="ArrayTest.testContainsDuplicate" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 17m 27s.xml">
-      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testContainsDuplicate - 2017.02.12 at 10h 45m 16s.xml">
+      <configuration name="ArrayTest.testContainsDuplicate" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 17m 52s.xml">
-      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testContainsDuplicate - 2017.02.12 at 10h 46m 39s.xml">
+      <configuration name="ArrayTest.testContainsDuplicate" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 18m 07s.xml">
-      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testReverse - 2017.02.12 at 11h 11m 07s.xml">
+      <configuration name="ArrayTest.testReverse" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 21m 20s.xml">
-      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 22m 41s.xml">
-      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 33m 51s.xml">
-      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 34m 19s.xml">
-      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testReverse - 2017.02.12 at 11h 14m 13s.xml">
+      <configuration name="ArrayTest.testReverse" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 34m 50s.xml">
       <configuration name="TreeTest.testreverse" configurationId="JUnit" />
@@ -1281,9 +1355,18 @@
     <history-entry file="TreeTest_testreverse - 2017.02.11 at 21h 38m 21s.xml">
       <configuration name="TreeTest.testreverse" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TreeTest_testreverse - 2017.02.12 at 12h 09m 37s.xml">
+      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TreeTest_testreverse - 2017.02.12 at 12h 10m 16s.xml">
+      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TreeTest_testreverse - 2017.02.12 at 12h 12m 30s.xml">
+      <configuration name="TreeTest.testreverse" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403021000" />
+    <option name="totallyTimeSpent" value="409602000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1306,8 +1389,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0883721" sideWeight="0.503125" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35096642" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1318,13 +1401,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24618515" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46693796" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2745694" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31230927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1368,7 +1451,8 @@
     <MESSAGE value="add array&#10;" />
     <MESSAGE value="add magic string&#10;" />
     <MESSAGE value="review array&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="review array&#10;" />
+    <MESSAGE value="leetcode contest&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="leetcode contest&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1424,37 +1508,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>897</line>
+          <line>916</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>928</line>
+          <line>947</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>965</line>
+          <line>984</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>2231</line>
+          <line>2250</line>
           <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>2296</line>
+          <line>2315</line>
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>2262</line>
+          <line>2281</line>
           <properties />
           <option name="timeStamp" value="37" />
         </line-breakpoint>
@@ -1556,31 +1640,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3013</line>
+          <line>3032</line>
           <properties />
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3035</line>
+          <line>3054</line>
           <properties />
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3039</line>
+          <line>3058</line>
           <properties />
           <option name="timeStamp" value="200" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3089</line>
+          <line>3108</line>
           <properties />
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3134</line>
+          <line>3153</line>
           <properties />
           <option name="timeStamp" value="209" />
         </line-breakpoint>
@@ -1604,13 +1688,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>2472</line>
+          <line>2491</line>
           <properties />
           <option name="timeStamp" value="219" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3164</line>
+          <line>3183</line>
           <properties />
           <option name="timeStamp" value="220" />
         </line-breakpoint>
@@ -1622,42 +1706,54 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3189</line>
+          <line>3208</line>
           <properties />
           <option name="timeStamp" value="223" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3360</line>
+          <line>3380</line>
           <properties />
           <option name="timeStamp" value="224" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3374</line>
+          <line>3394</line>
           <properties />
           <option name="timeStamp" value="226" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3347</line>
+          <line>3366</line>
           <properties />
           <option name="timeStamp" value="228" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/tree/Tree.java</url>
-          <line>3127</line>
+          <line>3159</line>
           <properties />
           <option name="timeStamp" value="229" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/tree/Tree.java</url>
-          <line>3146</line>
+          <line>3178</line>
           <properties />
           <option name="timeStamp" value="230" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
+          <line>858</line>
+          <properties />
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java</url>
+          <line>93</line>
+          <properties />
+          <option name="timeStamp" value="234" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="231" />
+      <option name="time" value="236" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1991,41 +2087,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4940">
-          <caret line="269" column="116" lean-forward="false" selection-start-line="269" selection-start-column="116" selection-end-line="269" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tree/Tree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58824">
-          <caret line="3118" column="20" lean-forward="false" selection-start-line="3118" selection-start-column="20" selection-end-line="3118" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tree/TreeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4294">
-          <caret line="267" column="20" lean-forward="false" selection-start-line="267" selection-start-column="20" selection-end-line="267" selection-end-column="20" />
+        <state relative-caret-position="42522">
+          <caret line="2256" column="23" lean-forward="false" selection-start-line="2256" selection-start-column="23" selection-end-line="2256" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="2147">
+          <caret line="115" column="9" lean-forward="false" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="2383" column="51" lean-forward="true" selection-start-line="2383" selection-start-column="51" selection-end-line="2383" selection-end-column="51" />
+        <state relative-caret-position="5282">
+          <caret line="288" column="30" lean-forward="false" selection-start-line="285" selection-start-column="7" selection-end-line="288" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/tree/TreeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4275">
+          <caret line="266" column="31" lean-forward="false" selection-start-line="266" selection-start-column="31" selection-end-line="266" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tree/Tree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="3101" column="52" lean-forward="true" selection-start-line="3101" selection-start-column="52" selection-end-line="3101" selection-end-column="52" />
           <folding />
         </state>
       </provider>

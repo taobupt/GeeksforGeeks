@@ -3079,6 +3079,38 @@ public class Tree {
         return res;
     }
 
+    public int countSmallerFromEnd(int[] nums) {
+        int[] tmp = nums.clone();
+        Arrays.sort(tmp);
+        int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; ++i)
+            map.put(tmp[i], i + 1);
+        FenwickTree fenwickTree = new FenwickTree(n);
+        int res = 0;
+        for (int i = n - 1; i >= 0; --i) {
+            res += fenwickTree.sum(map.get(nums[i]) - 1);
+            fenwickTree.update(map.get(nums[i]), 1);
+        }
+        return res;
+    }
+
+    public int countSmallerFromBegin(int[] nums) {
+        int[] tmp = nums.clone();
+        Arrays.sort(tmp);
+        int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; ++i)
+            map.put(tmp[i], i + 1);
+        FenwickTree fenwickTree = new FenwickTree(n);
+        int res = 0;
+        for (int i = 0; i < n; ++i) {
+            int ceil = fenwickTree.sum(n);
+            res += ceil - fenwickTree.sum(map.get(nums[i]));
+            fenwickTree.update(map.get(nums[i]), 1);
+        }
+        return res;
+    }
 
     public int[] findValueMostElement(TreeNode root) {
         if (root == null)

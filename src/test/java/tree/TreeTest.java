@@ -265,8 +265,9 @@ public class TreeTest {
 
     @Test
     public void testreverse() {
-        int[] nums = {2147483647, 2147483647, -2147483647, -2147483647, -2147483647, 2147483647};
-        System.out.println(t.reversePairs(nums));
+        int[] nums = {4, 3, 2, 1};
+        System.out.println(t.countSmallerFromBegin(nums));
+        assertEquals(t.countSmallerFromBegin(nums), t.countSmallerFromEnd(nums));
     }
 
 
