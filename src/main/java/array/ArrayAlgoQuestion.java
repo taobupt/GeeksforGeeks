@@ -602,6 +602,20 @@ public class ArrayAlgoQuestion {
         return minDistance;
     }
 
+    //Find the minimum distance between two numbers
+    public int minDist(int[] nums, int x, int y) {
+        int index = -1, n = nums.length, minD = Integer.MAX_VALUE;
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] == x || nums[i] == y) {
+                if (index != -1 && nums[index] != nums[i]) {
+                    minD = Math.min(minD, i - index);
+                }
+                index = i;
+            }
+        }
+        return minD;
+    }
+
     //or you can get two index array first and then you can start to use two pointers
 
 
@@ -3514,6 +3528,155 @@ public class ArrayAlgoQuestion {
         System.out.println(writes);
         return writes;
     }
+
+    //Check if array elements are consecutive
+    //three kinds of ways, sort , (get min ,max, and use visited array)
+    public int[] getMinMax(int[] nums) {
+        int minValue = Integer.MAX_VALUE;
+        int maxValue = Integer.MIN_VALUE;
+        for (int x : nums) {
+            minValue = Math.min(minValue, x);
+            maxValue = Math.max(maxValue, x);
+        }
+        return new int[]{minValue, maxValue};
+    }
+
+    public boolean areConsecutiveWithVisitedArray(int[] nums) {
+        int n = nums.length;
+        int[] minMax = getMinMax(nums);
+        if (minMax[1] - minMax[0] != n - 1)
+            return false;
+        boolean[] vis = new boolean[n];
+        for (int i = 0; i < n; ++i) {
+            if (vis[nums[i] - minMax[0]])
+                return false;
+            vis[nums[i] - minMax[0]] = true;
+        }
+        return true;
+    }
+
+    //without visited array
+    //can only deal with positive integer
+    public boolean areConsecutive(int[] nums) {
+        int n = nums.length;
+        int[] minMax = getMinMax(nums);
+        if (minMax[1] - minMax[0] != n - 1)
+            return false;
+        for (int i = 0; i < n; ++i) {
+            int val = Math.abs(nums[i]) - minMax[0];
+            if (nums[val] < 0)
+                return false;
+            nums[val] = -nums[val];
+        }
+        return true;
+    }
+
+    //Find the Minimum length Unsorted Subarray, sorting which makes the complete array sorted
+    /*
+    Solution:
+    1) Find the candidate unsorted subarray
+    a) Scan from left to right and find the first element which is greater than the next element. Let s be the index of such an element. In the above example 1, s is 3 (index of 30).
+    b) Scan from right to left and find the first element (first in right to left order) which is smaller than the next element (next in right to left order). Let e be the index of such an element. In the above example 1, e is 7 (index of 31).
+
+    2) Check whether sorting the candidate unsorted subarray makes the complete array sorted or not. If not, then include more elements in the subarray.
+    a) Find the minimum and maximum values in arr[s..e]. Let minimum and maximum values be min and max. min and max for [30, 25, 40, 32, 31] are 25 and 40 respectively.
+    b) Find the first element (if there is any) in arr[0..s-1] which is greater than min, change s to index of this element. There is no such element in above example 1.
+    c) Find the last element (if there is any) in arr[e+1..n-1] which is smaller than max, change e to index of this element. In the above example 1, e is changed to 8 (index of 35)
+
+    3) Print s and e.
+     */
+
+    public void printUnsorted(int[] nums) {
+        int n = nums.length, s = 0, e = n - 1;
+        for (; s < n - 1; ++s) {
+            if (nums[s] > nums[s + 1])
+                break;
+        }
+        if (s == n - 1)
+            System.out.println("the complete array is sorted");
+        for (; e > 0; --e) {
+            if (nums[e] < nums[e - 1])
+                break;
+        }
+
+        //find minimum and maximum in the interval
+        int maxValue = nums[s], minValue = nums[s];
+        for (int i = s + 1; i <= e; ++i) {
+            if (nums[i] > maxValue)
+                maxValue = nums[i];
+            if (nums[i] < minValue)
+                minValue = nums[i];
+        }
+
+        //steps Three
+        for (int i = 0; i < s; ++i) {
+            if (nums[i] > minValue) {
+                s = i;
+                break;
+            }
+        }
+        for (int i = n - 1; i >= e + 1; --i) {
+            if (nums[i] < maxValue) {
+                e = i;
+                break;
+            }
+        }
+
+        // step 3 of above algo
+        System.out.println("The unsorted subarray which makes the given array sorted lies between the index " + s + "  " + e);
+    }
+
+    public int maxIndexDiff(int[] nums) {
+        int n = nums.length;
+        if (n == 0)
+            return -1;
+        int[] leftMin = new int[n];
+        int[] rightMax = new int[n];
+        leftMin[0] = nums[0];
+        rightMax[n - 1] = nums[n - 1];
+        for (int i = 1; i < n; ++i) {
+            leftMin[i] = Math.min(leftMin[i - 1], nums[i]);
+            rightMax[n - i - 1] = Math.max(rightMax[n - i], nums[n - i - 1]);
+        }
+
+        int i = 0, j = 0, maxDiff = -1;
+        while (i < n && j < n) {
+            if (leftMin[i] < rightMax[j]) {
+                maxDiff = Math.max(maxDiff, j - i);
+                j++;
+            } else
+                i++;
+        }
+        return maxDiff;
+    }
+
+
+    //Find whether an array is subset of another array | Added Method 3
+    //brute force
+    //sort and binary search
+    //sort and merge;// two pointers
+    //hashmap: you can use two hashmap to handle the duplicate case
+    public boolean isSubset(int[] nums, int[] nums1) {
+        int m = nums.length, n = nums1.length;
+        Arrays.sort(nums);
+        Arrays.sort(nums1);
+        int i = 0, j = 0;
+        while (i < m && j < n) {
+            if (nums[i] < nums1[j])
+                i++;
+            else if (nums[i] == nums1[j]) {
+                i++;
+                j++;
+            } else if (nums[i] > nums1[j]) {
+                return false;
+            }
+        }
+        return i < n;
+    }
+
+
+
+
 
 
 }

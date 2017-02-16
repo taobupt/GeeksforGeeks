@@ -315,4 +315,23 @@ public class ArrayTest {
         System.out.println(x);
     }
 
+    @Test
+    public void testConsecutive() {
+        int[] nums = {7, 6, 5, 5, 3, 4};
+        boolean res = arrayAlgoQuestion.areConsecutiveWithVisitedArray(nums);
+        System.out.println(res);
+    }
+
+    @Test
+    public void testprintUnsorted() {
+        int[] nums = {0, 1, 15, 25, 6, 7, 30, 40, 50};
+        arrayAlgoQuestion.printUnsorted(nums);
+    }
+
+    @Test
+    public void testMind() {
+        int[] nums = {3, 4, 5};
+        System.out.println(arrayAlgoQuestion.minDist(nums, 3, 5));
+    }
+
 }

@@ -271,4 +271,11 @@ public class TreeTest {
     }
 
 
+    @Test
+    public void testSolution() {
+        int[] A = {1, 2, 3, 4, 5, 6};
+        int[] queries = {1, 2, 3, 4};
+
+    }
+
 }
