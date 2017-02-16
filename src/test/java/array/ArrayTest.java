@@ -293,7 +293,26 @@ public class ArrayTest {
     public void testPrintTwo() {
         int[] nums = {-7, 1, 5, 2, -4, 3, 0};
         //
-        arrayAlgoQuestion.equilibrium(nums);
+        arrayAlgoQuestion.cycleSort(nums);
+        for (int x : nums)
+            System.out.println(x);
+    }
+
+    @Test
+    public void testNextGreaterElementByStack() {
+
+        int[] nums = {13, 7, 6, 12};
+        int[] res = arrayAlgoQuestion.nextGreaterElementsByStack(nums);
+        for (int x : res)
+            System.out.println(x);
+
+    }
+
+    @Test
+    public void testMaxsubarrayCircleSum() {
+        int[] nums = {-1, 40, -14, 7, 6, 5, -4, -1};
+        int x = arrayAlgoQuestion.maxSubArray(nums);
+        System.out.println(x);
     }
 
 }

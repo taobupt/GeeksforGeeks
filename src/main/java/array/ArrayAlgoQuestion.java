@@ -3176,6 +3176,37 @@ public class ArrayAlgoQuestion {
         return res;
     }
 
+    //stack, cycle
+
+    public int[] nextGreaterElementsByStack(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        Arrays.fill(res, -1);
+        Stack<Integer> stk = new Stack<>();
+        for (int i = 0; i < 2 * n; ++i) {
+            int num = nums[i % n];
+            while (!stk.isEmpty() && nums[stk.peek()] < num)
+                res[stk.pop()] = num;
+            if (i < n)
+                stk.push(i);
+        }
+        return res;
+    }
+
+    public int[] nextGreaterElementsByStackNoCycle(int[] findNums, int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stk = new Stack<>();
+        for (int num : nums) {
+            while (!stk.isEmpty() && stk.peek() < num)
+                map.put(stk.pop(), num);
+            stk.push(num);
+        }
+        for (int i = 0; i < findNums.length; ++i) {
+            findNums[i] = map.getOrDefault(findNums[i], -1);
+        }
+        return findNums;
+    }
+
 
     public int[] findDiagonalOrder(int[][] matrix) {
         List<List<Integer>> res = new ArrayList<>();
@@ -3433,6 +3464,56 @@ public class ArrayAlgoQuestion {
     }
 
 
+    public int cycleSort(int[] nums) {
+        int writes = 0;
+        int n = nums.length;
+        for (int i = 0; i < n - 1; ++i) {
+            int item = nums[i];
+
+            //find where to put the item
+            int pos = i;
+            for (int j = i + 1; j < n; ++j) {
+                if (nums[j] < item)
+                    pos++;
+            }
+
+            //if the item is already there, this is not a cycle
+            if (pos == i)
+                continue;
+
+            //otherwise, put the item thre or right after any duplicate
+            while (item == nums[pos])
+                pos++;
+            if (item != nums[pos]) {
+                int tmp = item;
+                item = nums[pos];
+                nums[pos] = tmp;
+                writes++;
+            }
+
+            //rotate the rest of the cycle
+            while (pos != i) {
+                pos = i;
+                for (int j = i + 1; j < n; ++j) {
+                    if (nums[j] < item)
+                        pos++;
+                }
+
+
+                while (item == nums[pos]) {
+                    pos++;
+                }
+                if (item != nums[pos]) {
+                    int tmp = item;
+                    item = nums[pos];
+                    nums[pos] = tmp;
+                    writes++;
+                }
+            }
+        }
+        System.out.println(writes);
+        return writes;
+    }
 
 
 }
