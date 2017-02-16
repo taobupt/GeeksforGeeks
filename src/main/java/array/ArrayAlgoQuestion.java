@@ -3406,6 +3406,32 @@ public class ArrayAlgoQuestion {
         }
     }
 
+    //Find the two repeating elements in a given array
+    public void printTwoRepeating(int arr[]) {
+        int n = arr.length;
+        for (int i = 0; i < n; ++i) {
+            int val = Math.abs(arr[i]) - 1;
+            if (arr[val] < 0)
+                System.out.println(val + 1);
+            arr[val] = -arr[val];
+        }
+    }
+
+    public int equilibrium(int arr[]) {
+        int n = arr.length;
+        int[] res = new int[n];
+        res[0] = arr[0];
+        for (int i = 1; i < n; ++i)
+            res[i] = res[i - 1] + arr[i];
+        for (int i = n - 1; i >= 0; --i) {
+            int hiSum = i == n - 1 ? 0 : res[n - 1] - res[i];
+            int lowSum = i == 0 ? 0 : res[i - 1];
+            if (hiSum == lowSum)
+                System.out.println(i);
+        }
+        return 0;
+    }
+
 
 
 

@@ -289,5 +289,11 @@ public class ArrayTest {
         cq.countSmaller(nums);
     }
 
+    @Test
+    public void testPrintTwo() {
+        int[] nums = {-7, 1, 5, 2, -4, 3, 0};
+        //
+        arrayAlgoQuestion.equilibrium(nums);
+    }
 
 }
