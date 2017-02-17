@@ -72,7 +72,7 @@ public class ContestQuestion {
     }
 
     public List<Integer> countSmaller(int[] nums) {
-        FenwickTree fenwickTree = new FenwickTree(200050);
+        FenwickTree fenwickTree = new FenwickTree(100050);
         List<Long> cnt = new ArrayList<>();
         int n = nums.length;
         for (int i = 0; i < n; ++i) {
@@ -92,7 +92,7 @@ public class ContestQuestion {
         }
         int res = 0;
         for (int i = 0; i < n; ++i) {
-            int x = 200000;
+            int x = 100000;
             long kkk = fenwickTree.sum(x);
             long k2 = fenwickTree.sum(val1[i]);
             res += kkk - k2;
@@ -124,6 +124,46 @@ public class ContestQuestion {
         }
         return res;
     }
+
+    public void merge(int[] nums, int start, int mid, int end, int[] count) {
+        for (int i = start, j = mid + 1; i <= mid; i++) {
+            while (j <= end && nums[i] / 2.0 > nums[j]) j++;
+            count[0] += j - (mid + 1);
+        }
+        int i = start, j = mid + 1, index = 0;
+        int[] res = new int[end - start + 1];
+        while (i <= mid && j <= end) {
+            if (nums[i] > nums[j]) {
+                res[index++] = nums[j++];
+            } else
+                res[index++] = nums[i++];
+
+        }
+        while (i <= mid) {
+            res[index++] = nums[i++];
+        }
+        while (j <= end)
+            res[index++] = nums[j++];
+        for (int k = 0; k < res.length; ++k)
+            nums[start + k] = res[k];
+    }
+
+    public void mergeSort(int[] nums, int start, int end, int[] count) {
+        if (start >= end)
+            return;
+        int mid = (end - start) / 2 + start;
+        mergeSort(nums, start, mid, count);
+        mergeSort(nums, mid + 1, end, count);
+        merge(nums, start, mid, end, count);
+    }
+
+    public void mergeSort(int[] nums) {
+        int[] cnt = new int[1];
+        mergeSort(nums, 0, nums.length - 1, cnt);
+        System.out.println(cnt[0]);
+
+    }
+
 
 
 }

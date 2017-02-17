@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" description="in case of overflow" line="1741" mnemonic="1" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="969" mnemonic="2" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1659" mnemonic="3" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1889" mnemonic="4" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2063" mnemonic="5" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2331" mnemonic="6" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2778" mnemonic="7" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2798" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" description="in case of overflow" line="1757" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="985" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1675" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="1905" mnemonic="4" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2079" mnemonic="5" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2347" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2794" mnemonic="7" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" line="2814" mnemonic="8" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/string/StringQuestion.java" line="55" mnemonic="9" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/tree/Tree.java" line="2097" mnemonic="0" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/string/StringQuestion.java" line="427" mnemonic="A" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d65e4c4f-115a-48ce-807c-3a59b097a734" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/common/Project.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/Contest/ContestQuestionTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/ArrayAlgoQuestion.class" afterPath="$PROJECT_DIR$/target/classes/array/ArrayAlgoQuestion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/Interval.class" afterPath="$PROJECT_DIR$/target/classes/array/Interval.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/RandomizedSet.class" afterPath="$PROJECT_DIR$/target/classes/array/RandomizedSet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/SummaryRanges.class" afterPath="$PROJECT_DIR$/target/classes/array/SummaryRanges.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/Unit.class" afterPath="$PROJECT_DIR$/target/classes/array/Unit.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/array/WordDistance.class" afterPath="$PROJECT_DIR$/target/classes/array/WordDistance.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/array/ArrayTest.class" afterPath="$PROJECT_DIR$/target/test-classes/array/ArrayTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/tree/TreeTest.class" afterPath="$PROJECT_DIR$/target/test-classes/tree/TreeTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" afterPath="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java" afterPath="$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/string/StringQuestion.java" afterPath="$PROJECT_DIR$/src/main/java/string/StringQuestion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" afterPath="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" />
     </list>
     <ignored path="GeeksforGeeks.iws" />
@@ -62,77 +72,102 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ArrayAlgoQuestion.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArrayAlgoQuestion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-44111">
-              <caret line="455" column="16" lean-forward="false" selection-start-line="455" selection-start-column="16" selection-end-line="455" selection-end-column="16" />
+            <state relative-caret-position="104">
+              <caret line="3361" column="18" lean-forward="true" selection-start-line="3361" selection-start-column="18" selection-end-line="3361" selection-end-column="18" />
               <folding>
-                <element signature="e#5424#5447#0" expanded="true" />
-                <element signature="e#5659#5668#0" expanded="true" />
-                <element signature="e#6789#6807#0" expanded="true" />
-                <element signature="e#7859#7868#0" expanded="true" />
-                <element signature="e#9023#9032#0" expanded="true" />
-                <element signature="e#10502#10520#0" expanded="true" />
-                <element signature="e#20411#20420#0" expanded="true" />
-                <element signature="e#20462#20471#0" expanded="true" />
-                <element signature="e#22941#22959#0" expanded="true" />
-                <element signature="e#23369#23378#0" expanded="true" />
-                <element signature="e#23827#23845#0" expanded="true" />
-                <element signature="e#24304#24313#0" expanded="true" />
-                <element signature="e#28703#28718#0" expanded="true" />
-                <element signature="e#28814#28823#0" expanded="true" />
-                <element signature="e#28963#28972#0" expanded="true" />
-                <element signature="e#29368#29383#0" expanded="true" />
-                <element signature="e#29543#29552#0" expanded="true" />
-                <element signature="e#30010#30019#0" expanded="true" />
-                <element signature="e#30358#30367#0" expanded="true" />
-                <element signature="e#30485#30494#0" expanded="true" />
-                <element signature="e#30911#30920#0" expanded="true" />
-                <element signature="e#30962#30971#0" expanded="true" />
-                <element signature="e#31386#31395#0" expanded="true" />
-                <element signature="e#33813#33821#0" expanded="true" />
-                <element signature="e#35074#35089#0" expanded="true" />
-                <element signature="e#35135#35144#0" expanded="true" />
-                <element signature="e#36045#36060#0" expanded="true" />
-                <element signature="e#36106#36115#0" expanded="true" />
-                <element signature="e#36875#36890#0" expanded="true" />
-                <element signature="e#36936#36945#0" expanded="true" />
-                <element signature="e#43870#43879#0" expanded="true" />
-                <element signature="e#45000#45009#0" expanded="true" />
-                <element signature="e#46106#46115#0" expanded="true" />
-                <element signature="e#52177#52186#0" expanded="true" />
-                <element signature="e#53452#53461#0" expanded="true" />
-                <element signature="e#53506#53515#0" expanded="true" />
-                <element signature="e#53854#53863#0" expanded="true" />
-                <element signature="e#54189#54198#0" expanded="true" />
-                <element signature="e#62804#62819#0" expanded="true" />
-                <element signature="e#62865#62874#0" expanded="true" />
-                <element signature="e#63079#63094#0" expanded="true" />
-                <element signature="e#63331#63340#0" expanded="true" />
-                <element signature="e#64121#64136#0" expanded="true" />
-                <element signature="e#65144#65159#0" expanded="true" />
-                <element signature="e#65205#65214#0" expanded="true" />
-                <element signature="e#65410#65425#0" expanded="true" />
-                <element signature="e#65840#65849#0" expanded="true" />
-                <element signature="e#66706#66721#0" expanded="true" />
-                <element signature="e#67137#67146#0" expanded="true" />
-                <element signature="e#67800#67815#0" expanded="true" />
-                <element signature="e#68572#68581#0" expanded="true" />
-                <element signature="e#81831#81840#0" expanded="true" />
-                <element signature="e#82574#82584#0" expanded="true" />
-                <element signature="e#83324#83334#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#5448#5471#0" expanded="true" />
+                <element signature="e#5683#5692#0" expanded="true" />
+                <element signature="e#6813#6831#0" expanded="true" />
+                <element signature="e#7883#7892#0" expanded="true" />
+                <element signature="e#9047#9056#0" expanded="true" />
+                <element signature="e#10526#10544#0" expanded="true" />
+                <element signature="e#20903#20912#0" expanded="true" />
+                <element signature="e#20954#20963#0" expanded="true" />
+                <element signature="e#23433#23451#0" expanded="true" />
+                <element signature="e#23861#23870#0" expanded="true" />
+                <element signature="e#24319#24337#0" expanded="true" />
+                <element signature="e#24796#24805#0" expanded="true" />
+                <element signature="e#29195#29210#0" expanded="true" />
+                <element signature="e#29306#29315#0" expanded="true" />
+                <element signature="e#29455#29464#0" expanded="true" />
+                <element signature="e#29860#29875#0" expanded="true" />
+                <element signature="e#30035#30044#0" expanded="true" />
+                <element signature="e#30502#30511#0" expanded="true" />
+                <element signature="e#30850#30859#0" expanded="true" />
+                <element signature="e#30977#30986#0" expanded="true" />
+                <element signature="e#31403#31412#0" expanded="true" />
+                <element signature="e#31454#31463#0" expanded="true" />
+                <element signature="e#31878#31887#0" expanded="true" />
+                <element signature="e#34305#34313#0" expanded="true" />
+                <element signature="e#35566#35581#0" expanded="true" />
+                <element signature="e#35627#35636#0" expanded="true" />
+                <element signature="e#36537#36552#0" expanded="true" />
+                <element signature="e#36598#36607#0" expanded="true" />
+                <element signature="e#37367#37382#0" expanded="true" />
+                <element signature="e#37428#37437#0" expanded="true" />
+                <element signature="e#44362#44371#0" expanded="true" />
+                <element signature="e#45492#45501#0" expanded="true" />
+                <element signature="e#46598#46607#0" expanded="true" />
+                <element signature="e#52669#52678#0" expanded="true" />
+                <element signature="e#53944#53953#0" expanded="true" />
+                <element signature="e#53998#54007#0" expanded="true" />
+                <element signature="e#54346#54355#0" expanded="true" />
+                <element signature="e#54681#54690#0" expanded="true" />
+                <element signature="e#63296#63311#0" expanded="true" />
+                <element signature="e#63357#63366#0" expanded="true" />
+                <element signature="e#63571#63586#0" expanded="true" />
+                <element signature="e#63823#63832#0" expanded="true" />
+                <element signature="e#64613#64628#0" expanded="true" />
+                <element signature="e#65636#65651#0" expanded="true" />
+                <element signature="e#65697#65706#0" expanded="true" />
+                <element signature="e#65902#65917#0" expanded="true" />
+                <element signature="e#66332#66341#0" expanded="true" />
+                <element signature="e#67198#67213#0" expanded="true" />
+                <element signature="e#67629#67638#0" expanded="true" />
+                <element signature="e#68292#68307#0" expanded="true" />
+                <element signature="e#69064#69073#0" expanded="true" />
+                <element signature="e#82323#82332#0" expanded="true" />
+                <element signature="e#83066#83076#0" expanded="true" />
+                <element signature="e#83816#83826#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tree.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tree/Tree.java">
+      <file leaf-file-name="ContestQuestion.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31155">
-              <caret line="2097" column="0" lean-forward="false" selection-start-line="2097" selection-start-column="0" selection-end-line="2097" selection-end-column="0" />
+            <state relative-caret-position="-215">
+              <caret line="136" column="37" lean-forward="true" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringQuestion.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/string/StringQuestion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="597" column="26" lean-forward="false" selection-start-line="597" selection-start-column="26" selection-end-line="597" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContestQuestionTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Contest/ContestQuestionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#338#339#0" expanded="true" />
+                <element signature="e#378#379#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,8 +175,8 @@
       <file leaf-file-name="ArrayTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4530">
-              <caret line="312" column="48" lean-forward="false" selection-start-line="312" selection-start-column="48" selection-end-line="312" selection-end-column="48" />
+            <state relative-caret-position="77">
+              <caret line="261" column="33" lean-forward="false" selection-start-line="261" selection-start-column="33" selection-end-line="261" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -159,9 +194,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>close</find>
-      <find>balance</find>
-      <find>verify</find>
       <find>subset</find>
       <find>79</find>
       <find>294</find>
@@ -189,6 +221,9 @@
       <find>nextGreate</find>
       <find>nextGr</find>
       <find>maxsubarr</find>
+      <find>unit</find>
+      <find>mergesort</find>
+      <find>merge</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -239,18 +274,20 @@
         <option value="$PROJECT_DIR$/src/test/java/string/StringTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/bfs/BfsTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/dynamicProgramming/DynamicProgramming.java" />
-        <option value="$PROJECT_DIR$/src/main/java/string/StringQuestion.java" />
         <option value="$PROJECT_DIR$/src/test/java/mathQuestion/MathTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/mathQuestion/MathQuestion.java" />
         <option value="$PROJECT_DIR$/src/test/java/backtracking/BacktrackTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backtracking/Backtrack.java" />
         <option value="$PROJECT_DIR$/src/main/java/graph/Graph.java" />
         <option value="$PROJECT_DIR$/src/test/java/graph/GraphTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java" />
         <option value="$PROJECT_DIR$/src/main/java/tree/Tree.java" />
         <option value="$PROJECT_DIR$/src/test/java/tree/TreeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/common/Project.java" />
         <option value="$PROJECT_DIR$/src/test/java/array/ArrayTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Contest/ContestQuestionTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/string/StringQuestion.java" />
       </list>
     </option>
   </component>
@@ -290,8 +327,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -384,7 +422,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="array" />
+              <option name="myItemId" value="Contest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeeksforGeeks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeeksforGeeks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bfs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -483,6 +547,36 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="string" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StringQuestion.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeeksforGeeks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GeeksforGeeks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -546,7 +640,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -586,85 +679,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ArrayTest.testMaxsubarrayCircleSum">
-    <configuration default="false" name="TreeTest.testreverse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="tree.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="tree" />
-      <option name="MAIN_CLASS_NAME" value="tree.TreeTest" />
-      <option name="METHOD_NAME" value="testreverse" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ArrayTest.testReverse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testReverse" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ArrayTest.testPrintTwo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GeeksforGeeks" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="array" />
-      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
-      <option name="METHOD_NAME" value="testPrintTwo" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ContestQuestionTest.testMegresort">
     <configuration default="false" name="ArrayTest.testNextGreaterElementByStack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -704,6 +719,84 @@
       <option name="PACKAGE_NAME" value="array" />
       <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
       <option name="METHOD_NAME" value="testMaxsubarrayCircleSum" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testIPO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testIPO" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ArrayTest.testMergeSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="array" />
+      <option name="MAIN_CLASS_NAME" value="array.ArrayTest" />
+      <option name="METHOD_NAME" value="testMergeSort" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ContestQuestionTest.testMegresort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Contest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GeeksforGeeks" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Contest" />
+      <option name="MAIN_CLASS_NAME" value="Contest.ContestQuestionTest" />
+      <option name="METHOD_NAME" value="testMegresort" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1098,19 +1191,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.TreeTest.testreverse" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testReverse" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testPrintTwo" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testNextGreaterElementByStack" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaxsubarrayCircleSum" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testNextGreaterElementByStack" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaxsubarrayCircleSum" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testIPO" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMergeSort" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ContestQuestionTest.testMegresort" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaxsubarrayCircleSum" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testNextGreaterElementByStack" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testPrintTwo" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TreeTest.testreverse" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testReverse" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ContestQuestionTest.testMegresort" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMergeSort" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest.testIPO" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ArrayTest.testMaxsubarrayCircleSum" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ArrayTest.testNextGreaterElementByStack" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1233,7 +1326,9 @@
       <workItem from="1487145877886" duration="1186000" />
       <workItem from="1487210142682" duration="1995000" />
       <workItem from="1487224126567" duration="3044000" />
-      <workItem from="1487261113220" duration="126000" />
+      <workItem from="1487261113220" duration="201000" />
+      <workItem from="1487285237374" duration="2341000" />
+      <workItem from="1487290852167" duration="2936000" />
     </task>
     <task id="LOCAL-00001" summary="add linkedlist&#10;">
       <created>1483145383999</created>
@@ -1361,43 +1456,50 @@
       <option name="project" value="LOCAL" />
       <updated>1487210193679</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="leetcode contest&#10;">
+      <created>1487261258685</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1487261258685</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 37m 59s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMergeSort - 2017.02.16 at 18h 28m 01s.xml">
+      <configuration name="ArrayTest.testMergeSort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 38m 48s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMergeSort - 2017.02.16 at 19h 03m 04s.xml">
+      <configuration name="ArrayTest.testMergeSort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 43m 56s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMergeSort - 2017.02.16 at 19h 03m 31s.xml">
+      <configuration name="ArrayTest.testMergeSort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 44m 13s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMergeSort - 2017.02.16 at 19h 03m 59s.xml">
+      <configuration name="ArrayTest.testMergeSort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 49m 48s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMergeSort - 2017.02.16 at 19h 04m 13s.xml">
+      <configuration name="ArrayTest.testMergeSort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 50m 02s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMergeSort - 2017.02.16 at 19h 04m 52s.xml">
+      <configuration name="ArrayTest.testMergeSort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 50m 18s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ArrayTest_testMergeSort - 2017.02.16 at 19h 05m 11s.xml">
+      <configuration name="ArrayTest.testMergeSort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 50m 36s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ContestQuestionTest_testMegresort - 2017.02.16 at 19h 30m 57s.xml">
+      <configuration name="ContestQuestionTest.testMegresort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 52m 04s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ContestQuestionTest_testMegresort - 2017.02.16 at 19h 35m 21s.xml">
+      <configuration name="ContestQuestionTest.testMegresort" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayTest_testMaxsubarrayCircleSum - 2017.02.16 at 00h 54m 48s.xml">
-      <configuration name="ArrayTest.testMaxsubarrayCircleSum" configurationId="JUnit" />
+    <history-entry file="ContestQuestionTest_testMegresort - 2017.02.16 at 20h 16m 02s.xml">
+      <configuration name="ContestQuestionTest.testMegresort" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="416329000" />
+    <option name="totallyTimeSpent" value="421681000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1415,13 +1517,14 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31230927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0883721" sideWeight="0.503125" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3359375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1432,13 +1535,12 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4484375" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4046875" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31230927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1539,37 +1641,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>916</line>
+          <line>932</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>947</line>
+          <line>963</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>984</line>
+          <line>1000</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>2250</line>
+          <line>2266</line>
           <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>2315</line>
+          <line>2331</line>
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>2281</line>
+          <line>2297</line>
           <properties />
           <option name="timeStamp" value="37" />
         </line-breakpoint>
@@ -1671,31 +1773,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3032</line>
+          <line>3048</line>
           <properties />
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3054</line>
+          <line>3070</line>
           <properties />
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3058</line>
+          <line>3074</line>
           <properties />
           <option name="timeStamp" value="200" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3108</line>
+          <line>3124</line>
           <properties />
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3153</line>
+          <line>3169</line>
           <properties />
           <option name="timeStamp" value="209" />
         </line-breakpoint>
@@ -1719,13 +1821,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>2491</line>
+          <line>2507</line>
           <properties />
           <option name="timeStamp" value="219" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3214</line>
+          <line>3230</line>
           <properties />
           <option name="timeStamp" value="220" />
         </line-breakpoint>
@@ -1737,25 +1839,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3239</line>
+          <line>3255</line>
           <properties />
           <option name="timeStamp" value="223" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3411</line>
+          <line>3427</line>
           <properties />
           <option name="timeStamp" value="224" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3425</line>
+          <line>3441</line>
           <properties />
           <option name="timeStamp" value="226" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3397</line>
+          <line>3413</line>
           <properties />
           <option name="timeStamp" value="228" />
         </line-breakpoint>
@@ -1773,7 +1875,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>858</line>
+          <line>874</line>
           <properties />
           <option name="timeStamp" value="231" />
         </line-breakpoint>
@@ -1785,30 +1887,60 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3451</line>
+          <line>3467</line>
           <properties />
           <option name="timeStamp" value="236" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3467</line>
+          <line>3483</line>
           <properties />
           <option name="timeStamp" value="239" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>3181</line>
+          <line>3197</line>
           <properties />
           <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
-          <line>448</line>
+          <line>450</line>
           <properties />
           <option name="timeStamp" value="241" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
+          <line>3682</line>
+          <properties />
+          <option name="timeStamp" value="242" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
+          <line>3686</line>
+          <properties />
+          <option name="timeStamp" value="243" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java</url>
+          <line>3702</line>
+          <properties />
+          <option name="timeStamp" value="244" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java</url>
+          <line>161</line>
+          <properties />
+          <option name="timeStamp" value="245" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java</url>
+          <line>132</line>
+          <properties />
+          <option name="timeStamp" value="247" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="242" />
+      <option name="time" value="248" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1824,21 +1956,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="29" column="63" lean-forward="false" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LinkedList/Solution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2024,13 +2141,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/bfs/BfsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="33" column="27" lean-forward="false" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/string/StringTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -2134,14 +2244,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/string/StringQuestion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/tree/TreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -2150,90 +2252,152 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="115" column="9" lean-forward="false" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tree/Tree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31155">
           <caret line="2097" column="0" lean-forward="false" selection-start-line="2097" selection-start-column="0" selection-end-line="2097" selection-end-column="0" />
+          <folding>
+            <element signature="e#181#182#0" expanded="false" />
+            <element signature="e#212#213#0" expanded="false" />
+            <element signature="e#651#652#0" expanded="false" />
+            <element signature="e#693#694#0" expanded="false" />
+            <element signature="e#19661#19662#0" expanded="false" />
+            <element signature="e#19715#19716#0" expanded="false" />
+            <element signature="e#50784#50785#0" expanded="false" />
+            <element signature="e#50828#50829#0" expanded="false" />
+            <element signature="e#51629#51630#0" expanded="false" />
+            <element signature="e#51693#51694#0" expanded="false" />
+            <element signature="e#52117#52118#0" expanded="false" />
+            <element signature="e#52151#52152#0" expanded="false" />
+            <element signature="e#52187#52188#0" expanded="false" />
+            <element signature="e#52229#52230#0" expanded="false" />
+            <element signature="e#54535#54536#0" expanded="false" />
+            <element signature="e#54570#54571#0" expanded="false" />
+            <element signature="e#58753#58754#0" expanded="false" />
+            <element signature="e#58799#58800#0" expanded="false" />
+            <element signature="e#61846#61847#0" expanded="false" />
+            <element signature="e#61915#61916#0" expanded="false" />
+            <element signature="e#68154#68155#0" expanded="false" />
+            <element signature="e#68194#68195#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/common/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="1" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="15" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/bfs/BfsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="13" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/array/ArrayTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4530">
-          <caret line="312" column="48" lean-forward="false" selection-start-line="312" selection-start-column="48" selection-end-line="312" selection-end-column="48" />
+        <state relative-caret-position="77">
+          <caret line="261" column="33" lean-forward="false" selection-start-line="261" selection-start-column="33" selection-end-line="261" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/array/ArrayAlgoQuestion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44111">
-          <caret line="455" column="16" lean-forward="false" selection-start-line="455" selection-start-column="16" selection-end-line="455" selection-end-column="16" />
+        <state relative-caret-position="104">
+          <caret line="3361" column="18" lean-forward="true" selection-start-line="3361" selection-start-column="18" selection-end-line="3361" selection-end-column="18" />
           <folding>
-            <element signature="e#5424#5447#0" expanded="true" />
-            <element signature="e#5659#5668#0" expanded="true" />
-            <element signature="e#6789#6807#0" expanded="true" />
-            <element signature="e#7859#7868#0" expanded="true" />
-            <element signature="e#9023#9032#0" expanded="true" />
-            <element signature="e#10502#10520#0" expanded="true" />
-            <element signature="e#20411#20420#0" expanded="true" />
-            <element signature="e#20462#20471#0" expanded="true" />
-            <element signature="e#22941#22959#0" expanded="true" />
-            <element signature="e#23369#23378#0" expanded="true" />
-            <element signature="e#23827#23845#0" expanded="true" />
-            <element signature="e#24304#24313#0" expanded="true" />
-            <element signature="e#28703#28718#0" expanded="true" />
-            <element signature="e#28814#28823#0" expanded="true" />
-            <element signature="e#28963#28972#0" expanded="true" />
-            <element signature="e#29368#29383#0" expanded="true" />
-            <element signature="e#29543#29552#0" expanded="true" />
-            <element signature="e#30010#30019#0" expanded="true" />
-            <element signature="e#30358#30367#0" expanded="true" />
-            <element signature="e#30485#30494#0" expanded="true" />
-            <element signature="e#30911#30920#0" expanded="true" />
-            <element signature="e#30962#30971#0" expanded="true" />
-            <element signature="e#31386#31395#0" expanded="true" />
-            <element signature="e#33813#33821#0" expanded="true" />
-            <element signature="e#35074#35089#0" expanded="true" />
-            <element signature="e#35135#35144#0" expanded="true" />
-            <element signature="e#36045#36060#0" expanded="true" />
-            <element signature="e#36106#36115#0" expanded="true" />
-            <element signature="e#36875#36890#0" expanded="true" />
-            <element signature="e#36936#36945#0" expanded="true" />
-            <element signature="e#43870#43879#0" expanded="true" />
-            <element signature="e#45000#45009#0" expanded="true" />
-            <element signature="e#46106#46115#0" expanded="true" />
-            <element signature="e#52177#52186#0" expanded="true" />
-            <element signature="e#53452#53461#0" expanded="true" />
-            <element signature="e#53506#53515#0" expanded="true" />
-            <element signature="e#53854#53863#0" expanded="true" />
-            <element signature="e#54189#54198#0" expanded="true" />
-            <element signature="e#62804#62819#0" expanded="true" />
-            <element signature="e#62865#62874#0" expanded="true" />
-            <element signature="e#63079#63094#0" expanded="true" />
-            <element signature="e#63331#63340#0" expanded="true" />
-            <element signature="e#64121#64136#0" expanded="true" />
-            <element signature="e#65144#65159#0" expanded="true" />
-            <element signature="e#65205#65214#0" expanded="true" />
-            <element signature="e#65410#65425#0" expanded="true" />
-            <element signature="e#65840#65849#0" expanded="true" />
-            <element signature="e#66706#66721#0" expanded="true" />
-            <element signature="e#67137#67146#0" expanded="true" />
-            <element signature="e#67800#67815#0" expanded="true" />
-            <element signature="e#68572#68581#0" expanded="true" />
-            <element signature="e#81831#81840#0" expanded="true" />
-            <element signature="e#82574#82584#0" expanded="true" />
-            <element signature="e#83324#83334#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#5448#5471#0" expanded="true" />
+            <element signature="e#5683#5692#0" expanded="true" />
+            <element signature="e#6813#6831#0" expanded="true" />
+            <element signature="e#7883#7892#0" expanded="true" />
+            <element signature="e#9047#9056#0" expanded="true" />
+            <element signature="e#10526#10544#0" expanded="true" />
+            <element signature="e#20903#20912#0" expanded="true" />
+            <element signature="e#20954#20963#0" expanded="true" />
+            <element signature="e#23433#23451#0" expanded="true" />
+            <element signature="e#23861#23870#0" expanded="true" />
+            <element signature="e#24319#24337#0" expanded="true" />
+            <element signature="e#24796#24805#0" expanded="true" />
+            <element signature="e#29195#29210#0" expanded="true" />
+            <element signature="e#29306#29315#0" expanded="true" />
+            <element signature="e#29455#29464#0" expanded="true" />
+            <element signature="e#29860#29875#0" expanded="true" />
+            <element signature="e#30035#30044#0" expanded="true" />
+            <element signature="e#30502#30511#0" expanded="true" />
+            <element signature="e#30850#30859#0" expanded="true" />
+            <element signature="e#30977#30986#0" expanded="true" />
+            <element signature="e#31403#31412#0" expanded="true" />
+            <element signature="e#31454#31463#0" expanded="true" />
+            <element signature="e#31878#31887#0" expanded="true" />
+            <element signature="e#34305#34313#0" expanded="true" />
+            <element signature="e#35566#35581#0" expanded="true" />
+            <element signature="e#35627#35636#0" expanded="true" />
+            <element signature="e#36537#36552#0" expanded="true" />
+            <element signature="e#36598#36607#0" expanded="true" />
+            <element signature="e#37367#37382#0" expanded="true" />
+            <element signature="e#37428#37437#0" expanded="true" />
+            <element signature="e#44362#44371#0" expanded="true" />
+            <element signature="e#45492#45501#0" expanded="true" />
+            <element signature="e#46598#46607#0" expanded="true" />
+            <element signature="e#52669#52678#0" expanded="true" />
+            <element signature="e#53944#53953#0" expanded="true" />
+            <element signature="e#53998#54007#0" expanded="true" />
+            <element signature="e#54346#54355#0" expanded="true" />
+            <element signature="e#54681#54690#0" expanded="true" />
+            <element signature="e#63296#63311#0" expanded="true" />
+            <element signature="e#63357#63366#0" expanded="true" />
+            <element signature="e#63571#63586#0" expanded="true" />
+            <element signature="e#63823#63832#0" expanded="true" />
+            <element signature="e#64613#64628#0" expanded="true" />
+            <element signature="e#65636#65651#0" expanded="true" />
+            <element signature="e#65697#65706#0" expanded="true" />
+            <element signature="e#65902#65917#0" expanded="true" />
+            <element signature="e#66332#66341#0" expanded="true" />
+            <element signature="e#67198#67213#0" expanded="true" />
+            <element signature="e#67629#67638#0" expanded="true" />
+            <element signature="e#68292#68307#0" expanded="true" />
+            <element signature="e#69064#69073#0" expanded="true" />
+            <element signature="e#82323#82332#0" expanded="true" />
+            <element signature="e#83066#83076#0" expanded="true" />
+            <element signature="e#83816#83826#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Contest/ContestQuestionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leetcodeContest/ContestQuestion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-215">
+          <caret line="136" column="37" lean-forward="true" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/string/StringQuestion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="597" column="26" lean-forward="false" selection-start-line="597" selection-start-column="26" selection-end-line="597" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

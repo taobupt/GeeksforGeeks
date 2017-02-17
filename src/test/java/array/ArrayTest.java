@@ -259,7 +259,7 @@ public class ArrayTest {
 
     @Test
     public void testMergeSort() {
-        int[] nums = {5, 2, 6, 1, 4};
+        int[] nums = {4, 6, 8, 1, 2, 3};
         arrayAlgoQuestion.mergeSort(nums);
         System.out.println("---------");
         for (int x : nums)
@@ -334,4 +334,10 @@ public class ArrayTest {
         System.out.println(arrayAlgoQuestion.minDist(nums, 3, 5));
     }
 
+    @Test
+    public void testIPO() {
+        int[] profit = {1, 2, 3};
+        int[] capital = {0, 1, 1};
+        System.out.println(arrayAlgoQuestion.findMaximizedCapital(2, 0, profit, capital));
+    }
 }

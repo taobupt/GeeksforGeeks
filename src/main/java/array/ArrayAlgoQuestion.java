@@ -1,6 +1,8 @@
 package array;
 
 
+import common.Project;
+
 import java.util.*;
 
 /**
@@ -3675,8 +3677,41 @@ public class ArrayAlgoQuestion {
     }
 
 
+    //LTE the last example
+//    public int findMaximizedCapital(int k, int W, int[] Profits, int[] Capital) {
+//        int n=Profits.length;
+//        List<Project>li=new ArrayList<>();
+//        for(int i=0;i<n;++i)
+//            li.add(new Project(Profits[i],Capital[i],false));
+//        li.sort((Project p1,Project p2)-> p2.profit-p1.profit);
+//        for(int i=0;i<k;++i){
+//            for(int j=0;j<n;++j){
+//                if(!li.get(j).used && W>=li.get(j).capital){
+//                    li.get(j).used=true;
+//                    W+=li.get(j).profit;
+//                    break;
+//                }
+//            }
+//        }
+//        return W;
+//
+//    }
 
+    public int findMaximizedCapital(int k, int W, int[] Profits, int[] Capital) {
+        PriorityQueue<int[]> pqCap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        PriorityQueue<int[]> pqPro = new PriorityQueue<>((a, b) -> b[1] - a[1]);
+        int n = Profits.length;
+        for (int i = 0; i < n; ++i) {
+            pqCap.offer(new int[]{Capital[i], Profits[i]});
+        }
 
-
-
+        for (int i = 0; i < k; ++i) {
+            while (!pqCap.isEmpty() && pqCap.peek()[0] <= W)
+                pqPro.add(pqCap.poll());
+            if (pqPro.isEmpty())
+                break;
+            W += pqPro.poll()[1];
+        }
+        return W;
+    }
 }
