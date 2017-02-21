@@ -164,6 +164,27 @@ public class ContestQuestion {
 
     }
 
+    public void dfs(int pos, int cnt[], int N, boolean[] vis) {
+        if (pos == N + 1) {
+            cnt[0]++;
+            return;
+        }
+        for (int i = 1; i <= N; ++i) {
+            if (!vis[i] && ((pos % i == 0) || (i % pos == 0))) {
+                vis[i] = true;
+                dfs(pos + 1, cnt, N, vis);
+                vis[i] = false;
+            }
+        }
+    }
+
+    public int countArrangement(int N) {
+        int[] cnt = new int[1];
+        boolean[] vis = new boolean[20];
+        dfs(1, cnt, N, vis);
+        return cnt[0];
+    }
+
 
 
 }
