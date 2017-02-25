@@ -465,6 +465,28 @@ public class ArrayAlgoQuestion {
         return res;
     }
 
+    //Maximum circular subarray sum
+    //two cases:
+    //one kadane,another is flip the array ,and find the maximum , you can sum(array)+maxium
+    //记住，负数有可能在拐角处，所以不能简单的求出最小的数组和后就好了
+
+
+    //minimum subarray sum
+    public int minSubArray(int[] nums) {
+        // write your code here
+        int sum1 = 0, res = Integer.MIN_VALUE, n = nums.length;
+        if (n == 0) return 0;
+        for (int x : nums) {
+            sum1 += x;
+            res = Math.min(res, sum1);
+            if (sum1 > 0)
+                sum1 = 0;
+        }
+        return res;
+    }
+
+
+
     //dynamic programming
     //O(N) space
     public int maxSubarrayDp(int[] nums) {
@@ -1833,6 +1855,10 @@ public class ArrayAlgoQuestion {
         }
     }
 
+
+    //Stock Buy Sell to Maximize Profit
+
+    //tag  //geeks for geeks
     //122 best time to buy and sell stokcii
     public int maxProfitII(int[] prices) {
         int n = prices.length;
@@ -1855,6 +1881,30 @@ public class ArrayAlgoQuestion {
                 begin = mid + 1;
             else
                 end = mid;
+        }
+        return nums[begin];
+    }
+    //find maximum in rotated sorted array
+    //modify jump condition and return nums[end]
+
+    //Find the maximum element in an array which is first increasing and then decreasing
+    //binary search
+
+    public int findMaximumInPeek(int[] nums) {
+        int n = nums.length;
+        if (n == 1)
+            return nums[0];
+        if (n == 2)
+            return Math.max(nums[0], nums[1]);
+        int begin = 0, end = n - 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (nums[mid] > nums[mid + 1] && nums[mid] > nums[mid - 1])
+                return nums[mid];
+            if (nums[mid] > nums[mid + 1] && nums[mid] < nums[mid - 1])
+                end = mid;
+            if (nums[mid] > nums[mid - 1] && nums[mid] < nums[mid + 1])
+                begin = mid + 1;
         }
         return nums[begin];
     }
@@ -2058,6 +2108,23 @@ public class ArrayAlgoQuestion {
             } else if (i % 2 == 0 && nums[i - 1] < nums[i]) {
                 swap(nums, i - 1, i);
             }
+        }
+    }
+
+    //also another way
+    void sortInWave(int arr[]) {
+        int n = arr.length;
+        // Traverse all even elements
+        for (int i = 0; i < n; i += 2) {
+            // If current even element is smaller
+            // than previous
+            if (i > 0 && arr[i - 1] > arr[i])
+                swap(arr, i - 1, i);
+
+            // If current even element is smaller
+            // than next
+            if (i < n - 1 && arr[i] < arr[i + 1])
+                swap(arr, i, i + 1);
         }
     }
 
@@ -3628,6 +3695,9 @@ public class ArrayAlgoQuestion {
         System.out.println("The unsorted subarray which makes the given array sorted lies between the index " + s + "  " + e);
     }
 
+
+    //tag
+    //maximum diff
     public int maxIndexDiff(int[] nums) {
         int n = nums.length;
         if (n == 0)
@@ -3714,4 +3784,65 @@ public class ArrayAlgoQuestion {
         }
         return W;
     }
+
+    //tag
+    //maximum diff, sell ticket
+    public int maxDiff(int[] nums) {
+        int n = nums.length;
+        if (n == 0)
+            return Integer.MIN_VALUE;
+        int res = 0, minValue = nums[0];
+        for (int i = 1; i < n; ++i) {
+            minValue = Math.min(minValue, nums[i]);
+            if (nums[i] > minValue)
+                res = Math.max(res, nums[i] - minValue);
+        }
+        return res;
+    }
+
+    //tag
+    //Maximum Length Bitonic Subarray
+    public int bitonic(int[] nums) {
+        int n = nums.length;
+        if (n <= 1)
+            return n;
+        int[] inc = new int[n];
+        int[] desc = new int[n];
+        desc[n - 1] = inc[0] = 1;
+        for (int i = 1; i < n; ++i) {
+            inc[i] = nums[i] >= nums[i - 1] ? inc[i - 1] + 1 : 1;
+            desc[n - i - 1] = (nums[n - i] <= nums[n - i - 1]) ? desc[n - i] + 1 : 1;
+        }
+
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            ans = Math.max(inc[i] + desc[i] - 1, ans);
+        }
+        return ans;
+
+    }
+
+    //tag
+    public int[] findmissingAndDuplicate(int[] nums) {
+        int res = 0, n = nums.length;
+        for (int i = 1; i <= n; ++i) {
+            res ^= i;
+            res ^= nums[i - 1];
+        }
+        res = res & (-res);
+        int[] a = new int[2];
+        for (int i = 0; i < n; ++i) {
+            if ((res & nums[i]) == 0)
+                a[0] ^= nums[i];
+            else
+                a[1] ^= nums[i];
+            if (((i + 1) & res) == 0)
+                a[0] ^= (i + 1);
+            else
+                a[1] ^= (i + 1);
+        }
+        return a;
+
+    }
+
 }

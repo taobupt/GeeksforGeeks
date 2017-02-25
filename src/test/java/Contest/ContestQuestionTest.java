@@ -29,4 +29,9 @@ public class ContestQuestionTest {
         cq.mergeSort(nums);
     }
 
+    @Test
+    public void testBeautiful() {
+        System.out.println(cq.countArrangement(15));
+    }
+
 }
