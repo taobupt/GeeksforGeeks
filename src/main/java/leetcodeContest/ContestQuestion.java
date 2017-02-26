@@ -266,6 +266,56 @@ public class ContestQuestion {
     }
 
 
+    //求个余数就可以了,简直是nb了
+    public boolean checkSubarraySumMap(int[] nums, int k) {
+        int n = nums.length;
+        int[] sums = new int[n];
+        sums[0] = nums[0];
+        for (int i = 1; i < n; ++i) {
+            sums[i] = sums[i - 1] + nums[i];
+        }
+        if (k != 0) {
+            for (int i = 0; i < n; ++i)
+                sums[i] = sums[i] % k;
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);
+        for (int i = 0; i < n; ++i) {
+            if (map.containsKey(sums[i]) && map.get(sums[i]) < i - 1)
+                return true;
+            else if (!map.containsKey(sums[i]))
+                map.put(sums[i], i);
+        }
+        return false;
+
+    }
+
+
+    public boolean ok(String s, String str) {
+        int cnt = 0, n = s.length();
+        for (int i = 0; i < n; ++i) {
+            if (cnt == str.length())
+                return true;
+            if (s.charAt(i) == str.charAt(cnt))
+                cnt++;
+        }
+        return cnt == str.length();
+    }
+
+    public String findLongestWordAnother(String s, List<String> d) {
+        String ans = "";
+        for (String str : d) {
+            if (ok(s, str)) {
+                if (ans.length() < str.length()) {
+                    ans = str;
+                } else if (ans.length() == str.length() && ans.compareTo(str) > 0) {
+                    ans = str;
+                }
+            }
+        }
+        return ans;
+    }
+
 
 
 

@@ -34,4 +34,17 @@ public class ContestQuestionTest {
         System.out.println(cq.countArrangement(15));
     }
 
+    @Test
+    public void testLongestWord() throws Exception {
+        String[] d = {"ale", "apple", "monkey", "plea"};
+        List<String> res = new ArrayList<>(Arrays.asList(d));
+        System.out.println(cq.findLongestWordAnother("abpcplea", res));
+    }
+
+    @Test
+    public void testCheckSubarray() throws Exception {
+        int[] nums = {23, 2, 6, 4, 7};
+        cq.checkSubarraySumMap(nums, 6);
+    }
+
 }
