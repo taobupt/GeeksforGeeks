@@ -25,8 +25,10 @@ public class ContestQuestionTest {
 
     @Test
     public void testMegresort() {
-        int[] nums = {4, 6, 8, 1, 2, 3};
-        cq.mergeSort(nums);
+        String[] ans = {"ale", "apple", "monkey", "plea"};
+        List<String> res = new ArrayList<>(Arrays.asList(ans));
+        System.out.println(cq.findLongestWord("abpcplea", res));
     }
+
 
 }

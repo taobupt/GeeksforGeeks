@@ -1,5 +1,7 @@
 package leetcodeContest;
 
+import org.omg.CORBA.INTERNAL;
+
 import java.util.*;
 
 /**
@@ -184,6 +186,93 @@ public class ContestQuestion {
         dfs(1, cnt, N, vis);
         return cnt[0];
     }
+
+
+    //02/05/2017 contest 21
+    //problem 1
+
+
+    public int binarySearch(List<Integer> sss, int index) {
+        if (sss.isEmpty())
+            return index;
+        int begin = 0, end = sss.size() - 1;
+        while (begin < end) {
+            int mid = (end - begin) / 2 + begin;
+            if (sss.get(mid) <= index)
+                begin = mid + 1;
+            else
+                end = mid;
+        }
+        System.out.println(sss.get(begin));
+        return sss.get(begin) > index ? sss.get(begin) : -1;
+    }
+
+    public String findLongestWord(String s, List<String> d) {
+        List<List<Integer>> cnt = new ArrayList<>();
+        for (int i = 0; i < 26; ++i) {
+            cnt.add(new ArrayList<>());
+        }
+        int n = s.length();
+        String ans = "";
+        for (int i = 0; i < n; ++i)
+            cnt.get((int) (s.charAt(i) - 'a')).add(i);
+        for (String word : d) {
+            int nn = word.length();
+            int ind = -1;
+            int i = 0;
+            for (; i < nn; ++i) {
+                int xxx = binarySearch(cnt.get(word.charAt(i) - 'a'), ind);
+                if (xxx > ind)
+                    ind = xxx;
+                else
+                    break;
+            }
+            if (i == nn) {
+                if (ans.length() < word.length())
+                    ans = word;
+                else if (ans.length() == word.length()) {
+                    int nnn = word.length();
+                    for (int ii = 0; ii < nnn; ++ii) {
+                        if (word.charAt(ii) > ans.charAt(ii)) {
+                            break;
+                        } else if (word.charAt(ii) < ans.charAt(ii)) {
+                            ans = word;
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+        return ans;
+    }
+
+
+    public boolean checkSubarraySum(int[] nums, int k) {
+        int n = nums.length;
+        int[] sums = new int[n];
+        sums[0] = nums[0];
+        for (int i = 1; i < n; ++i)
+            sums[i] = sums[i - 1] + nums[i];
+        for (int i = 0; i < n; ++i) {
+            if (sums[i] % k == 0)
+                return true;
+            for (int j = 0; j < i; ++j) {
+                if ((sums[i] - sums[j]) % k == 0)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3193,4 +3193,28 @@ public class Tree {
         return ans;
     }
 
+
+    //
+    public void inorder(TreeNode root, List<Integer> res) {
+        if (root == null)
+            return;
+        inorder(root.left, res);
+        res.add(root.val);
+        inorder(root.right, res);
+    }
+
+    public int getMinimumDifference(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        inorder(root, res);
+        int n = res.size();
+        int val = Integer.MAX_VALUE;
+        for (int i = 1; i < n; ++i) {
+            if (Math.abs(res.get(i) - res.get(i - 1)) < val) {
+                val = Math.abs(res.get(i) - res.get(i - 1));
+            }
+        }
+        return val;
+
+    }
+
 }
