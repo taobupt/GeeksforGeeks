@@ -340,4 +340,24 @@ public class ArrayTest {
         int[] capital = {0, 1, 1};
         System.out.println(arrayAlgoQuestion.findMaximizedCapital(2, 0, profit, capital));
     }
+
+    @Test
+    public void testBitonic() {
+        int[] nums = {40, 30, 20, 10};
+        System.out.println(arrayAlgoQuestion.bitonic(nums));
+    }
+
+    @Test
+    public void testMissingAndDuplicate() {
+        int[] nums = {1, 2, 4, 4, 5};
+        int[] res = arrayAlgoQuestion.findmissingAndDuplicate(nums);
+        for (int x : res)
+            System.out.println(x);
+    }
+
+    @Test
+    public void testFindMaximumInpeek() {
+        int[] nums = {8, 10, 1};
+        System.out.println(arrayAlgoQuestion.findMaximumInPeek(nums));
+    }
 }
