@@ -34,4 +34,10 @@ public class ContestQuestionTest {
         System.out.println(cq.countArrangement(15));
     }
 
+    @Test
+    public void testFindRotate() {
+        System.out.println(cq.findRotateStepsDP("godding", "gd"));
+
+    }
+
 }

@@ -1,6 +1,7 @@
 package leetcodeContest;
 
 import org.omg.CORBA.INTERNAL;
+import sun.awt.image.IntegerInterleavedRaster;
 
 import java.util.*;
 
@@ -265,6 +266,198 @@ public class ContestQuestion {
         return false;
     }
 
+
+    //
+    public int findPairs(int[] nums, int k) {
+        int n = nums.length;
+        Set<Integer> set = new HashSet<>();
+        int cnt = 0;
+        for (int x : nums)
+            set.add(x);
+        if (k == 0) {
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int x : nums) {
+                if (!map.containsKey(x))
+                    map.put(x, 1);
+                else
+                    map.put(x, map.get(x) + 1);
+            }
+            for (int x : nums) {
+                if (map.get(x) > 1)
+                    cnt++;
+            }
+            return cnt;
+        }
+        if (k < 0)
+            return 0;
+        List<Integer> ans = new ArrayList<>();
+        ans.addAll(set);
+
+        Collections.sort(ans);
+        n = ans.size();
+        for (int i = 0; i < n; ++i) {
+            if (set.contains(ans.get(i) + k))
+                cnt++;
+        }
+        return cnt;
+    }
+
+    public int findLonelyPixel(char[][] picture) {
+        if (picture.length == 0 || picture[0].length == 0)
+            return 0;
+        int m = picture.length, n = picture[0].length;
+        int[] rows = new int[m];
+        int[] cols = new int[n];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (picture[i][j] == 'B')
+                    rows[i]++;
+            }
+        }
+
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                if (picture[j][i] == 'B')
+                    cols[i]++;
+            }
+        }
+
+        int cnt = 0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (picture[i][j] == 'B') {
+                    if (rows[i] == 1 && cols[j] == 1)
+                        cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
+
+    public int findBlackPixelII(char[][] picture, int N) {
+        if (picture.length == 0 || picture[0].length == 0)
+            return 0;
+        int m = picture.length, n = picture[0].length;
+        int[] rows = new int[m];
+        int[] cols = new int[n];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (picture[i][j] == 'B')
+                    rows[i]++;
+            }
+        }
+
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                if (picture[j][i] == 'B')
+                    cols[i]++;
+            }
+        }
+
+        int cnt = 0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (picture[i][j] == 'B') {
+                    if (rows[i] == N && cols[j] == N) {
+                        boolean flag = true;
+                        for (int k = 0; k < m; ++k) {
+                            if (k == i)
+                                continue;
+                            if (picture[k][j] == 'B') {
+                                for (int z = 0; z < n; ++z) {
+                                    if (picture[k][z] != picture[i][z]) {
+                                        flag = false;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (!flag)
+                                break;
+                        }
+                        if (flag)
+                            cnt++;
+                    }
+
+                }
+            }
+        }
+        return cnt;
+    }
+
+
+    public int indexof(char[] arrs, char c, boolean isshun) {
+        int cnt = 0, n = arrs.length;
+        char[] cl = arrs.clone();
+        if (isshun) {
+            for (int i = n - 1; i >= 0; --i) {
+                if (arrs[i] == c)
+                    break;
+                else
+                    cnt++;
+            }
+
+            for (int i = 0; i < n; ++i) {
+                arrs[i] = cl[(i + cnt) % n];
+            }
+        } else {
+            for (int i = 0; i < n; ++i) {
+                if (arrs[i] == c)
+                    break;
+                else
+                    cnt++;
+            }
+            for (int i = 0; i < n; ++i) {
+                arrs[i] = cl[(i - cnt + n) % n];
+            }
+        }
+        return cnt;
+    }
+
+    public int findRotateSteps(String ring, String key) {
+        //无非就是两种方法，顺时针和逆时针
+
+        char[] keys = key.toCharArray();
+        char[] rings = ring.toCharArray();
+        char[] ringshun = rings.clone();
+        char[] ringsni = rings.clone();
+        int m = key.length();
+        int dp[][] = new int[m + 1][2];//正反两方向
+        for (int i = 1; i <= m; ++i) {
+            int cntshun = indexof(ringshun, keys[i - 1], true);
+            int cntni = indexof(ringsni, keys[i - 1], false);
+            dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][1]) + cntni;
+            dp[i][0] = Math.min(dp[i - 1][0], dp[i - 1][1]) + cntshun;
+        }
+
+        return Math.min(dp[m][0], dp[m][1]);
+    }
+
+    //another version
+    public int findRotateStepsDP(String ring, String key) {
+        int m = ring.length(), n = key.length();
+        int[][] dp = new int[n + 1][m];
+        for (int i = 0; i <= n; ++i) {
+            for (int j = 0; j < m; ++j)
+                dp[i][j] = Integer.MAX_VALUE;
+        }
+        for (int i = 0; i < m; ++i)
+            dp[n][i] = 0;
+        int dist = 0;
+        for (int i = n - 1; i >= 0; --i) {
+            for (int j = 0; j < m; ++j) {
+                for (int k = 0; k < m; ++k) {
+                    if (ring.charAt(k) != key.charAt(i))
+                        continue;
+                    dist = Math.min((k - j + m) % m, (j - k + m) % m);
+                    dp[i][j] = Math.min(dp[i][j], dp[i + 1][k] + dist);
+
+                }
+            }
+        }
+        return dp[0][0] + n;
+    }
 
 
 
