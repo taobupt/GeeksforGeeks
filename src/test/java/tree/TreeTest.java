@@ -278,5 +278,25 @@ public class TreeTest {
 
     }
 
+    @Test
+    public void testIssumTree() {
+        TreeNode node = new TreeNode(10);
+        node.left = new TreeNode(8);
+        node.right = new TreeNode(2);
+        node.left.left = new TreeNode(3);
+        node.left.right = new TreeNode(5);
+        node.right.left = new TreeNode(2);
+        //System.out.println(t.getLevel(node,4));
+//        int []inorder={1,2,4,3,5};
+//        int []preorder={3,2,1,4,5};
+//        t.printPostorder(preorder,inorder);
+        //System.out.println(t.isSumTree(node));
+
+        System.out.println(t.isSumProperty(node));
+
+
+    }
+
+
 
 }

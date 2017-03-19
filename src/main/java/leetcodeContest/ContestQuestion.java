@@ -9,6 +9,18 @@ import java.util.*;
  * Created by Tao on 2/11/2017.
  */
 
+class TreeNode {
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+
+    public TreeNode(int val) {
+        this.val = val;
+        left = null;
+        right = null;
+    }
+}
+
 class FenwickTree {
     public int n;
     public long[] sumArray = null;
@@ -460,13 +472,27 @@ public class ContestQuestion {
     }
 
 
+    //leetcode 03/11/2017
+    public int findMinDifference(List<String> timePoints) {
+        List<Integer> time = new ArrayList<>();
+        for (String str : timePoints) {
+            String[] strs = str.split(":");
+            time.add(60 * Integer.valueOf(strs[0]) + Integer.valueOf(strs[1]));
+            time.add(60 * Integer.valueOf(strs[0]) + Integer.valueOf(strs[1]) + 24 * 60);
+        }
+        Collections.sort(time);
+        int minDiff = 24 * 60;
+        int n = time.size();
+        for (int i = 1; i < n; ++i) {
+            minDiff = Math.min(minDiff, time.get(i) - time.get(i - 1));
+        }
+        return minDiff;
+    }
 
-
-
-
-
-
-
-
-
+    public List<String> wordsAbbreviation(List<String> dict) {
+        List<String> res = new ArrayList<>();
+        return res;
+    }
 }
+
+

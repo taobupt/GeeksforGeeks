@@ -1,6 +1,8 @@
 package tree;
 
 
+import org.hamcrest.core.Is;
+
 import java.util.*;
 
 /**
@@ -3215,6 +3217,239 @@ public class Tree {
         }
         return val;
 
+    }
+
+    //geeks 37
+    boolean isSumTree(TreeNode node) {
+        if (node == null || (node.left == null && node.right == null))
+            return true;
+        boolean l = isSumTree(node.left);
+        boolean r = isSumTree(node.right);
+        if (l && r) {
+            int left = 0;
+            if (node.left != null) {
+                if (node.left.left == null && node.left.right == null)
+                    left = node.left.val;
+                else
+                    left = 2 * node.left.val;//特别注意
+            }
+            int right = 0;
+            if (node.right != null) {
+                if (node.right.left == null && node.right.right == null)
+                    right = node.right.val;
+                else
+                    right = 2 * node.right.val;
+            }
+            return node.val == (left + right);
+        }
+        return false;
+    }
+
+    //42 Convert a given tree to its Sum Tree
+    public int sum(TreeNode root) {
+        if (root == null)
+            return 0;
+        if (root.left == null && root.right == null) {
+            int val = root.val;
+            root.val = 0;
+            return val;
+        }
+        int l = sum(root.left);
+        int r = sum(root.right);
+        int data = root.val;
+        root.val = l + r;
+        return root.val + data;
+    }
+
+    public void convertToItsSum(TreeNode root) {
+        sum(root);
+    }
+
+    //geeks70 print left view
+    int maxlevel = 0;
+
+    public void dfsleft(TreeNode node, int level) {
+        if (node == null)
+            return;
+        if (maxlevel == level) {
+            maxlevel++;
+            System.out.println(node.val);
+        }
+        dfsleft(node.left, level + 1);
+        dfsleft(node.right, level + 1);
+    }
+
+    public void leftveiw(TreeNode root) {
+        dfsleft(root, 0);
+    }
+
+    //69 check if all leaves in the same level;
+    public int prevou = 0;
+    public boolean flag = true;
+
+    public boolean dfsleaves(TreeNode root, int level) {
+        if (root == null)
+            return true;
+        if (root.left == null && root.right == null) {
+            if (prevou == Integer.MAX_VALUE) {
+                prevou = level;
+                return true;
+            } else
+                return prevou == level;
+        }
+        return dfsleaves(root.left, level + 1) && dfsleaves(root.right, level + 1);
+    }
+
+    public boolean isAllLeavesIntheSameLevel(TreeNode root) {
+        return dfsleaves(root, 0);
+
+    }
+
+    //35 Get Level of a node in a Binary Tree
+    int reslevel = 0;
+
+    public void getLevel(TreeNode root, int val, int level) {
+        if (root == null)
+            return;
+        if (root.val == val)
+            reslevel = level;
+        getLevel(root.left, val, level + 1);
+        getLevel(root.right, val, level + 1);
+    }
+
+    public int getLevel(TreeNode root, int val) {
+        getLevel(root, val, 1);
+        return reslevel;
+    }
+
+    //36 print all ancestor of a key,我原想着是直接dfs然后用list来存的。但是用boolean 能明显剪枝
+    //递归的方法是postorder，其实用hashmap也能搞
+    public boolean printAncestors(TreeNode root, int target) {
+        if (root == null)
+            return false;
+        if (root.val == target)
+            return true;
+        if (printAncestors(root.left, target) || printAncestors(root.right, target)) {
+            System.out.println(root.val);
+            return true;
+        }
+        return false;
+    }
+
+    //86 is cousins
+    //level order 太sb了，
+    //先判断是不是一个level，再判断是不是共用一个父亲
+    //这道题挺好的
+    boolean isSibling(Node node, Node a, Node b) {
+        // Base case
+        if (node == null)
+            return false;
+
+        return ((node.left == a && node.right == b) ||
+                (node.left == b && node.right == a) ||
+                isSibling(node.left, a, b) ||
+                isSibling(node.right, a, b));
+    }
+
+    // Recursive function to find level of Node 'ptr' in
+    // a binary tree
+    int level(Node node, Node ptr, int lev) {
+        // base cases
+        if (node == null)
+            return 0;
+
+        if (node == ptr)
+            return lev;
+
+        // Return level if Node is present in left subtree
+        int l = level(node.left, ptr, lev + 1);
+        if (l != 0)
+            return l;
+
+        // Else search in right subtree
+        return level(node.right, ptr, lev + 1);
+    }
+
+    // Returns 1 if a and b are cousins, otherwise 0
+    boolean isCousin(Node node, Node a, Node b) {
+        // 1. The two Nodes should be on the same level
+        //       in the binary tree.
+        // 2. The two Nodes should not be siblings (means
+        //    that they should not have the same parent
+        //    Node).
+        return ((level(node, a, 1) == level(node, b, 1)) &&
+                (!isSibling(node, a, b)));
+    }
+
+    //60
+    public boolean Isomorphism(TreeNode node, TreeNode node1) {
+        if (node == null || node1 == null)
+            return node == node1;
+        return node.val == node1.val && (Isomorphism(node.left, node1.left) && Isomorphism(node.right, node1.right) || Isomorphism(node.left, node1.right) && Isomorphism(node.right, node1.left));
+    }
+
+
+    //67
+    //Print Postorder traversal from given Inorder and Preorder traversals
+    //第一种是建树，第二种是递归打印左子树，柚子树，root节点
+    //可以拓展到求preorder
+    public void print(int[] preorder, int start1, int end1, int[] inorder, int begin2, int end2) {
+        if (start1 > end1)
+            return;
+        int ind = begin2;
+        for (; ind < end2; ++ind) {
+            if (inorder[ind] == preorder[start1])
+                break;
+        }
+        print(preorder, start1 + 1, ind + start1 - begin2, inorder, begin2, ind - 1);
+        print(preorder, ind + start1 - begin2 + 1, end1, inorder, ind + 1, end2);
+        System.out.println(preorder[start1]);
+    }
+
+    public void printPostorder(int[] preorder, int[] inorder) {
+        int n = preorder.length;
+        print(preorder, 0, n - 1, inorder, 0, n - 1);
+    }
+
+    //24  geeks for
+    //For every node, data value must be equal to sum of data values in left and right children.
+    boolean isSumProperty(TreeNode root) {
+        if (root == null)
+            return true;
+        if (root.left == null && root.right == null)
+            return true;
+        int val = (root.left != null ? root.left.val : 0) + (root.right != null ? root.right.val : 0);
+        return isSumProperty(root.left) && isSumProperty(root.right) && root.val == val;
+    }
+
+
+    //25 Convert an arbitrary Binary Tree to a tree that holds Children Sum Property
+    //非常好的一道题
+    public void convertSumTree(TreeNode node) {
+        if (node == null || node.left == null && node.right == null)
+            return;
+        int diff = 0, ldata = 0, rdata = 0;
+        convertSumTree(node.left);
+        convertSumTree(node.right);
+        ldata = node.left != null ? node.left.val : 0;
+        rdata = node.right != null ? node.right.val : 0;
+        diff = ldata + rdata - node.val;
+        if (diff > 0)
+            node.val += diff;
+        else if (diff < 0)
+            increament(node, -diff);
+    }
+
+    public void increament(TreeNode node, int val) {
+        if (node == null)
+            return;
+        if (node.left != null) {
+            node.left.val += val;
+            increament(node.left, val);
+        } else if (node.right != null) {
+            node.right.val += val;
+            increament(node.right, val);
+        }
     }
 
 }
